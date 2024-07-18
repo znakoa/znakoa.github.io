@@ -49,6 +49,7 @@ const config: Config = {
         },
         blog: {
           showReadingTime: true,
+          blogSidebarTitle: '日常随记',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -70,10 +71,10 @@ const config: Config = {
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
+          position: 'right',
+          label: '文档',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/blog', label: '博客', position: 'right' },
         {
           href: 'https://github.com/znakoa',
           label: 'GitHub',
@@ -82,7 +83,7 @@ const config: Config = {
       ],
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Nakoa. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
