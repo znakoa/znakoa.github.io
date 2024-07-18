@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknakoa_website=self.webpackChunknakoa_website||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"\u65e5\u5e38\u968f\u8bb0","items":[{"title":"\u4f7f\u7528githu\u6258\u7ba1\u4e2a\u4eba\u535a\u5ba2","permalink":"/blog/blog","unlisted":false}]}')}}]);
