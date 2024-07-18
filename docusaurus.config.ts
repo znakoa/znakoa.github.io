@@ -72,9 +72,10 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'right',
-          label: '文档',
+          label: '知识库',
         },
         { to: '/blog', label: '博客', position: 'right' },
+        { to: '/support', label: '关于作者', position: 'right' },
         {
           href: 'https://github.com/znakoa',
           label: 'GitHub',
