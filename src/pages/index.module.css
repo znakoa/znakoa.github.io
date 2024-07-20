@@ -8,7 +8,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  height: calc(100vh - 150px);
   background-image: url('../../static/img/home_background.jpeg');
   background-position: 50%;
   background-size: cover;
