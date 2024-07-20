@@ -10,14 +10,21 @@ import styles from './index.module.css'
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={styles.heroBanner}>
       <div className="container">
-        {/* <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading> */}
-        {/* <p className="hero__subtitle">{siteConfig.tagline}</p> */}
+        <img
+          src={require('@site/static/img/hello-world.gif').default}
+          style={{
+            flex: '0 0 auto',
+            borderRadius: 8,
+          }}
+        />
+        <Heading as="h1" className="hero__title" style={{ marginTop: '100px' }}>
+          遇上即是上上签
+        </Heading>
+        {/* <p className="hero__subtitle">666</p> */}
         <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/support">
+          <Link className="button button--secondary button--lg" to="/about">
             关于作者
           </Link>
         </div>
@@ -30,9 +37,9 @@ export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext()
   return (
     <Layout title={siteConfig.title}>
-      {/* <HomepageHeader /> */}
       <main>
-        <HomepageFeatures />
+        <HomepageHeader />
+        {/* <HomepageFeatures /> */}
       </main>
     </Layout>
   )
