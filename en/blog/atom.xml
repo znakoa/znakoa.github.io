@@ -8,14 +8,21 @@
     <subtitle>个人博客 Blog</subtitle>
     <icon>https://znakoa.github.io/en/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[使用githu托管个人博客]]></title>
+        <title type="html"><![CDATA[搭建个人博客]]></title>
         <id>https://znakoa.github.io/en/blog/blog</id>
         <link href="https://znakoa.github.io/en/blog/blog"/>
         <updated>2024-07-18T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[使用 Docusaurus 搭建个人博客网站]]></summary>
         <content type="html"><![CDATA[<p>使用 Docusaurus 搭建个人博客网站</p>
-<p>Docusaurus 是一个静态网站生成器，它允许你使用 Markdown 和 React 来编写你的文档，然后生成一个网站。</p>
-<p>Docusaurus 支持以下功能： - 多语言 1. 丰富的主题 2. 丰富的配置 3. 插件系统 4. 丰富的功能</p>
+<p>Docusaurus 是一个静态网站生成器，它允许你使用 <strong>Markdown</strong> 和 <strong>React</strong> 来编写你的文档，然后生成一个网站。</p>
+<p>Docusaurus 支持以下功能：</p>
+<ul>
+<li>多语言</li>
+<li>丰富的主题</li>
+<li>丰富的配置</li>
+<li>插件系统</li>
+<li>丰富的功能</li>
+</ul>
 <h1>搭建步骤</h1>
 <ol>
 <li>安装 Docusaurus CLI<!-- -->
@@ -23,7 +30,7 @@
 </li>
 </ol>
 <h1>线上托管</h1>
-<p>线上托管我选这了github ** 免费 **</p>
+<p>线上托管我选这了github <strong>免费</strong></p>
 <ol>
 <li>创建一个仓库</li>
 <li>添加一个文件 README.md</li>
