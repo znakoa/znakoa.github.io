@@ -9,20 +9,16 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <item>
-            <title><![CDATA[bpmn]]></title>
-            <link>https://znakoa.github.io/blog/2024/07/22/bpmn</link>
-            <guid>https://znakoa.github.io/blog/2024/07/22/bpmn</guid>
+            <title><![CDATA[BPMN2.0规范学习]]></title>
+            <link>https://znakoa.github.io/blog/BPMN</link>
+            <guid>https://znakoa.github.io/blog/BPMN</guid>
             <pubDate>Mon, 22 Jul 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[title: BPMN2.0 规范学习]]></description>
-            <content:encoded><![CDATA[<p>title: BPMN2.0 规范学习
-authors: [znakoa]
-tags: []</p>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="一bpmn20-介绍">一、BPMN2.0 介绍<a class="hash-link" aria-label="一、BPMN2.0 介绍的直接链接" title="一、BPMN2.0 介绍的直接链接" href="https://znakoa.github.io/blog/2024/07/22/bpmn#%E4%B8%80bpmn20-%E4%BB%8B%E7%BB%8D">​</a></h2>
-<p>** BPMN 的主要目的是提供一套所有业务用户容易理解和使用的标准符号，利用这些符号将业务流程建模简单化、图形化、将复杂的过程视觉化**</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="二bpmn20-规范的基础元素">二、BPMN2.0 规范的基础元素<a class="hash-link" aria-label="二、BPMN2.0 规范的基础元素的直接链接" title="二、BPMN2.0 规范的基础元素的直接链接" href="https://znakoa.github.io/blog/2024/07/22/bpmn#%E4%BA%8Cbpmn20-%E8%A7%84%E8%8C%83%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%83%E7%B4%A0">​</a></h2>
+            <description><![CDATA[一、BPMN2.0 介绍]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="一bpmn20-介绍">一、BPMN2.0 介绍<a class="hash-link" aria-label="一、BPMN2.0 介绍的直接链接" title="一、BPMN2.0 介绍的直接链接" href="https://znakoa.github.io/blog/BPMN#%E4%B8%80bpmn20-%E4%BB%8B%E7%BB%8D">​</a></h2>
+<p><strong>BPMN 的主要目的是提供一套所有业务用户容易理解和使用的标准符号，利用这些符号将业务流程建模简单化、图形化、将复杂的过程视觉化</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="二bpmn20-规范的基础元素">二、BPMN2.0 规范的基础元素<a class="hash-link" aria-label="二、BPMN2.0 规范的基础元素的直接链接" title="二、BPMN2.0 规范的基础元素的直接链接" href="https://znakoa.github.io/blog/BPMN#%E4%BA%8Cbpmn20-%E8%A7%84%E8%8C%83%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%83%E7%B4%A0">​</a></h2>
 <p>大致分为四类</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="流对象flow-objects-包括事件活动网关是-bpmn-中的核心元素">流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素<a class="hash-link" aria-label="流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素的直接链接" title="流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素的直接链接" href="https://znakoa.github.io/blog/2024/07/22/bpmn#%E6%B5%81%E5%AF%B9%E8%B1%A1flow-objects-%E5%8C%85%E6%8B%AC%E4%BA%8B%E4%BB%B6%E6%B4%BB%E5%8A%A8%E7%BD%91%E5%85%B3%E6%98%AF-bpmn-%E4%B8%AD%E7%9A%84%E6%A0%B8%E5%BF%83%E5%85%83%E7%B4%A0">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="流对象flow-objects-包括事件活动网关是-bpmn-中的核心元素">流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素<a class="hash-link" aria-label="流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素的直接链接" title="流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素的直接链接" href="https://znakoa.github.io/blog/BPMN#%E6%B5%81%E5%AF%B9%E8%B1%A1flow-objects-%E5%8C%85%E6%8B%AC%E4%BA%8B%E4%BB%B6%E6%B4%BB%E5%8A%A8%E7%BD%91%E5%85%B3%E6%98%AF-bpmn-%E4%B8%AD%E7%9A%84%E6%A0%B8%E5%BF%83%E5%85%83%E7%B4%A0">​</a></h3>
 <p>1.1 、事件</p>
 <p>​ 作用：用于对流程生命周期中发生的事件进行建模</p>
 <p>分类</p>

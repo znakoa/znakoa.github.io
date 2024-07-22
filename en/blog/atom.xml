@@ -8,20 +8,16 @@
     <subtitle>个人博客 Blog</subtitle>
     <icon>https://znakoa.github.io/en/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[bpmn]]></title>
-        <id>https://znakoa.github.io/en/blog/2024/07/22/bpmn</id>
-        <link href="https://znakoa.github.io/en/blog/2024/07/22/bpmn"/>
+        <title type="html"><![CDATA[BPMN2.0规范学习]]></title>
+        <id>https://znakoa.github.io/en/blog/BPMN</id>
+        <link href="https://znakoa.github.io/en/blog/BPMN"/>
         <updated>2024-07-22T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[title: BPMN2.0 规范学习]]></summary>
-        <content type="html"><![CDATA[<p>title: BPMN2.0 规范学习
-authors: [znakoa]
-tags: []</p>
-<hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="一bpmn20-介绍">一、BPMN2.0 介绍<a class="hash-link" aria-label="Direct link to 一、BPMN2.0 介绍" title="Direct link to 一、BPMN2.0 介绍" href="https://znakoa.github.io/en/blog/2024/07/22/bpmn#%E4%B8%80bpmn20-%E4%BB%8B%E7%BB%8D">​</a></h2>
-<p>** BPMN 的主要目的是提供一套所有业务用户容易理解和使用的标准符号，利用这些符号将业务流程建模简单化、图形化、将复杂的过程视觉化**</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="二bpmn20-规范的基础元素">二、BPMN2.0 规范的基础元素<a class="hash-link" aria-label="Direct link to 二、BPMN2.0 规范的基础元素" title="Direct link to 二、BPMN2.0 规范的基础元素" href="https://znakoa.github.io/en/blog/2024/07/22/bpmn#%E4%BA%8Cbpmn20-%E8%A7%84%E8%8C%83%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%83%E7%B4%A0">​</a></h2>
+        <summary type="html"><![CDATA[一、BPMN2.0 介绍]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="一bpmn20-介绍">一、BPMN2.0 介绍<a class="hash-link" aria-label="Direct link to 一、BPMN2.0 介绍" title="Direct link to 一、BPMN2.0 介绍" href="https://znakoa.github.io/en/blog/BPMN#%E4%B8%80bpmn20-%E4%BB%8B%E7%BB%8D">​</a></h2>
+<p><strong>BPMN 的主要目的是提供一套所有业务用户容易理解和使用的标准符号，利用这些符号将业务流程建模简单化、图形化、将复杂的过程视觉化</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="二bpmn20-规范的基础元素">二、BPMN2.0 规范的基础元素<a class="hash-link" aria-label="Direct link to 二、BPMN2.0 规范的基础元素" title="Direct link to 二、BPMN2.0 规范的基础元素" href="https://znakoa.github.io/en/blog/BPMN#%E4%BA%8Cbpmn20-%E8%A7%84%E8%8C%83%E7%9A%84%E5%9F%BA%E7%A1%80%E5%85%83%E7%B4%A0">​</a></h2>
 <p>大致分为四类</p>
-<h3 class="anchor anchorWithStickyNavbar_LWe7" id="流对象flow-objects-包括事件活动网关是-bpmn-中的核心元素">流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素<a class="hash-link" aria-label="Direct link to 流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素" title="Direct link to 流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素" href="https://znakoa.github.io/en/blog/2024/07/22/bpmn#%E6%B5%81%E5%AF%B9%E8%B1%A1flow-objects-%E5%8C%85%E6%8B%AC%E4%BA%8B%E4%BB%B6%E6%B4%BB%E5%8A%A8%E7%BD%91%E5%85%B3%E6%98%AF-bpmn-%E4%B8%AD%E7%9A%84%E6%A0%B8%E5%BF%83%E5%85%83%E7%B4%A0">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="流对象flow-objects-包括事件活动网关是-bpmn-中的核心元素">流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素<a class="hash-link" aria-label="Direct link to 流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素" title="Direct link to 流对象（Flow Objects): 包括事件、活动、网关，是 bpmn 中的核心元素" href="https://znakoa.github.io/en/blog/BPMN#%E6%B5%81%E5%AF%B9%E8%B1%A1flow-objects-%E5%8C%85%E6%8B%AC%E4%BA%8B%E4%BB%B6%E6%B4%BB%E5%8A%A8%E7%BD%91%E5%85%B3%E6%98%AF-bpmn-%E4%B8%AD%E7%9A%84%E6%A0%B8%E5%BF%83%E5%85%83%E7%B4%A0">​</a></h3>
 <p>1.1 、事件</p>
 <p>​ 作用：用于对流程生命周期中发生的事件进行建模</p>
 <p>分类</p>
@@ -44,6 +40,10 @@ tags: []</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;endEvent id="end" name="my end event" /&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>1.2 活动</p>
 <p>1.3 网关（节点）</p>]]></content>
+        <author>
+            <name>znakoa</name>
+            <uri>https://github.com/znakoa</uri>
+        </author>
     </entry>
     <entry>
         <title type="html"><![CDATA[搭建个人博客]]></title>
