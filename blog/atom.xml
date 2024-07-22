@@ -14,7 +14,7 @@
         <updated>2024-07-18T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[使用 Docusaurus 搭建个人博客网站]]></summary>
         <content type="html"><![CDATA[<p>使用 Docusaurus 搭建个人博客网站</p>
-<p>Docusaurus 是一个静态网站生成器，它允许你使用 <strong>Markdown</strong> 和 <strong>React</strong> 来编写你的文档，然后生成一个网站。</p>
+<p><a href="https://docusaurus.io/zh-CN" target="_blank" rel="noopener noreferrer">Docusaurus</a> 是一个静态网站生成器，它允许你使用 <strong>Markdown</strong> 和 <strong>React</strong> 来编写你的文档，然后生成一个网站。</p>
 <p>Docusaurus 支持以下功能：</p>
 <ul>
 <li>多语言</li>
@@ -25,18 +25,19 @@
 </ul>
 <h1>搭建步骤</h1>
 <ol>
-<li>安装 Docusaurus CLI<!-- -->
+<li>
+<p>安装 Docusaurus CLI</p>
 <div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npx @docusaurus/init@latest init my-website classic</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p><strong>my-website</strong> 是你项目名称，可以随便取</p>
 </li>
-</ol>
-<h1>线上托管</h1>
-<p>线上托管我选这了github <strong>免费</strong></p>
-<ol>
-<li>创建一个仓库</li>
-<li>添加一个文件 README.md</li>
-<li>提交</li>
-<li>创建一个分支 gh-pages</li>
-<li>推送</li>
+<li>
+<p>本地预览</p>
+<p>使用 vscode 打开项目</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">cd my-website</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm run start</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+<li>
+<p>修改配置</p>
+</li>
 </ol>]]></content>
         <author>
             <name>znakoa</name>
