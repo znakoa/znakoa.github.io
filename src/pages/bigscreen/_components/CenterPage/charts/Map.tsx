@@ -1,6 +1,6 @@
 import EChartsCommon from '@site/src/components/EChartsCommon'
 import { mapOptions } from './options'
-import useConfigStore from '@site/src/store/index'
+import useConfigStore from '@site/src/store'
 
 const Map = ({ mapData }) => {
   const renderer = useConfigStore((state) => state.renderer)

@@ -11,7 +11,7 @@ const fetchImageDom = (index: number, title: string) => {
   return <img src={imageUrl.href} alt={title} />;
 }
 
-export const CenterPageIndex = () => {
+export  const CenterPageIndex = () => {
 
   const [centerData, setCenterData] = useState<centerPageDataType | undefined>(undefined)
 
@@ -53,3 +53,5 @@ export const CenterPageIndex = () => {
     <div>loading...</div>
   )
 }
+
+export  default  CenterPageIndex

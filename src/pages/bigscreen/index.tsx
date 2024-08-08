@@ -1,6 +1,8 @@
 // import { Iconstyle } from '/icon/iconfont'
 import { Globalstyle } from './style/global'
-import {LayoutPage} from "@site/src/pages/bigscreen/IndexPage/layout";
+import LayoutPage from "@site/src/pages/bigscreen/_components/IndexPage/layout";
+
+
 export default function Bigscreen() {
   return (
     <>

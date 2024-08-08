@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { LayoutStyle, IndexPageStyle, IndexPageContent } from './style'
 import {previewFitScale} from "@site/src/utils/previewScale";
-import TopPage from "@site/src/pages/bigscreen/TopPage";
-import {LeftPageIndex} from "@site/src/pages/bigscreen/LeftPage";
-import {RightPageIndex} from "@site/src/pages/bigscreen/RightPage";
-import {CenterPageIndex} from "@site/src/pages/bigscreen/CenterPage";
+import TopPage from "@site/src/pages/bigscreen/_components/TopPage";
+import {CenterPageIndex} from "@site/src/pages/bigscreen/_components/CenterPage";
+import LeftPageIndex from "@site/src/pages/bigscreen/_components/LeftPage";
+import RightPageIndex from "@site/src/pages/bigscreen/_components/RightPage";
 
 
 
@@ -37,3 +37,5 @@ export const LayoutPage = () => {
     </LayoutStyle>
   )
 }
+
+export  default LayoutPage

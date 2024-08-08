@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const TitleColor = '#bcdcff';
+
 export const TopBox = styled.div`
   .top_box {
     display: flex;
@@ -64,6 +64,9 @@ export const TimeBox = styled.div`
   color: #fff;
   h3{
     font-size: 18px;
-    color: ${TitleColor};
+    color: #bcdcff;
   }
 `;
+
+
+export default  {TopBox,TimeBox}

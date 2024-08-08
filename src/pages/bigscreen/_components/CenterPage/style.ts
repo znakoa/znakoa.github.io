@@ -59,3 +59,6 @@ export const CenterBottom = styled.div`
     }
   }
 `;
+
+// 统一导出
+export default { CenterPage, CenterBottom };

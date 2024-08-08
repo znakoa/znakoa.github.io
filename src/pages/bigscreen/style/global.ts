@@ -66,3 +66,6 @@ export const Globalstyle = createGlobalStyle`
     height: 100%;
   }
 `;
+
+
+export  default  Globalstyle

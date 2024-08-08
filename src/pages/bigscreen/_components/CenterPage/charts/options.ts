@@ -1733,3 +1733,4 @@ export const mapOptions = (params) => ({
     },
   ],
 });
+export default  mapOptions

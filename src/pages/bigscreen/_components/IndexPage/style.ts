@@ -20,3 +20,6 @@ export const IndexPageContent = styled.div`
   justify-content: space-between;
   flex-wrap: nowrap;
 `
+
+
+export  default {LayoutStyle,IndexPageStyle,IndexPageContent}
