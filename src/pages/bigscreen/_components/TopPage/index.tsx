@@ -16,7 +16,7 @@ const stateInfo = {
 
 const TopPageIndex = () => {
     const [timeStr, setTimeStr] = useState('');
-    const timing = useRef<number | null>(null);
+    const timing = useRef<ReturnType<typeof setInterval> | null>(null);
 
     // 设置时间
     const setTimingFn = () => {

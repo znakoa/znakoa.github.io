@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 import { CenterPage, CenterBottom } from './style'
-import Map from './charts/Map.tsx'
+import Map from './charts/Map'
 import centerPageData, { centerPageDataType } from '@site/src/api/mock/centerPageData'
 // import { get } from '@site/src/api/http'
 // import { ResultEnum } from '@site/src/enums/httpEnum'
 // import { centerPageDataApi } from '@site/src/api/mock/index'
 
+
+
 const fetchImageDom = (index: number, title: string) => {
-  const imageUrl = new URL(`../../assets/images/center-details-data${index}.png`, import.meta.url);
-  return <img src={imageUrl.href} alt={title} />;
+  const imageUrl = `/assets/images/center-details-data${index}.png`;
+  return <img src={imageUrl} alt={title} />;
 }
 
 export  const CenterPageIndex = () => {
