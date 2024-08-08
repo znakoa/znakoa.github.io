@@ -1,26 +1,22 @@
 // import React from 'react'
-// import Link from '@docusaurus/Link'
+import Link from '@docusaurus/Link'
 
 import { Case } from './_components/ShowcaseCard'
 
 export const cases: Case[] = [
-  // {
-  //   title: '腾讯明眸体验馆',
-  //   website: '',
-  //   preview: require('./_previews/xbright.png').default,
-  //   description: (
-  //     <>
-  //       体验腾讯明眸视频转码后的效果
-  //       <br />- 支持两段视频的<b>实时对比</b>
-  //       <br />
-  //       - 支持视频详细参数自定义配置
-  //       <br />- 开发了<b>"我的视频"</b>, 支持 <b>上传/管理</b> 视频
-  //       <br />- 支持英文界面 (<Link to="">i18n</Link>)
-  //     </>
-  //   ),
-  //   source: '',
-  //   tags: ['Tencent', 'react'],
-  // },
+  {
+    title: '数据可视化平台',
+    website: '/bigscreen',
+    preview: require('./_previews/bgxxx.png').default,
+    description: (
+      <>
+          基于 React、zustand、DataV、ECharts 框架的 " 数据大屏项目 "
+          支持数据动态刷新渲染、屏幕适配、数据请求模拟、局部样式、图表自由替换/复用等功能。 使用了函数式编程
+      </>
+    ),
+    source: '',
+    tags: ['zustand', 'react','node'],
+  },
   // {
   //   title: '音视频通信解决方案样板间',
   //   website: '',
