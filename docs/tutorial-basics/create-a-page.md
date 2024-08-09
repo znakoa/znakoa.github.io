@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # vue 概述
 
-<!--truncate-->
+### 知识图谱
 
 ![yuque_diagram](./img/yuque_diagram.jpg)
 
