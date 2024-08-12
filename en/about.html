@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.4.0">
 <title data-rh="true">个人博客</title><meta data-rh="true" property="og:title" content="个人博客"><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://znakoa.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://znakoa.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://znakoa.github.io/en/about"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="zh_CN"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" name="description" content="A page that tells you who am I in chinese."><meta data-rh="true" property="og:description" content="A page that tells you who am I in chinese."><link data-rh="true" rel="icon" href="/en/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://znakoa.github.io/en/about"><link data-rh="true" rel="alternate" href="https://znakoa.github.io/about" hreflang="zh-CN"><link data-rh="true" rel="alternate" href="https://znakoa.github.io/en/about" hreflang="en"><link data-rh="true" rel="alternate" href="https://znakoa.github.io/about" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/en/blog/rss.xml" title="个人博客 RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/en/blog/atom.xml" title="个人博客 Atom Feed"><link rel="stylesheet" href="/en/assets/css/styles.38061c57.css">
-<script src="/en/assets/js/runtime~main.79373223.js" defer="defer"></script>
+<script src="/en/assets/js/runtime~main.56670eec.js" defer="defer"></script>
 <script src="/en/assets/js/main.3f1ad00a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -19,7 +19,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="工作经历">工作经历<a class="hash-link" aria-label="Direct link to 工作经历" title="Direct link to 工作经历" href="/en/about#工作经历">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="前端开发工程师">前端开发工程师<a class="hash-link" aria-label="Direct link to 前端开发工程师" title="Direct link to 前端开发工程师" href="/en/about#前端开发工程师">​</a></h3>
 <p>🏢 公司：宁波文钥科技有限公司</p>
-<p>📅 时间: 2022-07 - 至今</p>
+<p>📅 时间: 2022-06 - 至今</p>
 <p><strong>职责</strong>：</p>
 <ul>
 <li><strong>前端开发组长</strong>：负责领导前端开发团队，分配任务并监督项目进度，确保项目按时交付。</li>
@@ -31,7 +31,7 @@
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="开发组员工-前端">开发组员工-前端<a class="hash-link" aria-label="Direct link to 开发组员工-前端" title="Direct link to 开发组员工-前端" href="/en/about#开发组员工-前端">​</a></h3>
 <p>🏢 公司：中兴软件技术（南昌）有限公司</p>
-<p>📅 时间: 2021-06 - 2022-07</p>
+<p>📅 时间: 2021-06 - 2022-06</p>
 <p><strong>职责</strong>：</p>
 <ul>
 <li><strong>前端网页构建</strong>：根据 UI 设计稿，100% 还原前端页面，确保视觉和交互效果符合设计要求。</li>
@@ -52,10 +52,18 @@
 <li><strong>技术选型</strong>：选择和集成第三方主流开源组件，提升系统的稳定性和扩展性。</li>
 </ul>
 <p>项目难点及解决方案</p>
+<p><strong>二次封装组件</strong>：组件库提供的组件并不一定满足我们的需求，这时我们可以通过对组件库的组件进行二次封装，来满足我们特殊的需求。
+对于封装组件有一个大原则就是我们应该尽量保持原有组件的接口，除了我们需要封装的功能外，我们不应该改变原有组件的接口，即保持原有组件提供的接口（属性、方法、事件、插槽）不变</p>
 <p><strong>大文件上传</strong></p>
 <ul>
-<li><strong>问题描述</strong>：大文件上传可能导致传输失败、上传速度慢等问题，影响用户体验。</li>
-<li><strong>解决方案</strong>：<!-- -->
+<li>
+<p><strong>问题描述</strong>：
+当用户请求下载一个大文件时，服务器需要将整个文件发送给客户端。这会导致以下几个问题：
+1.较长的等待时间：大文件需要较长的时间来传输到客户端，用户需要等待很长时间才能开始使用文件。
+2.网络阻塞：由于下载过程中占用了网络带宽，其他用户可能会遇到下载速度慢的问题。3.断点续传困难：如果下载过程中出现网络故障或者用户中断下载，需要重新下载整个文件，无法继续之前的下载进度。</p>
+</li>
+<li>
+<p><strong>解决方案</strong>：</p>
 <ul>
 <li><strong>分片上传</strong>：将大文件拆分为多个小片段，逐片上传，上传完成后再进行合并。</li>
 <li><strong>断点续传</strong>：记录每个片段的上传状态，当上传中断时，重新上传未完成的部分。</li>
@@ -78,7 +86,7 @@
 <ul>
 <li><strong>项目开发</strong>：负责智能收发卡管理后台系统的开发工作，制定并实施代码规范，确保代码质量和一致性。</li>
 <li><strong>模块设计</strong>：独立设计并开发各个功能模块，确保系统功能的完整性和易用性。</li>
-<li><strong>技术选型</strong>：选择和 集成第三方主流开源组件，提升系统的稳定性和扩展性。</li>
+<li><strong>技术选型</strong>：选择和集成第三方主流开源组件，提升系统的稳定性和扩展性。</li>
 </ul>
 <p>项目难点及解决方案</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="battlock-企业后台管理系统">Battlock 企业后台管理系统<a class="hash-link" aria-label="Direct link to Battlock 企业后台管理系统" title="Direct link to Battlock 企业后台管理系统" href="/en/about#battlock-企业后台管理系统">​</a></h2>
@@ -88,7 +96,7 @@
 <ul>
 <li><strong>模块页面搭建与功能实现</strong>：独立负责各模块页面的设计和功能开发。</li>
 <li><strong>从 0 到 1 项目搭建</strong>：从零开始搭建项目，集成第三方主流开源组件，确保系统的基础架构稳定可靠。</li>
-<li><strong>代码规范引入</strong>：制定并实施统一的代码提交规范和代码格式风格，提升团队协作效率。</li>
+<li><strong>代码规范引入</strong>：制定并实施统一 的代码提交规范和代码格式风格，提升团队协作效率。</li>
 <li><strong>权限管理</strong>：实现管理员和普通用户的权限管理，保障系统的安全性和数据隐私。</li>
 </ul>
 <p>项目亮点与技术难点</p>
@@ -120,12 +128,12 @@
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="江西应用工程职业学院">江西应用工程职业学院<a class="hash-link" aria-label="Direct link to 江西应用工程职业学院" title="Direct link to 江西应用工程职业学院" href="/en/about#江西应用工程职业学院">​</a></h3>
 <p>📅 2019 年 2 月 ~ 2022 年 9 月</p>
 <hr>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="自我评价">自我评价<a class="hash-link" aria-label="Direct link to 自我评价" title="Direct link to 自我评价" href="/en/about#自 我评价">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="自我评价">自我评价<a class="hash-link" aria-label="Direct link to 自我评价" title="Direct link to 自我评价" href="/en/about#自我评价">​</a></h2>
 <ul>
 <li>适应性强，能快速投入新项目并适应项目压力。</li>
 <li>性格稳重，做事严谨，善于听取意见，具备良好的团队协作精神。</li>
 <li>具备良好的编程素质，保持学习，通过自学和实践掌握新知识。</li>
 <li>对前端开发有浓厚兴趣，重视用户体验，具备清晰的目标和计划，并付诸实际行动。</li>
-</ul></article></div><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/en/about#联系">联系</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#链接">链接</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#工作经历">工作经历</a><ul><li><a class="table-of-contents__link toc-highlight" href="/en/about#前端开发工程师">前端开发工程师</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#开发组员工-前端">开发组员工-前端</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#项目经验">项目经验</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#智能收发卡管理后台系统">智能收发卡管理后台系统</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#erp管理系统企业自用">ERP管理系统(企业自用)</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#battlock-企业后台管理系统">Battlock 企业后台管理系统</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#个人项目">个人项目</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#数据大屏项目">数据大屏项目</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#教育">教育</a><ul><li><a class="table-of-contents__link toc-highlight" href="/en/about#南昌航空大学">南 昌航空大学</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#江西应用工程职业学院">江西应用工程职业学院</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#自我评价">自我评价</a></li></ul></div></div></div></main></div><footer class="footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Nakoa. Built with Docusaurus.</div></div></div></footer></div>
+</ul></article></div><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/en/about#联系">联系</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#链接">链接</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#工作经历">工作经历</a><ul><li><a class="table-of-contents__link toc-highlight" href="/en/about#前端开发工程师">前端开发工程师</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#开发组员工-前端">开发组员工-前端</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#项目经验">项目经验</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#智能收发卡管理后台系统">智能收发卡管理后台系统</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#erp管理系统企业自用">ERP管理系统(企业自用)</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#battlock-企业后台管理系统">Battlock 企业后台管理系统</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#个人项目">个人项目</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#数据大屏项目">数据大屏项目</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#教育">教育</a><ul><li><a class="table-of-contents__link toc-highlight" href="/en/about#南昌航空大学">南昌航空大学</a></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#江西应用工程职业学院">江西应用工程职业学院</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/en/about#自我评价">自我评价</a></li></ul></div></div></div></main></div><footer class="footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Nakoa. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
