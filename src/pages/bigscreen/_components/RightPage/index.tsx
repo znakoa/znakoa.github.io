@@ -3,10 +3,7 @@ import { BorderBox13 } from '@jiaminghi/data-view-react'
 import { ModuleTitle } from '@site/src/pages/bigscreen/style/globalStyledSet'
 import rightPageData, { rightPageDataType } from '@site/src/api/mock/rightPageData'
 import { RightPage, RightTopBox, RightCenterBox, RightBottomBox } from './style'
-// import { get } from '@site/src/api/http'
-// import { ResultEnum } from '@site/src/enums/httpEnum'
-// import { rightPageDataApi } from '@site/src/api/mock/index'
-import earthRotate from '@site/src/assets/images/earth-rotate.gif'
+import earthRotate from '@site/static/assets/images/earth-rotate.gif'
 
 import BrowseCategories from './charts/BrowseCategories'
 import UserIdentityCategory from './charts/UserIdentityCategory'
@@ -17,10 +14,6 @@ export const RightPageIndex = () => {
   const [rightData, setRightData] = useState<rightPageDataType | undefined>(undefined)
 
   const fetchData = async () => {
-    // const res = await get(rightPageDataApi)
-    // if (res.code === ResultEnum.SUCCESS) {
-    //   setRightData(res.data)
-    // }
       setRightData(rightPageData)
   }
 
