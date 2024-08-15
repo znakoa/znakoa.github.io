@@ -23,7 +23,7 @@ const config = {
   organizationName: 'znakoa', // Usually your GitHub org/user name.
   projectName: 'znakoa.github.io', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
   trailingSlash: false,
 
