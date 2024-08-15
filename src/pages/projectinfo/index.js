@@ -1,7 +1,7 @@
 import Layout from '@theme/Layout'
 import styles from './styles.module.css'
-import ShowcaseCard from './components/ShowcaseCard'
-import { cases } from './components/data'
+import ShowcaseCard from './components/ShowcaseCard/index.js'
+import { cases } from './components/data/index.js'
 
 function ShowcaseHeader() {
     return (

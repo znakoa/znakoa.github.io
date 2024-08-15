@@ -1,7 +1,7 @@
 // import React from 'react'
-import Link from '@docusaurus/Link'
-
-import { Case } from '../ShowcaseCard'
+// import Link from '@docusaurus/Link'
+//
+// import { Case } from '../ShowcaseCard'
 
 export const cases = [
     {
