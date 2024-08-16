@@ -17,7 +17,7 @@ function HomepageHeader() {
                 style={{flex: '0 0 auto', borderRadius: 8}}
                 alt={'背景'}
             />
-            <Heading as="h1" className="hero__title" >
+            <Heading as="h1" className="hero__title" style={{ marginTop: '100px' }}>
                 遇上即是上上签
             </Heading>
             <div className={styles.buttons}>
