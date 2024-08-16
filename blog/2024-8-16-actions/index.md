@@ -1,3 +1,10 @@
+---
+slug: GitHub Actions
+title: Actions 自动部署项目踩坑
+authors: [znakoa]
+tags: [notes]
+---
+
 ## GitHub Actions 自动部署项目踩坑
 
 最近看到一篇关于**GitHub Actions 自动部署前端 Vue react 项目** 文章，以及 使用GitHub托管对外访问的网站， 想着正好把一个大屏项目做练手，说干就敢
