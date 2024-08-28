@@ -1,45 +1,45 @@
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
+import clsx from 'clsx'
+import Link from '@docusaurus/Link'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import Layout from '@theme/Layout'
+import ParticlesBg from 'particles-bg'
 // import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
-import Heading from '@theme/Heading';
-import styles from './index.module.css';
+import Heading from '@theme/Heading'
+import styles from './index.module.css'
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext()
   return (
-      <header className={clsx('hero--primary', styles.heroBanner)}>
-          <div className="container" style={{paddingBottom:'20px'}}>
-              <img
-                  src={require('@site/static/img/hello-world.gif').default}
-                  style={{flex: '0 0 auto', borderRadius: 8}}
-                  alt={'背景'}
-              />
-          </div>
-
-          <div className="container">
-
-              <Heading as="h1" className="hero__title" >
-                  遇上即是上上签
-              </Heading>
-              <div className={styles.buttons}>
-                  <Link className="button button--secondary button--lg" to="/about">
-                      关于作者
-                  </Link>
-              </div>
-          </div>
-      </header>
-  );
+    <header className={clsx('hero--primary', styles.heroBanner)}>
+      <div className="container" style={{ paddingBottom: '20px' }}>
+        <img
+          src={require('@site/static/img/hello-world.gif').default}
+          style={{ flex: '0 0 auto', borderRadius: 8 }}
+          alt={'背景'}
+        />
+      </div>
+      <ParticlesBg type="random" bg={true} />
+      <div className="container">
+        <Heading as="h1" className="hero__title">
+          遇上即是上上签
+        </Heading>
+        <div className={styles.buttons}>
+          <Link className="button button--secondary button--lg" to="/about">
+            关于作者
+          </Link>
+        </div>
+      </div>
+    </header>
+  )
 }
 
 export default function Home() {
-    return (
-        <Layout>
-            <main>
-                <HomepageHeader/>
-            </main>
-        </Layout>
-    );
+  return (
+    <Layout>
+      <main>
+        <HomepageHeader />
+      </main>
+    </Layout>
+  )
 }
