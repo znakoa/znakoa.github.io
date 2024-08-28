@@ -12,6 +12,7 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
   return (
     <header className={clsx('hero--primary', styles.heroBanner)}>
+      <ParticlesBg type="random" bg={true}></ParticlesBg>
       <div className="container" style={{ paddingBottom: '20px' }}>
         <img
           src={require('@site/static/img/hello-world.gif').default}
@@ -19,7 +20,7 @@ function HomepageHeader() {
           alt={'背景'}
         />
       </div>
-      <ParticlesBg type="random" bg={true} />
+
       <div className="container">
         <Heading as="h1" className="hero__title">
           遇上即是上上签
