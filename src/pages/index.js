@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import ParticlesBg from 'particles-bg'
+import BrowserOnly from '@docusaurus/BrowserOnly'
 // import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import Heading from '@theme/Heading'
@@ -12,7 +13,10 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
   return (
     <header className={clsx('hero--primary', styles.heroBanner)}>
-      <ParticlesBg type="random" bg={true}></ParticlesBg>
+      <BrowserOnly>
+        {() => <ParticlesBg type="random" bg={true}></ParticlesBg>}
+      </BrowserOnly>
+
       <div className="container" style={{ paddingBottom: '20px' }}>
         <img
           src={require('@site/static/img/hello-world.gif').default}
