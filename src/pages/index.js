@@ -10,7 +10,7 @@ function HomepageHeader() {
     <header className={clsx('hero--primary', styles.heroBanner)}>
       <div className="container" style={{ paddingBottom: '20px' }}>
         <img
-          src={require('@site/static/img/hello-world.gif').default}
+          src={require('@site/static/img/gif.gif').default}
           style={{ flex: '0 0 auto', borderRadius: 8 }}
           alt={'背景'}
         />
