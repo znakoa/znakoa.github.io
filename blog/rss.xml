@@ -4,10 +4,16 @@
         <title>个人博客 Blog</title>
         <link>https://znakoa.github.io/blog</link>
         <description>个人博客 Blog</description>
-        <lastBuildDate>Fri, 16 Aug 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 10 Mar 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
+        <item>
+            <title><![CDATA[天气 阴]]></title>
+            <link>https://znakoa.github.io/blog/2025/3/10/index</link>
+            <guid>https://znakoa.github.io/blog/2025/3/10/index</guid>
+            <pubDate>Mon, 10 Mar 2025 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Actions 自动部署项目踩坑]]></title>
             <link>https://znakoa.github.io/blog/GitHub Actions</link>
