@@ -2,16 +2,57 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://znakoa.github.io/blog</id>
     <title>个人博客 Blog</title>
-    <updated>2025-03-10T00:00:00.000Z</updated>
+    <updated>2025-03-13T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://znakoa.github.io/blog"/>
     <subtitle>个人博客 Blog</subtitle>
     <icon>https://znakoa.github.io/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[天气 阴]]></title>
-        <id>https://znakoa.github.io/blog/2025/3/10/index</id>
-        <link href="https://znakoa.github.io/blog/2025/3/10/index"/>
-        <updated>2025-03-10T00:00:00.000Z</updated>
+        <title type="html"><![CDATA[网站更新随记：简约之美]]></title>
+        <id>https://znakoa.github.io/blog/uptodate</id>
+        <link href="https://znakoa.github.io/blog/uptodate"/>
+        <updated>2025-03-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[今天对个人网站做了一些精心的调整，追求更简约、更协调的视觉体验。回顾这些改动，每一处都是对细节的不懈追求。]]></summary>
+        <content type="html"><![CDATA[<p>今天对个人网站做了一些精心的调整，追求更简约、更协调的视觉体验。回顾这些改动，每一处都是对细节的不懈追求。</p>
+<h3 class="anchor anchorWithStickyNavbar_zRbb" id="时间轴的优化">时间轴的优化<a href="https://znakoa.github.io/blog/uptodate#%E6%97%B6%E9%97%B4%E8%BD%B4%E7%9A%84%E4%BC%98%E5%8C%96" class="hash-link" aria-label="时间轴的优化的直接链接" title="��时间轴的优化的直接链接">​</a></h3>
+<p>首先优化了时间轴的展示效果。通过调整日期和内容的描述，让我的经历展示得更加清晰：</p>
+<ul>
+<li>2017.9：参军入伍的时光</li>
+<li>2019.9：光荣退伍的转折点</li>
+<li>2019.9：踏入校园的新起点</li>
+<li>2022.7：毕业起航的新征程</li>
+</ul>
+<p>每个时间节点都配上了相应的图标和渐变色彩，既保持了视觉的统一性，又让每个阶段都有其独特的表达。</p>
+<h3 class="anchor anchorWithStickyNavbar_zRbb" id="首页布局的改进">首页布局的改进<a href="https://znakoa.github.io/blog/uptodate#%E9%A6%96%E9%A1%B5%E5%B8%83%E5%B1%80%E7%9A%84%E6%94%B9%E8%BF%9B" class="hash-link" aria-label="首页布局的改进的直接链接" title="首页布局的改进的直接链接">​</a></h3>
+<p>在首页的设计上，经过反复调试，最终选择了一个更加简洁的方案：</p>
+<ol>
+<li>保留了富有设计感的程序员插画</li>
+<li>移除了技术栈的展示，让视觉焦点更加集中</li>
+<li>优化了动画效果，使页面切换更加流畅</li>
+<li>调整了背景渐变，让整体氛围更加柔和</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_zRbb" id="设计理念">设计理念<a href="https://znakoa.github.io/blog/uptodate#%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5" class="hash-link" aria-label="设计理念的直接链接" title="设计理念的直接链接">​</a></h3>
+<p>这次改版的核心是"减法"——删繁就简，让内容本身的价值更加突出。正如我们常说的：</p>
+<blockquote>
+<p>设计的完美不在于无可附加，而在于无可删减</p>
+</blockquote>
+<p>通过这次优化，网站的视觉层次更加分明，用户的浏览体验也更加流畅。每个部分都能够清晰地传达其信息，而不会相互干扰。</p>
+<h3 class="anchor anchorWithStickyNavbar_zRbb" id="后续计划">后续计划<a href="https://znakoa.github.io/blog/uptodate#%E5%90%8E%E7%BB%AD%E8%AE%A1%E5%88%92" class="hash-link" aria-label="后续计划的直接链接" title="后续计划的直接链接">​</a></h3>
+<p>虽然现在的效果已经相对理想，但网站优化是一个持续的过程。接下来我计划：</p>
+<ol>
+<li>进一步优化移动端的适配</li>
+<li>添加更多互动性的小细节</li>
+<li>持续改进页面加载速度</li>
+<li>优化深色模式的显示效果</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_zRbb" id="结语">结语<a href="https://znakoa.github.io/blog/uptodate#%E7%BB%93%E8%AF%AD" class="hash-link" aria-label="结语的直接链接" title="结语的直接链接">​</a></h3>
+<p>一个好的个人网站应该像一面镜子，既能反映个人特色，又能给访客留下深刻印象。今天的这些改动，都是为了让这面镜子更加清晰。</p>
+<p>期待继续打磨，让网站成为展示自我的一个更好窗口。</p>]]></content>
+        <author>
+            <name>znakoa</name>
+            <uri>https://github.com/znakoa</uri>
+        </author>
+        <category label="随记" term="随记"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Actions 自动部署项目踩坑]]></title>
