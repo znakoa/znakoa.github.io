@@ -3,3 +3,6 @@ notes:
   permalink: /notes
   description: 学习笔记
 
+RandomNotes:
+  label: 随记
+  description: 记录日常思考和感悟的随笔文章

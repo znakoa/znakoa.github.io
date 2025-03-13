@@ -22,15 +22,51 @@
   justify-content: center;
 }
 
-.hero{
-  padding: 5%;
-  background-image: linear-gradient(40deg,hsla(0,0%,100%,.8) 62%,rgba(0,132,255,.1)),url('../../static/img/bg.svg');
-  background-position: 100%;
+.hero {
+  padding: 5% 0;
+  background-image: linear-gradient(
+      40deg,
+      hsla(0, 0%, 100%, 0.9) 62%,
+      rgba(0, 132, 255, 0.1)
+    ),
+    url('../../static/img/bg.svg');
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  height: auto;
-  margin: 0;
   width: 100%;
+  overflow: hidden;
+}
 
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@media screen and (max-width: 996px) {
+  .hero {
+    padding: 2rem;
+  }
 }
