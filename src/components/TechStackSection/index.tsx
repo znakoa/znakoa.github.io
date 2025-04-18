@@ -18,7 +18,7 @@ const slugs = [
     'github',
     'gitlab',
 ]
- export default function TechStackSection():JSX.Element {
+export default function TechStackSection():JSX.Element {
 
     const images = slugs.map(
         (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
