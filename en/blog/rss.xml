@@ -57,7 +57,7 @@
             <guid>https://znakoa.github.io/en/blog/GitHub Actions</guid>
             <pubDate>Fri, 16 Aug 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[GitHub Actions 自动部署项目踩坑]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_zRbb" id="github-actions-自动部署项目踩坑">GitHub Actions 自动部署项目踩坑<a href="https://znakoa.github.io/en/blog/GitHub%20Actions#github-actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91" class="hash-link" aria-label="Direct link to GitHub Actions 自动部署项目踩坑" title="Direct link to GitHub Actions 自动部署项目踩��坑">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_zRbb" id="github-actions-自动部署项目踩坑">GitHub Actions 自动部署项目踩坑<a href="https://znakoa.github.io/en/blog/GitHub%20Actions#github-actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91" class="hash-link" aria-label="Direct link to GitHub Actions 自动部署项目踩坑" title="Direct link to GitHub Actions 自�动部署项目踩坑">​</a></h2>
 <p>最近看到一篇关于<strong>GitHub Actions 自动部署前端 Vue react 项目</strong> 文章，以及 使用GitHub托管对外访问的网站， 想着正好把一个大屏项目做练手，说干就敢</p>
 <p>一、准备项目</p>
 <p>​	自己搭建一个项目vue/react</p>
