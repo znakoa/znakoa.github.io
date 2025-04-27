@@ -34,7 +34,7 @@ function HeroSection() {
                         </BoxReveal>
                         <BoxReveal duration={0.7}>
                             <div className="flex gap-4 mt-8">
-                                <Link to="/docs/intro">
+                                <Link to="/aboutcopy">
                                     <Button className="bg-blue-600 hover:bg-blue-700">
                                         了解更多
                                     </Button>
@@ -78,7 +78,7 @@ function HeroSection() {
 
 export default function Home(): JSX.Element {
     return (
-        <Layout title="Nakoa的个人网站" description="技术博客与文档中心">
+        <Layout title="苏木的个人网站" description="技术博客与文档中心">
             <main>
                 <HeroSection/>
                 <QuoteSection/>
