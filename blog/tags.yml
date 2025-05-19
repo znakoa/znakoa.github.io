@@ -6,3 +6,7 @@ notes:
 RandomNotes:
   label: 随记
   description: 记录日常思考和感悟的随笔文章
+
+AI:
+  label: AI
+  description: 关于AI使用的内容
