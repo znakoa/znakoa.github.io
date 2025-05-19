@@ -916,7 +916,7 @@ console.log("adminUser 的角色: " + adminUser.role);   // 输出 admin
 
 - extends 关键字:
 
-  在 JavaScript 中, 使用 extends 关键字来实现类继承。语法是 class ChildClass extends ParentClass { ... }。
+  在 JavaScript 中, 使用 extends 关键字来实现类继承。语法是 ```class ChildClass extends ParentClass { ... }```。
 
 - **父类和子类**:
 
