@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+# Gemini生成AI知识文档
+
 ### JavaScript 知识文档 - 完整版（由AI生成）
 
 本文档整合了之前讨论的 JavaScript 相关概念的详细知识点和对应的代码示例。
