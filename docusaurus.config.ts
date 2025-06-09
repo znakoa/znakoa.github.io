@@ -54,7 +54,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/znakoa/znakoa.github.io/tree/master/docs',
+            'https://github.com/znakoa/znakoa.github.io/tree/master',
         },
         blog: {
           showReadingTime: true,
@@ -64,7 +64,7 @@ const config: Config = {
             xslt: true,
           },
           editUrl:
-            'https://github.com/znakoa/znakoa.github.io/tree/master/blog',
+            'https://github.com/znakoa/znakoa.github.io/tree/master',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
