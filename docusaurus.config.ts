@@ -84,7 +84,6 @@ const config: Config = {
           // ... Your options.
           // `hashed` is recommended as long-term-cache of index file is possible.
           hashed: true,
-
           // For Docs using Chinese, it is recomended to set:
            language: ["en", "zh"],
 
@@ -109,10 +108,14 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        {
+          type: 'search',
+          position: 'right',
+        },
         // {
         //   type: 'docSidebar',
         //   sidebarId: 'tutorialSidebar',
-        //   position: 'right',
+        //   position: 'left',
         //   label: '日常随记',
         // },
         {to: '/blog', label: '日常随记', position: 'right'},
