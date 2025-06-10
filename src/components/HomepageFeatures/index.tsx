@@ -5,14 +5,12 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
     title: 'Vue',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
           深入解析 <code>Vue 3</code> 组合式 API，分享优雅、高效的前端开发实践。
@@ -22,7 +20,6 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'React',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
           探索<code>React Hooks</code>  与函数式编程的魅力，构建高性能、可扩展的现代 Web 应用。
@@ -32,7 +29,6 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Node',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
           从 <code>Koa/Express</code> 框架实践到 API 设计，深入浅出后端开发的世界。
@@ -42,13 +38,10 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
+      <div className={clsx("padding-horiz--md",styles.card)}>
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
       </div>
