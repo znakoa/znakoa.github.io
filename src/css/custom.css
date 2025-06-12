@@ -1,6 +1,5 @@
 
-@import "tailwindcss" source(none);
-@custom-variant dark (&:is([data-theme="dark"] *));
+@import "tailwindcss";
 @source './src/pages/about/index.tsx';
 
 /* You can override the default Infima variables here. */
