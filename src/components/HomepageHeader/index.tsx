@@ -21,7 +21,7 @@ export default function HomepageHeader():ReactNode {
                 </Link>
                 <Link
                     className="button button--secondary button--lg"
-                    to="/markdown-page">
+                    to="/about">
                     关于作者
                 </Link>
             </div>

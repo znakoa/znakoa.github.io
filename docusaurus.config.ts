@@ -44,6 +44,9 @@ const config: Config = {
       },
     }
   },
+  plugins:[
+    './src/plugins/tailwind-plugin.js'
+  ],
 
   presets: [
     [
