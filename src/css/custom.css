@@ -1,5 +1,5 @@
 
-@import "tailwindcss";
+@import "tailwindcss" source(none);
 @custom-variant dark (&:is([data-theme="dark"] *));
 @source './src/pages/about/index.tsx';
 
