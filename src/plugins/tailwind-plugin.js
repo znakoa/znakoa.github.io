@@ -5,7 +5,13 @@ module.exports = function tailwindPlugin(context, options) {
         name: "docusaurus-tailwindcss",
         configurePostCss(postcssOptions) {
             postcssOptions.plugins = [
-                require("@tailwindcss/postcss"),
+                require("@tailwindcss/postcss")({
+                    content: [
+                        // 明确指定 Tailwind 作用的文件夹
+                        "./src/pages/about/**/*.{js,jsx,ts,tsx}",
+                        "./src/components/**/*.{js,jsx,ts,tsx}",
+                    ],
+                }),
             ];
             return postcssOptions;
         },
