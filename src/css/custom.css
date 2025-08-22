@@ -1,6 +1,11 @@
+/** tailwindcss相关 **/
+@import "tailwindcss" source(none);
+@source '../pages/about';
+@source '../components';
 
-/*@import "tailwindcss";*/
-/*@source './src/pages/about/index.tsx';*/
+
+
+/*--------*/
 
 /* You can override the default Infima variables here. */
 :root {
@@ -68,4 +73,5 @@ svg {
 ::-webkit-scrollbar-corner {
     background-color: transparent;
 }
+
 
