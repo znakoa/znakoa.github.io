@@ -45,7 +45,7 @@ const config: Config = {
     }
   },
   plugins:[
-    './src/plugins/tailwind-plugin.js'
+    './src/plugins/docusaurus-plugin-tailwind.js'
   ],
 
   presets: [
