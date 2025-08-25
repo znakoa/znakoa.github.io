@@ -1,3 +1,4 @@
+import '@site/src/css/tailwindcss.css'
 import type {ReactNode} from 'react';
 import Link from "@docusaurus/Link";
 

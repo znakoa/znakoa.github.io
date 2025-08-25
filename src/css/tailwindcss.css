@@ -1,0 +1,4 @@
+/** tailwindcss相关 **/
+@import "tailwindcss" source(none);
+@source '../pages/about';
+@source '../components';
