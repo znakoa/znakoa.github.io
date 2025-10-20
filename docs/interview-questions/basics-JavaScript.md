@@ -6,15 +6,15 @@ title: "js基础相关"
 :::info[总结]
 
 - 回答结构建议：定义 -> 本质 -> 示例 -> 常考陷阱 -> 手写/代码实现（若会），这样面试官能快速抓住重点。
-- 面试常要求手写：bind、curry、new、简单 Promise、深拷贝（带循环引用）
+- 面试常要求手写：`bind`、`curry`、`new`、简单` Promise`、深拷贝（带循环引用）
 - 遇到异步题一定要说清楚微任务 vs 宏任务与环境差异（浏览器 vs Node）
 
 :::
 
 ## 1. var / let / const 的区别
 
-- **作用域**：var 函数作用域或全局；let/const 块级作用域。
-- **提升（hoisting）**：var 声明会被提升并初始化为 undefined；let/const 被提升但处于 暂时性死区（TDZ），在声明前访问会报
+- **作用域**：var 函数作用域或全局；`let/const` 块级作用域。
+- **提升（hoisting）**：var 声明会被提升并初始化为 undefined；`let/const` 被提升但处于 暂时性死区（TDZ），在声明前访问会报
   ReferenceError。
 - **重声明/重赋值**：var 支持同一作用域重复声明；let 不允许重复声明；const 声明必须初始化且不能重新赋值（引用类型可修改内部状态）。
 - **绑定到全局对象**：在浏览器的全局作用域中，var 会成为 window 属性，let/const 不会。
@@ -38,17 +38,17 @@ c.x = 2 // 合法，改变的是对象内容，不是绑定
 
 ## 2. 数据类型 与 typeof 的陷阱
 
-- JS 基本类型（primitive）：undefined, null, boolean, number, bigint, string, symbol。
+- JS 基本类型（primitive）：`undefined, null, boolean, number, bigint, string, symbol`。
 - 引用类型：object（包括 Array, Function, Date, RegExp, Map, Set 等）。
 - typeof 陷阱：
-- typeof null === 'object'（历史遗留）。
-- typeof [] === 'object'（数组不是单独的 typeof）。
-- typeof function(){} === 'function'（函数特殊）。
-- typeof NaN === 'number'。
-- typeof 10n === 'bigint'，typeof Symbol() === 'symbol'。
+- `typeof null === 'object'`（历史遗留）。
+- `typeof [] === 'object'`（数组不是单独的 typeof）。
+- `typeof function(){} === 'function'`（函数特殊）。
+- `typeof NaN === 'number'`。
+- `typeof 10n === 'bigint'`，`typeof Symbol() === 'symbol`'。
 - 更准确的类型判断：
-- 数组：Array.isArray(x)。
-- 更一般：Object.prototype.toString.call(x)（返回 [object Type]）。
+- 数组：`Array.isArray(x)`。
+- 更一般：`Object.prototype.toString.call(x)`（返回` [object Type]`）。
 - Number.isNaN 更可靠（isNaN 会先强制转换）。
 
 <details>
@@ -65,7 +65,7 @@ c.x = 2 // 合法，改变的是对象内容，不是绑定
 </details> 
 
 ## 3. 值类型 vs 引用类型
-- 值类型（primitive）：赋值/传参时拷贝值，互不影响（string, number, boolean, null, undefined, symbol, bigint）。
+- 值类型（primitive）：赋值/传参时拷贝值，互不影响（`string, number, boolean, null, undefined, symbol, bigint`）。
 - 引用类型（object）：赋值/传参时拷贝的是引用（指针），多个引用指向同一对象，修改会反映到所有引用。
 - 重要面试点：JS 始终是按值传递（但是引用的值是指向对象的指针），这常被误说为“按引用传递”。
 
@@ -77,9 +77,9 @@ c.x = 2 // 合法，改变的是对象内容，不是绑定
    ``` javascript
     Object.assign({}, obj)、{...obj}、Array.prototype.slice、arr.concat()
   ```
-  - 深拷贝（简单）：**JSON.parse(JSON.stringify(obj))**（缺点：丢失函数、undefined、Symbol、BigInt、日期、正则、无法处理循环引用
-  - 浏览器/Node：structuredClone(obj)（支持更多类型，自动处理循环，但并非所有环境都可用）。
-  - 手写深拷贝：递归 + WeakMap 处理循环引用，并专门处理 Date、RegExp、Map、Set 等类型。
+  - 深拷贝（简单）：**`JSON.parse(JSON.stringify(obj))`**（缺点：丢失函数、undefined、Symbol、BigInt、日期、正则、无法处理循环引用
+  - 浏览器/Node：`structuredClone(obj)`（支持更多类型，自动处理循环，但并非所有环境都可用）。
+  - 手写深拷贝：递归 + `WeakMap` 处理循环引用，并专门处理 Date、RegExp、Map、Set 等类型。
 - 面试点：什么时候用浅拷贝（性能） vs 深拷贝（避免共享引用）；JSON 深拷贝的边界条件；循环引用处理
 
 <details>
