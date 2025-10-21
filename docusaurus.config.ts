@@ -83,7 +83,7 @@ const config: Config = {
         image: 'img/docusaurus-social-card.jpg',
         colorMode: {
             defaultMode: 'light',
-            disableSwitch: true,
+            disableSwitch: false,
             respectPrefersColorScheme: true
         },
         navbar: {
@@ -108,19 +108,36 @@ const config: Config = {
             ],
         },
         footer: {
-            style: 'dark',
+            style: 'light',
             links: [
                 {
-                    title: 'Docs',
+                    title: '知识库',
                     items: [
                         {
-                            label: 'Tutorial',
+                            label: 'Git实战指南',
                             to: '/docs/gitorder',
+                        },
+                        {
+                            label: 'JavaScript面试题',
+                            to: '/docs/interview-questions/basics-JavaScript',
+                        },
+                        {
+                            label: '前端技术',
+                            to: '/docs/export-word',
+                        },
+                    ],
+                },
+                {
+                    title: '更多',
+                    items: [
+                        {
+                            label: 'GitHub',
+                            href: 'https://github.com/znakoa',
                         },
                     ],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+            copyright: `Copyright © ${new Date().getFullYear()} 苏木 - 知识笔记. Built with Docusaurus.`,
         },
         prism: {
             theme: prismThemes.github,

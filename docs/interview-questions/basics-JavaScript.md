@@ -54,7 +54,7 @@ c.x = 2 // 合法，改变的是对象内容，不是绑定
 <details>
   <summary>示例代码</summary>
 
-    ```javascript
+    ```javascript showLineNumbers
      typeof null // "object"
     Array.isArray([]) // true
     Object.prototype.toString.call(/a/) // "[object RegExp]"
@@ -74,7 +74,7 @@ c.x = 2 // 合法，改变的是对象内容，不是绑定
 - 本质：浅拷贝只复制一层属性（引用仍指向原对象的子对象）；深拷贝递归复制所有可复制的子结构（避免共享引用）。
 - 常见实现：
   - 浅拷贝：
-   ``` javascript
+   ``` javascript showLineNumbers
     Object.assign({}, obj)、{...obj}、Array.prototype.slice、arr.concat()
   ```
   - 深拷贝（简单）：**`JSON.parse(JSON.stringify(obj))`**（缺点：丢失函数、undefined、Symbol、BigInt、日期、正则、无法处理循环引用
@@ -85,7 +85,7 @@ c.x = 2 // 合法，改变的是对象内容，不是绑定
 <details>
   <summary>示例（简化版深拷贝，支持循环引用、Date、RegExp、Map、Set）</summary>
 
-```javascript
+```javascript showLineNumbers
 function deepClone(obj, map = new WeakMap()) {
   if (obj === null || typeof obj !== 'object') return obj;
   if (map.has(obj)) return map.get(obj);
@@ -135,7 +135,7 @@ function deepClone(obj, map = new WeakMap()) {
 <details>
   <summary>示例（用 reduce 实现 map）</summary>
 
-```javascript
+```javascript showLineNumbers
 function mapByReduce(arr, fn) {
   return arr.reduce((acc, cur, idx) => {
     acc.push(fn(cur, idx, arr));
