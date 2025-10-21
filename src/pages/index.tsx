@@ -114,6 +114,98 @@ function PixelFeatures() {
   );
 }
 
+// 像素风格项目展示组件
+function PixelProjects() {
+  // 从配置文件读取项目数据（这里先使用静态数据，后续可以改为动态加载）
+  const projects = [
+    {
+      title: '🚗 汽车商城',
+      description: '现代化的汽车电商平台，提供完整的购物体验',
+      link: 'https://znakoa.github.io/car-maeketplace/',
+      tech: ['React', 'TypeScript', 'Tailwind CSS'],
+      image: '🚗',
+      color: '#00d4ff',
+      category: 'Web应用',
+      status: '已完成',
+      featured: true
+    },
+    {
+      title: '📊 数据展示大屏',
+      description: '实时数据可视化大屏，支持多种图表展示',
+      link: 'https://znakoa.github.io/bigscreen/',
+      tech: ['Vue', 'ECharts', 'WebSocket'],
+      image: '📊',
+      color: '#ff0080',
+      category: '数据可视化',
+      status: '已完成',
+      featured: true
+    }
+  ];
+
+  // 过滤出推荐项目
+  const featuredProjects = projects.filter(project => project.featured);
+
+  return (
+    <section className={styles.projectsSection}>
+      <div className="container">
+        <h2 className={clsx('pixel-text pixel-text-glow', styles.sectionTitle)}>
+          我的项目
+        </h2>
+        <div className={styles.projectsGrid}>
+          {featuredProjects.map((project, index) => (
+            <a 
+              key={index} 
+              href={project.link} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={clsx('pixel-card', styles.projectCard)}
+              style={{animationDelay: `${index * 0.2}s`}}
+            >
+              <div className={styles.projectHeader}>
+                <div className={styles.projectIcon} style={{color: project.color}}>
+                  {project.image}
+                </div>
+                <div className={styles.projectTitleContainer}>
+                  <h3 className={clsx('pixel-text', styles.projectTitle)}>
+                    {project.title}
+                  </h3>
+                  <div className={styles.projectMeta}>
+                    <span className={styles.projectCategory}>{project.category}</span>
+                    <span className={styles.projectStatus}>{project.status}</span>
+                  </div>
+                </div>
+              </div>
+              <p className={styles.projectDescription}>
+                {project.description}
+              </p>
+              <div className={styles.projectTech}>
+                {project.tech.map((tech, techIndex) => (
+                  <span key={techIndex} className={styles.techTag}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className={styles.projectLink}>
+                <span className={styles.linkText}>查看项目 →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        
+        <div className={styles.projectsFooter}>
+          <a 
+            href="/" 
+            className={clsx('pixel-button', styles.viewAllButton)}
+          >
+            <span className={styles.buttonText}>查看更多项目</span>
+            <span className={styles.buttonIcon}>→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // 像素风格统计组件
 function PixelStats() {
   const stats = [
@@ -151,6 +243,7 @@ export default function Home(): ReactNode {
       description="现代像素风格的个人知识库，包含JavaScript面试题、Git实战指南、前端技术文档等丰富内容">
       <PixelHero />
       <PixelFeatures />
+      <PixelProjects />
       <PixelStats />
     </Layout>
   );

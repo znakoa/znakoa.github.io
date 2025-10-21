@@ -161,10 +161,197 @@
   font-family: var(--pixel-font-primary);
 }
 
+/* 项目展示区域 */
+.projectsSection {
+  padding: 6rem 0;
+  background: var(--pixel-bg-primary);
+  position: relative;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.projectCard {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  animation: pixel-slide 0.8s ease-out;
+  animation-fill-mode: both;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.projectCard:hover {
+  text-decoration: none;
+  color: inherit;
+  transform: translateY(-8px) scale(1.02);
+}
+
+.projectHeader {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.projectIcon {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  animation: pixel-pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.projectTitleContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  font-family: var(--pixel-font-display);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.projectMeta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.projectCategory {
+  background: var(--pixel-bg-tertiary);
+  color: var(--ifm-color-primary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-family: var(--pixel-font-primary);
+  font-weight: 600;
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.projectStatus {
+  background: var(--pixel-accent);
+  color: var(--pixel-text-primary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-family: var(--pixel-font-primary);
+  font-weight: 600;
+}
+
+.projectDescription {
+  color: var(--pixel-text-secondary);
+  line-height: 1.6;
+  font-family: var(--pixel-font-primary);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.projectTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.techTag {
+  background: var(--pixel-bg-tertiary);
+  color: var(--ifm-color-primary);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-family: var(--pixel-font-primary);
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.projectLink {
+  text-align: right;
+}
+
+.linkText {
+  color: var(--ifm-color-primary);
+  font-family: var(--pixel-font-primary);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.projectCard:hover .linkText {
+  color: var(--pixel-accent);
+  transform: translateX(4px);
+}
+
+.projectsFooter {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.viewAllButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--pixel-bg-secondary);
+  border: 2px solid var(--ifm-color-primary);
+  border-radius: 16px;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  font-family: var(--pixel-font-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.viewAllButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--pixel-accent), transparent);
+  transition: left 0.5s ease;
+}
+
+.viewAllButton:hover::before {
+  left: 100%;
+}
+
+.viewAllButton:hover {
+  background: var(--pixel-bg-primary);
+  border-color: var(--pixel-accent);
+  color: var(--pixel-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+.buttonText {
+  position: relative;
+  z-index: 1;
+}
+
+.buttonIcon {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.viewAllButton:hover .buttonIcon {
+  transform: translateX(4px);
+}
+
 /* 统计区域 */
 .statsSection {
   padding: 4rem 0;
-  background: var(--pixel-bg-primary);
+  background: var(--pixel-bg-secondary);
   position: relative;
 }
 
@@ -222,6 +409,26 @@
   .featuresGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+  
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .projectCard {
+    padding: 1.5rem;
+  }
+  
+  .projectHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .projectIcon {
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
   
   .statsGrid {
