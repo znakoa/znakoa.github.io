@@ -86,7 +86,7 @@
 
 /* 全局现代简约样式 */
 html {
-  font-family: var(--modern-font-primary);
+    font-family: var(--modern-font-primary), serif;
   background: var(--modern-bg-primary);
   color: var(--modern-text-primary);
   line-height: 1.6;
@@ -96,10 +96,12 @@ html {
 .theme-doc-markdown {
   background: var(--modern-bg-doc) !important;
   color: var(--modern-text-primary) !important;
-  font-family: var(--modern-font-primary) !important;
+    font-family: var(--modern-font-primary), serif !important;
   line-height: 1.7 !important;
 }
-
+.navbar__brand {
+    margin-right: 0 !important;
+}
 /* 文档内容区域 */
 .markdown {
   background: var(--modern-bg-doc) !important;
