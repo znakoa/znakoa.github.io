@@ -120,23 +120,218 @@ title: "vue相关"
 </details> 
 
 ## 3. Vue 计算属性的函数名和 data 中的属性可以同名吗？为什么？
-
+要点：不可以（或不应）同名。若同名，会产生冲突，后定义的会覆盖先定义的（Options API 下 Vue 会把 data、props、computed 等合并到实例上，命名冲突会警告或覆盖）。
+原理：Vue 将 data、methods、computed 等代理到组件实例（this）上，命名冲突会导致不确定行为。computed 返回的是 getter (和可选 setter)，而 data 是响应式数据，混淆会导致难以调试。
+示例（错误写法）：
+```vue
+data() { return { count: 1 } },
+computed: {
+count() { return this.count + 1 } // 会造成递归/覆盖问题
+}
+```
+正确做法：使用不同命名或改为 `computedCount`。
 ## 4. Vue 的 v-show 和 v-if 有什么区别？使用场景分别是什么？
+要点：
+- v-if：真正的条件渲染，会在条件为 false 时移除/销毁 DOM 节点与组件实例；开销较大（创建/销毁）但在条件很少变更时更合适。
+- v-show：通过 CSS display 控制显示/隐藏，始终保留 DOM 节点与组件实例；切换开销小但初始渲染始终会创建元素。适合频繁切换的场景。
+选用建议：
+- 条件很少改变（如登录后显示某个模块）使用 v-if。
+- 频繁切换显示/隐藏（如标签页切换、弹窗显示）使用 v-show。
+示例：
+```vue
+<!-- v-if -->
+<div v-if="showModal">
+  <ModalComponent />
+</div>
 
+<!-- v-show -->
+<div v-show="visible">
+  <HeavyButFrequentlyToggledComponent />
+</div>
+```
 ## 5. 如何在 Vue 中使用 defineAsyncComponent 实现异步组件加载？
+要点：defineAsyncComponent 是 Vue 3 提供的 API（Vue 2 可使用异步组件工厂函数）。支持加载占位组件、超时、错误处理、延迟展示等。
+Vue 3 示例：
+```js
+import { defineAsyncComponent } from 'vue'
 
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./MyHeavyComponent.vue'),
+  loadingComponent: LoadingSpinner,
+  errorComponent: ErrorDisplay,
+  delay: 200,       // 延迟显示 loading（ms）
+  timeout: 10000,   // 超时（ms）
+  onError(error, retry, fail, attempts) {
+    if (attempts <= 3) {
+      retry()
+    } else {
+      fail()
+    }
+  }
+})
+```
+模板中：
+```vue
+<template>
+  <AsyncComp />
+</template>
+```
+Vue 2 示例（异步工厂）：
+```js
+const AsyncComp = () => ({
+  component: import('./MyHeavyComponent.vue'),
+  loading: LoadingSpinner,
+  error: ErrorDisplay,
+  delay: 200,
+  timeout: 10000
+})
+```
 ## 6. 请简单介绍一下你对 Vue 的理解，包括它的特点和优势 
-
+要点（面试回答要点）：
+● 响应式数据驱动视图`（Declarative Rendering）`
+● 组件化`（Component-based）`，易组合与复用
+● 渐进式框架：可以逐步引入（只用于视图层或全栈）
+● 生态完善：`Vue Router`、`Vuex/Pinia`、`CLI、Vite` 支持
+● 性能：虚拟 `DOM + `优化策略（Vue 3 使用 Proxy，性能更好）
+● 开发体验：单文件组件`（SFC）`、良好文档、社区活跃
+面试包装句：
+“Vue 是一个以数据驱动视图的渐进式前端框架，强调组件化与简洁的 API，适合快速构建 SPA，同时在大型应用中也能通过组合式架构与成熟的生态（路由、状态管理、工具链）满足复杂需求。”
 ## 7. 在 Vue 项目中，你通常如何组织和管理组件？请描述一下你的组件化开发思路 
+原则：
+● 按功能/域（feature）划分目录（Domain-driven folder），而不是按类型（components/services/styles）
+● 公共组件库（/components/ui）与业务组件（/views 或 /modules/**）分离
+● 组件粒度：先抽象小且重复的 UI 组件（Button、Input、Modal），业务组件保持较高层次
+● 组件命名：PascalCase 或 kebab-case 一致性
+● 侧重可测试性与文档（Storybook）
+● 使用 props + emits 明确数据流，尽量避免父子深层传递（使用 provide/inject 或状态管理）
+示例目录结构：
+```json
+src/
+  components/      # 通用 UI 组件
+  modules/         # 按业务模块划分
+    user/
+      components/
+      views/
+      store/
+  layouts/
+  router/
+  store/
 
+```
+组件开发流程（面试回答的流程化思路）：
+1. 识别复用点 -> 抽取组件边界
+2. 定义 props/slots/emits 合约
+3. 写文档和示例（Story）
+4. 编写单元测试
+5. 优化样式与交互（无副作用）
 ## 8. Vue 的生命周期钩子有哪些？它们在什么阶段被调用？
+Vue 2（Options API）主要钩子：
+- `beforeCreate`：实例初始化（响应式未建立）
+- `created`：实例已创建（可以访问 data、methods、computed，但 DOM 未挂载）
+- `beforeMount`：模板编译并挂载之前
+- `mounted`：DOM 已挂载（可以访问 $el）
+- `beforeUpdate`：响应式数据改变但 DOM 还未更新
+- `updated`：DOM 已更新
+- `beforeDestroy`：实例销毁前（清理定时器、事件监听）
+- `destroyed`：实例已销毁
+Vue 3（名字略有变化，`destroy` -> `unmount`）：
+- `beforeUnmount` / `unmounted`（替代 `beforeDestroy`/`destroyed`）
+- 对 `Composition` API 使用 `onMounted`, `onUnmounted` 等等
+示例（Options API）：
+```js
+export default {
+  created() { console.log('created') },
+  mounted() { console.log('mounted') },
+  beforeUnmount() { console.log('beforeUnmount') }
+}
+```
+示例（Composition API）：
+```js
+import { onMounted, onUpdated, onUnmounted } from 'vue'
+setup(){
+  onMounted(()=>console.log('mounted'))
+  onUpdated(()=>console.log('updated'))
+  onUnmounted(()=>console.log('unmounted'))
+}
+
+```
 
 ## 9. 谈谈你对 Vue 的响应式系统的理解，以及它是如何实现数据的双向绑定的
-
+要点：
+- Vue 2：使用 Object.defineProperty 的 getter/setter 检测属性访问与修改，不能直接检测新增/删除；通过数组方法重写（push/pop/splice）来拦截变动。
+- Vue 3：采用 Proxy，对对象、数组等更全面地拦截（包括新增属性、删除等），性能与实现更简洁。
+- 双向绑定（v-model）：在底层是 prop + 事件（modelValue + update:modelValue 在 Vue 3），组件监听事件并更新 prop 对应的外部数据，从而形成“类似双向”的交互。
+工作原理简述：
+1. 将数据变为响应式（Vue 2：defineReactive -> Object.defineProperty；Vue 3：reactive 使用 Proxy）
+2. 渲染函数/模板收集依赖（在 getter 时收集当前副作用 watcher）
+3. 当 setter 被触发时，通知相关 watcher 重新渲染或调用 computed/watch
+   示例（Vue 3 reactive）：
+```js
+import { reactive } from 'vue'
+const state = reactive({ count: 0 })
+```
+v-model 在父子组件传值上的示例（Vue 3）：
+父组件：
+```js
+<Child v-model="name" />
+```
+子组件：
+```js
+<script>
+  export default {
+    props: ['modelValue'],
+    emits: ['update:modelValue'],
+    methods: {
+      onInput(e){ this.$emit('update:modelValue', e.target.value) }
+    }
+  }
+    </script>
+```
 ## 10. 在 Vue 中，如何进行路由管理？你是否使用过 Vue Router？
+要点：
+● Vue Router 是官方路由解决方案，支持 SPA 的路由、嵌套路由、路由守卫、动态路由、懒加载等。
+● 常见用法：在 router/index.js 定义路由表，通过 createRouter（Vue 3）或 new VueRouter（Vue 2）创建实例，挂载到 App。
+Vue 3 + Vue Router 4 示例：
+```js
+// router/index.js
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '@/views/Home.vue'
+const routes = [
+  { path: '/', name:'Home', component: Home },
+  { path: '/users/:id', name:'User', component: () => import('@/views/User.vue'), props: true },
+]
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+export default router
+```
+挂载：
+```js
 
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+createApp(App).use(router).mount('#app')
+```
+路由守卫示例（全局）：
+```js
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !isLoggedIn()) next('/login')
+  else next()
+})
+```
 ## 11. 对于 Vue 的状态管理，你有什么经验？是否使用过 Vuex 或其他类似的状态管理库 
-
+要点（面试回答）：
+- 大型应用推荐集中式状态管理（Vuex 或 Pinia），用于跨组件共享、时间旅行、插件生态（持久化、日志、调试）。
+- 小型或局部状态可以使用组件组合、provide/inject、或通过组合式 API 的 reactive 在模块间共享。
+- 我在项目中既使用过 Vuex（V2/V3 时代），也在 Vue 3 项目中使用过 Pinia（更简洁、更 TS 友好）。
+经验/实践：
+- 使用模块化（namespaced modules）划分业务状态
+- 把副作用（API 请求）放在 actions（Vuex）或 stores（Pinia）的 actions 中
+- 使用持久化（localStorage）只保存必要状态（token、user），避免过度持久化
+- 在 SSR 场景注意状态注水/反序列化
 ## 12. 请你说说 Pinia 和 Vuex 的不同
     要点：
     API 风格：Pinia 更轻量、基于函数（类似组合式 API），Vuex 更偏配置式（mutations / actions / getters）。
@@ -145,10 +340,21 @@ title: "vue相关"
     调试：两者都支持 devtools，但 Pinia 的插件系统更简单。
     体量与学习成本：Pinia 更小、更易上手，Vuex 适合已有大量 Vuex 代码库的中大型项目迁移成本较高。
     Pinia 示例：
+```js
+// stores/user.js
+import { defineStore } from 'pinia'
+export const useUserStore = defineStore('user', {
+  state: () => ({ name: '', token: '' }),
+  actions: {
+    setName(n){ this.name = n },
+    async login(payload){ this.token = await api.login(payload) }
+  }
+})
+```
 
 ## 13. 对于 Vue 的单文件组件（.vue），你对它的结构和用法有什么了解？
-    要点：`SFC（Single File Component）`包含三个主要块：
-    `<template>`：模板，可写 HTML + 指令
+要点：`SFC（Single File Component）`包含三个主要块：
+`<template>`：模板，可写 HTML + 指令
 `<script>`：逻辑`（Options API / Composition API / setup）`
 `<style>`：样式（支持` scoped、module、lang=less/scss`）
 增强功能：
@@ -156,6 +362,19 @@ title: "vue相关"
 `<style scoped>`：作用域样式
 SFC 支持 `<script setup lang="ts">`、多个 `<style>` 等
 示例（Vue 3 + script setup）：
+```vue
+<template>
+  <button @click="inc">{{ count }}</button>
+</template>
+<script setup>
+  import { ref } from 'vue'
+  const count = ref(0)
+  function inc(){ count.value++ }
+</script>
+<style scoped>
+  button { padding:8px 12px }
+</style>
+```
 
 ## 14. 请分享一些你在 Vue 项目中进行性能优化的经验和技巧 
 
@@ -173,6 +392,11 @@ SFC 支持 `<script setup lang="ts">`、多个 `<style>` 等
 对频繁更新的 DOM 使用 v-show 而非 v-if（见第 4 点）
 使用性能分析工具（Chrome DevTools、Lighthouse、Vue Devtools）
 示例：路由懒加载：
+```js
+const routes = [
+  { path: '/home', component: () => import('@/views/Home.vue') }
+]
+```
 
 ## 15. 如果要在 Vue 项目中集成第三方库或插件，你通常会采取哪些步骤？
 
@@ -186,6 +410,13 @@ SFC 支持 `<script setup lang="ts">`、多个 `<style>` 等
 做性能评估与样式隔离（若会污染全局 CSS）
 编写使用文档与示例
 示例（注册插件）：
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import MyLib from 'my-lib'
+createApp(App).use(MyLib, { option: true }).mount('#app')
+```
 
 ## 16. 请描述一次你在 Vue 项目中遇到的挑战，并说明你是如何解决它的
 
@@ -206,6 +437,19 @@ SFC 支持 `<script setup lang="ts">`、多个 `<style>` 等
 可把 API 请求封装到 services/api.js 层，便于复用与测试。
 SSR 场景会在服务端做数据预取（如 asyncData 风格）。
 示例（Composition API）：
+```js
+// services/api.js
+export async function fetchUser(id){ return await fetch(`/api/user/${id}`).then(r=>r.json()) }
+
+// 页面组件
+import { onMounted, ref } from 'vue'
+import { fetchUser } from '@/services/api'
+setup(){
+  const user = ref(null)
+  onMounted(async ()=> { user.value = await fetchUser(1) })
+  return { user }
+}
+```
 
 ## 18. Vue 组件之间的通信方式有哪些？
 
@@ -220,19 +464,30 @@ SSR 场景会在服务端做数据预取（如 asyncData 风格）。
 DOM 自定义事件（极少使用）
 示例（父子）：
 
+```vue
+<!-- Parent -->
+<Child :value="count" @update="val => count = val" />
+```
+
 ## 19. 为什么 data 属性是一个函数而不是一个对象？
 
 要点：组件是可复用的构造函数。若 data 是对象，则多个组件实例会共享同一对象，互相污染状态。将 data 写为函数可以为每个组件实例返回独立对象，确保实例隔离。
 示例：
+```js
+data(){ return { count: 0 } } // 每个实例都有自己的 count
+```
 
 ## 20. 动态给 Vue 的 data 添加一个新的属性时会发生什么？怎样解决？
 
-问题：在 Vue 2 中，直接 this.someNewProp = value 不会使新属性成为响应式（因为 Object.defineProperty 在初始化时未拦截新增属性）。
+问题：在 Vue 2 中，直接 `this.someNewProp = value` 不会使新属性成为响应式（因为` Object.defineProperty` 在初始化时未拦截新增属性）。
 解决办法：
-Vue 2：使用 Vue.set(this.obj, 'newKey', value) 或 this.$set(this.obj, 'newKey', value)。
-Vue 3（Proxy）：新增属性是响应式的，直接赋值生效。
+`Vue 2`：使用 `Vue.set(this.obj, 'newKey', value)` 或 `this.$set(this.obj, 'newKey', value)`。
+`Vue 3（Proxy）`：新增属性是响应式的，直接赋值生效。
 另外的设计建议：尽量在 data 中先声明所有预期字段，或使用 reactive 包装对象并初始化默认值。
 示例（Vue 2）：
+```js
+this.$set(this.user, 'age', 25) // 响应式
+```
 
 ## 21. 说说你对 Vue 的 mixin 的理解，有什么应用场景？
 
@@ -244,6 +499,20 @@ Vue 3（Proxy）：新增属性是响应式的，直接赋值生效。
 Composition API（useXxx hooks）更明确、可组合、类型安全
 示例 mixin：
 使用：
+```js
+// mixins/logger.js
+export default {
+  created(){ console.log('组件创建', this.$options.name) },
+  methods: {
+    $log(msg){ console.log(msg) }
+  }
+}
+```
+使用：
+```js
+import logger from '@/mixins/logger'
+export default { mixins: [logger] }
+```
 
 ## 22. Vue 常用的修饰符有哪些，有什么应用场景？
 
@@ -262,7 +531,10 @@ Composition API（useXxx hooks）更明确、可组合、类型安全
 指令修饰符：
 `v-bind` 的` .prop, .camel`（用于属性名转换）
 示例：
-
+```vue
+<input v-model.lazy="name" @keyup.enter="onEnter" />
+<button @click.stop="onClick">点我</button>
+```
 ## 23. Vue 的 computed 和 watch 有什么区别？
 
 要点：
@@ -272,6 +544,17 @@ Composition API（useXxx hooks）更明确、可组合、类型安全
 需要返回值并用于模板/其他计算用 computed
 需要执行副作用（API 调用、手动 DOM 操作）用 watch
 示例：
+```js
+computed: {
+  fullName(){ return `${this.first} ${this.last}` }
+},
+watch: {
+  query: {
+    handler: _.debounce(function(val){ this.fetch(val) }, 300),
+      immediate: true
+  }
+}
+```
 ## 24. 有写过自定义指令吗？自定义指令的应用场景有哪些？
 
 常见场景：
@@ -279,6 +562,20 @@ Composition API（useXxx hooks）更明确、可组合、类型安全
 第三方库 DOM 集成（如直接在元素上挂载某 SDK）
 Vue 3 自定义指令示例（v-focus）：
 模板使用：
+```js
+// directives/focus.js
+export default {
+  mounted(el){ el.focus() },
+  updated(el){ /* 可选逻辑 */ }
+}
+
+// main.js
+app.directive('focus', FocusDirective)
+```
+模板使用：
+```vue
+<input v-focus />
+```
 
 ## 25. SPA 首屏加载速度慢的怎么解决？
 
@@ -329,6 +626,13 @@ Proxy 性能更优，允许更简洁的实现，且代码更平台友好（更�
 `watch`：显式依赖，传入要观察的响应式源（`ref、reactive、getter`），更适合观察特定变量并执行副作用；可以设置 `flush（sync/pre/post）`等。
 `watchEffect`：自动收集依赖（在回调中引用的响应式值），适合立即执行并响应依赖变化的场景；不是用于对比前后值（watch 能获得 old/new）。
 示例：
+```js
+// watch
+    watch(()=>state.count, (newVal, oldVal) => console.log(newVal, oldVal))
+
+      // watchEffect
+      watchEffect(()=> { console.log(state.count) })
+```
 32. 如何理解 `reactive`、`ref`、`toRef `和 `toRefs`？
 要点：
 `ref(value)`：创建一个响应式的引用对象，包含 .value。用于基本类型或需要单独引用的值。
@@ -336,6 +640,16 @@ Proxy 性能更优，允许更简洁的实现，且代码更平台友好（更�
 `toRef(obj, key)`：把 obj[key] 转为一个 ref，用于把 reactive 对象中的某个属性以 ref 的方式传递或解构而不丢失响应性。
 `toRefs(obj)`：把 `reactive` 对象的每个属性都转换成 ref（常用于解构 reactive 对象而不丢失响应性）。
 示例：
+```vue
+import { reactive, ref, toRef, toRefs } from 'vue'
+
+const state = reactive({ count: 0, name: 'Alice' })
+const countRef = toRef(state, 'count') // countRef.value == state.count
+
+const { count, name } = toRefs(state) // 解构后仍然响应式，count.value 对应原 state.count
+
+const n = ref(3) // 基本类型 ref
+```
 代码 Demo 集合（完整可运行示例）
 下面给出一个小仓库式的 Demo，集中演示 `slot` / `async component` / `Pinia` / `reactive/ref/toRefs` / `watch/watchEffect` 等核心点（基于` Vue 3 + script setup`）。你可以直接在 `Vite` 环境里运行。
 `App.vue：`
@@ -453,18 +767,20 @@ console.log('watchEffect - q is', q.value)
    “`Composition API` 解决了 `Options API` 在大型组件中逻辑散落的问题，使关注点按功能聚合，便于测试和复用。”
    Demo
 ```vue
-<!-- Composition API 基本示例 -->
-<template> 
+   <!-- Composition API 基本示例 -->
+<template>
   <div>
     <p>count: {{ count }}</p>
     <p>double: {{ double }}</p>
     <button @click="increment">+1</button>
   </div>
 </template>
+```
+
 
 
 ## 3. `Composition-API` 基础语法讲解
-   重点 API
+重点 API
    - `setup(props, ctx)`：初始化逻辑，返回对象暴露给模板。
    - `ref(value)`：创建基本类型响应式引用。
    - `reactive(obj)`：创建深层响应式对象。
@@ -473,7 +789,7 @@ console.log('watchEffect - q is', q.value)
    - `onMounted`, `onUnmounted` 等生命周期钩子（在 setup 内使用）。
    示例（组合使用）
 
- ```vue
+```vue
  <template>
   <div>
     <input v-model="form.name" placeholder="name" />
@@ -481,21 +797,30 @@ console.log('watchEffect - q is', q.value)
     <button @click="submit">Submit</button>
   </div>
 </template>
+```
 
 
 
 ## 4. Vue 的响应式陷阱
-   常见陷阱（面试应答点）
+常见陷阱（面试应答点）
    - 直接解构 `reactiv`e 对象会失去响应性：`const { a } = reactiveObj` 会脱离响应系统。
    - ref 包装对象时，访问嵌套属性可能需要 `.value` 或用 `toRefs/reactive`。
    - 在模板内直接操作 `v-for` 的索引或 key 使用不当导致重用/渲染问题。
    - 对数组直接更改索引（例如 `arr[3] = x`）在 Vue 2 有问题，`Vue 3` 的 Proxy 已修复大部分，但需注意赋值与变更触发场景。
    - 深度监听对象时容易造成性能问题。
    修复示例
+```js
+import { reactive, toRefs } from 'vue';
+const state = reactive({ count: 0, nested: { val: 1 } });
+// 错误做法（会失去响应）
+const { nested } = state; // nested 不再是响应式的 proxy 引用
+// 正确做法
+const { nested: nestedRef } = toRefs(state); // nestedRef 是 ref，保持响应
+```
   
 
 ## 5. Vue 响应式底层原理 `Proxy`（简述）
-   核心要点
+核心要点
    - `Vue3` 使用 Proxy 为对象创建代理，拦截 `get/set` 等操作。
    - `get` 时收集依赖（在依赖收集阶段记录当前 `activeEffect -> key`）。
    - `set` 时触发已订阅的 `effect` 执行（调度更新）。
@@ -664,20 +989,22 @@ v-model 自定义组件
 
 
 ## 12.` Provide-Inject` 的用法
-    要点
-    - `provide` 在上层组件提供值，`inject` 在子组件任意深度获取。
-    - 常用于插件、主题、依赖注入（但不用于频繁变更的共享状态，因不是响应式，除非提供` ref/reactive`）。
-    - 可以传默认值。
-    示例
-   ```vue
-   // Provider.vue
-    import { provide, ref } from 'vue';
-    setup() {
-    const theme = ref('dark');
-    provide('theme', theme); // 提供 ref 保持响应
-    return {};
-    }
-
+要点
+- `provide` 在上层组件提供值，`inject` 在子组件任意深度获取。
+- 常用于插件、主题、依赖注入（但不用于频繁变更的共享状态，因不是响应式，除非提供` ref/reactive`）。
+- 可以传默认值。
+示例
+```vue
+// Provider.vue
+import { provide, ref } from 'vue';
+setup() {
+const theme = ref('dark');
+provide('theme', theme); // 提供 ref 保持响应
+return {};
+}
+   
+```
+```js
 // Consumer.vue
 import { inject } from 'vue';
 setup() {
@@ -686,12 +1013,31 @@ return { theme };
 }
 ```
 
+
+
 ## 13. 插槽 `slot` 与具名插槽
     要点
     - 默认插槽`（<slot/>）`用于未命名的内容。
     - 具名插槽：`<slot name="header"/>` 与父组件` <template #header>...</template>`。
     - 插槽由父提供，子决定渲染位置，适合高阶组件或容器组件布局。
     示例
+```vue
+<!-- MyCard.vue -->
+<template>
+  <div class="card">
+    <header><slot name="header"></slot></header>
+    <section><slot></slot></section>
+    <footer><slot name="footer"></slot></footer>
+  </div>
+</template>
+
+<!-- 使用 -->
+  <MyCard>
+    <template #header>Title</template>
+  Main content
+    <template #footer>Footer</template>
+    </MyCard>
+```
 
 
 ## 14. 插槽作用域（`Scoped Slots`）
@@ -699,6 +1045,23 @@ return { theme };
     - 子组件通过 `<slot :data="x">` 向父传数据，父用 `<template #default="{ data }"> `解构接收。
     - 用于渲染高可配置性内容（像表格、列表项自定义渲染）。
     示例
+```vue
+<!-- List.vue -->
+<template>
+  <ul>
+    <li v-for="item in items" :key="item.id">
+      <slot :item="item">{{ item.text }}</slot>
+    </li>
+  </ul>
+</template>
+
+<!-- Parent.vue -->
+<List :items="things">
+  <template #default="{ item }">
+    <strong>{{ item.name }}</strong> - {{ item.desc }}
+  </template>
+</List>
+```
 
 
 ## 15. `Vue-Router` 的基本配置与使用
@@ -707,26 +1070,62 @@ return { theme };
     - 路由文件化建议：按页/模块组织 views/。
     - 在组件内可用 `useRouter()`（编程式导航）和 `useRoute()`（读取当前 `route`）。
     示例
+```js
+// router/index.js
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '@/views/Home.vue';
+import About from '@/views/About.vue';
+const routes = [
+  { path: '/', component: Home, name: 'home' },
+  { path: '/about', component: About, name: 'about' },
+];
+export const router = createRouter({ history: createWebHistory(), routes });
+
+// main.js
+import { createApp } from 'vue';
+import App from './App.vue';
+import { router } from './router';
+createApp(App).use(router).mount('#app');
+```
   
 
 ## 16. `Vue-Router` 的路由参数与传参方式
-    方式
-    - 动态路由 `params：/user/:id -> route.params.id`
-    - `query：/search?q=vue -> route.query.q`
-    - `props` 传参（组件接收 props）：`{ path: '/user/:id', component: User, props: true }`
-    - 编程式导航传参：`router.push({ name: 'user', params: { id: 1 }, query: { q: 'x' } })`（注意 params 与 name 搭配更稳）
+方式
+- 动态路由 `params：/user/:id -> route.params.id`
+- `query：/search?q=vue -> route.query.q`
+- `props` 传参（组件接收 props）：`{ path: '/user/:id', component: User, props: true }`
+- 编程式导航传参：`router.push({ name: 'user', params: { id: 1 }, query: { q: 'x' } })`（注意 params 与 name 搭配更稳）
     示例
+```js
+// route config
+{ path: '/user/:id', name: 'user', component: User, props: true }
+
+// User.vue
+export default {
+  props: ['id'],
+  setup(props) {
+    // props.id 可用，无需从 route 里取
+  }
+};
+```
    
 
 ## 17. `Vue-Router` 的路由守卫
-    类型
-    - 全局前置守卫 `router.beforeEach`
-    - 全局解析守卫` router.beforeResolve`
-    - 全局后置守卫 `router.afterEach`
-    - 单路由守卫 `beforeEnter`
-    - 组件内守卫 `beforeRouteEnter`, `beforeRouteUpdate`, `beforeRouteLeave`
-    示例：全局守卫做鉴权
-  
+类型
+- 全局前置守卫 `router.beforeEach`
+- 全局解析守卫` router.beforeResolve`
+- 全局后置守卫 `router.afterEach`
+- 单路由守卫 `beforeEnter`
+- 组件内守卫 `beforeRouteEnter`, `beforeRouteUpdate`, `beforeRouteLeave`
+示例：全局守卫做鉴权
+```js
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.meta.requiresAuth;
+  const loggedIn = Boolean(localStorage.getItem('token'));
+  if (requiresAuth && !loggedIn) next({ name: 'login', query: { redirect: to.fullPath } });
+  else next();
+});
+```
 
 ## 18. `Vue-Router` 的路由元信息
     要点
@@ -734,6 +1133,9 @@ return { theme };
     - 常用于权限校验、动态标题、面包屑或布局选择。
     - 可在 `beforeEach` 或 `afterEach` 使用` to.meta`。
     示例
+```js
+{ path: '/dashboard', component: Dashboard, meta: { requiresAuth: true, layout: 'admin' } }
+```
 
 
 ## 19. Vue 何时需要全局状态
@@ -745,6 +1147,35 @@ return { theme };
     “若仅父子传递则不用全局；若是多页面、多组件共享并且需要统一操作（登录态、购物车），就上 Pinia。”
 
 ## 20. Pinia 基本用法
+示例：简单 store
+```js
+// stores/counter.js
+  import { defineStore } from 'pinia';
+  export const useCounterStore = defineStore('counter', {
+    state: () => ({ count: 0 }),
+    getters: {
+      double: (state) => state.count * 2
+    },
+    actions: {
+      increment() { this.count++; }
+    }
+  });
+
+  // main.js
+  import { createApp } from 'vue';
+  import { createPinia } from 'pinia';
+  const pinia = createPinia();
+  createApp(App).use(pinia).mount('#app');
+
+  // 组件中使用
+  import { useCounterStore } from '@/stores/counter';
+  export default {
+    setup() {
+      const counter = useCounterStore();
+      return { counter };
+    }
+  };
+```
 
 
 ## 21. Pinia三大核心概念
@@ -756,10 +1187,15 @@ return { theme };
    “`Pinia API `简洁，支持模块化、`TypeScript` 友好，且 store 实例可直接在组件中使用，便于聚合与测试。”
 
 ## 22. `Pinia — Store` 的响应式解构（常见问题）
-    问题
-    - 直接解构 `store`（如 `const { count } = useStore()）`会脱离响应（变成普通值）。
-    正确做法
-    - 使用 `storeToRefs` 把 `store` 的 `state -> refs`，或直接在模板中使用` store.count`。
+问题
+- 直接解构 `store`（如 `const { count } = useStore()）`会脱离响应（变成普通值）。
+正确做法
+- 使用 `storeToRefs` 把 `store` 的 `state -> refs`，或直接在模板中使用` store.count`。
+```js
+import { storeToRefs } from 'pinia';
+const store = useCounterStore();
+const { count } = storeToRefs(store); // count 是 ref，保持响应性
+```
 
 
 ## 23. Pinia 最小可变点原则
@@ -771,11 +1207,23 @@ return { theme };
     “实际项目中把真实的可变数据放 store，把 UI 局部状态留在组件，能减少冲突与不必要重渲染。”
 
 ## 24. Vue 的自定义指令
-    用途
-    - 操作 DOM（聚焦、悬浮提示、长按等），需要直接 DOM 操作时用指令。
-    API
-    - `beforeMount`, `mounted`, `beforeUpdate`, `updated`, `beforeUnmount`, `unmounted`。
-  
+用途
+- 操作 DOM（聚焦、悬浮提示、长按等），需要直接 DOM 操作时用指令。
+ API
+- `beforeMount`, `mounted`, `beforeUpdate`, `updated`, `beforeUnmount`, `unmounted`。
+
+```js
+// directives/focus.js
+  export default {
+    mounted(el) { el.focus(); }
+  };
+
+  // main.js
+  app.directive('focus', import('./directives/focus.js'));
+
+  // 使用
+  <input v-focus />
+```
 
 
 
@@ -803,6 +1251,28 @@ return { theme };
     - 场景：在修改响应式数据后需要读取更新后的 DOM（例如获取元素尺寸、聚焦、滚动）。
     - Vue 内部的 DOM 更新是异步批量的，nextTick 保证在 DOM 更新并渲染完成后执行。
     示例
+```js
+<template>
+  <div ref="box">{{ text }}</div>
+  <button @click="change">Change</button>
+</template>
+
+<script>
+  import { ref, nextTick } from 'vue';
+  export default {
+    setup() {
+      const text = ref('a');
+      const box = ref(null);
+      async function change() {
+        text.value = 'longer text';
+        await nextTick(); // 等待 DOM 更新完成
+        console.log(box.value.getBoundingClientRect()); // 获取最新尺寸
+      }
+      return { text, box, change };
+    }
+  };
+</script>
+```
   
 
 总结与面试准备建议（一句话）
