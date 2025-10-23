@@ -153,7 +153,7 @@ return <button {...rest}>{children}</button>;
 - 作用：避免库自带多份 React（避免版本冲突），让宿主控制依赖版本。
 - 注意事项：发布时声明 peerDeps，配合 peerDependenciesMeta 标注可选项；在开发时 use npm/yarn/pnpm 的 --legacy-peer-deps/workspace 管理。
 示例 package.json
-```jsx
+```json
 {
 "name": "my-component-lib",
 "version": "1.0.0",
@@ -175,17 +175,7 @@ return <button {...rest}>{children}</button>;
 - 对包管理策略（如 pnpmfile、hooks）与锁文件健壮。
 - 面试可补充：需处理 Node resolution 的某些老工具兼容问题，但现代工具兼容良好。
 示例：pnpm workspace 配置
-```jsx
-// pnpm-workspace.yaml
-packages:
-- 'packages/*'
-  // package.json (root)
-  {
-  "name": "monorepo",
-  "private": true,
-  "devDependencies": {}
-  }
-  ```
+
   面试话术：“pnpm 在 monorepo 环境下能显著节省磁盘并提高安装速度，同时强制依赖声明，减少运行时问题。”
 
 ## 06 eslint 作用

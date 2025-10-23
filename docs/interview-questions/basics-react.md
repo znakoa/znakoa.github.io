@@ -10,6 +10,26 @@ UI 理解为“状态的视图”有助于构建可预测、可测试的界面�
 面试要点：强调纯函数、可重现性、单向数据流、不可变性带来的简单比较（引用 shallow compare 优势）。
 代码 demo：
 
+```jsx
+function Counter({ count }) {
+  // Counter 是 UI = f(state) 的直接例子
+  return <div>Count: {count}</div>;
+}
+
+// 使用
+function App() {
+  const [count, setCount] = React.useState(0);
+  return (
+    <>
+      <Counter count={count} />
+      <button onClick={() => setCount(c => c + 1)}>+1</button>
+    </>
+  );
+}
+```
+
+
+
 ## 2. 虚拟 DOM（Virtual DOM）是什么？它解决了哪些实际问题？
 
 解释：虚拟 DOM 是 JS 对实际 DOM 的轻量内存表示（通常是树形对象）。当 state 改变时，框架先基于新的状态生成一棵新的虚拟
@@ -19,6 +39,31 @@ DOM，然后对新旧虚拟 DOM 做差分（reconciliation），只把必要的�
 key 等）。
 代码 demo（手写简化版本的虚拟 DOM diff）：
 
+```jsx
+// 极简：虚拟节点表示
+function h(type, props, ...children) {
+  return { type, props: props || {}, children };
+}
+
+// 简单 render -> DOM（递归）
+function render(vnode, container) {
+  if (typeof vnode === 'string' || typeof vnode === 'number') {
+    container.appendChild(document.createTextNode(String(vnode)));
+    return;
+  }
+  const el = document.createElement(vnode.type);
+  for (const [k, v] of Object.entries(vnode.props || {})) {
+    el.setAttribute(k, v);
+  }
+  vnode.children.forEach(child => render(child, el));
+  container.appendChild(el);
+}
+
+// 用法：
+const vnode = h('div', {id: 'app'}, 'hello', h('span', null, 'world'));
+render(vnode, document.getElementById('root'));
+```
+
 ## 3. 说说你对 JSX 的理解
 
 解释：`JSX` 是 `JavaScript` 的语法扩展，编写起来像 HTML，但本质是 `React.createElement(type, props, ...children)` 的语法糖。JSX
@@ -26,6 +71,18 @@ key 等）。
 对象（React 元素）。
 面试要点：解释 JSX 并不是模板引擎，强调表达式能力（花括号）、条件渲染、列表渲染与 key、以及与类型系统（TSX）的协作。
 代码 demo：
+```jsx
+// JSX 写法
+function Greeting({ name }) {
+  return <h1>Hello, {name ?? 'stranger'}!</h1>;
+}
+
+// 编译后大致等价于：
+function GreetingCompiled(props) {
+  return React.createElement('h1', null, 'Hello, ', props.name ?? 'stranger', '!');
+}
+
+```
 
 ## 4. 函数组件和类组件的本质区别是什么？
 
@@ -36,13 +93,50 @@ key 等）。
 相关陷阱，并鼓励小粒度复用。
 React 团队的方向（从 React 16.8 后）是以函数组件` + Hooks` 为主流，类组件仍被支持但不推荐新写。
 代码 demo（同功能对比）：
+```jsx
+// 类组件
+class TimerClass extends React.Component {
+  state = { t: 0 };
+  componentDidMount() { this.id = setInterval(() => this.setState(s => ({t: s.t + 1})), 1000); }
+  componentWillUnmount() { clearInterval(this.id); }
+  render() { return <div>{this.state.t}</div>; }
+}
+
+// 函数组件 + Hooks
+function TimerFunc() {
+  const [t, setT] = React.useState(0);
+  React.useEffect(() => {
+    const id = setInterval(() => setT(v => v + 1), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return <div>{t}</div>;
+}
+```
 
 ## 5. 为什么 React 中 props 不可变（immutable）？
 
 解释：`props` 是父组件下发给子组件的只读输入参数。不可变性保证了组件之间的边界清晰——子组件不会悄然改变父组件的数据源。此外，不可变数据便于进行浅比较（`reference`
 `compare`）从而优化渲染（`shouldComponentUpdate` / `PureComponent` / `memo`），减少不必要的重渲染。若需要改变父数据，应通过回调把意图通知父组件由父修改状态。
 代码示例（错误示范 + 正确做法）：
+```jsx
+// 错误（不要直接修改 props 对象内部）
+function Child({ obj }) {
+  // BAD: mutating props
+  obj.count = obj.count + 1; // 切勿这样做
+  return <div>{obj.count}</div>;
+}
+
+// 正确（通过回调向上通知）
+function Parent() {
+  const [obj, setObj] = React.useState({count: 0});
+  return <Child obj={obj} onInc={() => setObj(o => ({...o, count: o.count + 1}))} />;
+}
+function Child({ obj, onInc }) {
+  return <button onClick={onInc}>{obj.count}</button>;
+}
+```
 参见：不可变数据便于引用比较与性能优化（可理解参考 React 文档）。`bennadel.com+1`
+
 
 ## 6. React 的 Fiber 架构主要是为了解决什么问题？
 
@@ -52,6 +146,20 @@ React 团队的方向（从 React 16.8 后）是以函数组件` + Hooks` 为主
 面试要点：说明两个阶段（`reconciliation` 与 `commit`），Fiber 如何让中断与恢复成为可能，以及它对
 `useTransition`/并发渲染等特性的支撑作用。`LogRocket Blog+1`
 简化示意代码（伪代码展示任务分片）：
+```jsx
+// 伪：把大任务拆成小任务，模拟 Fiber 调度
+function workLoop(workQueue) {
+  while (workQueue.length > 0 && !shouldYield()) {
+    const unit = workQueue.shift();
+    performUnitOfWork(unit);
+  }
+  if (workQueue.length > 0) {
+    requestIdleCallback(() => workLoop(workQueue));
+  } else {
+    commitAll();
+  }
+}
+```
 
 ## 7. React 中的 key 属性有什么作用？
 
@@ -59,13 +167,34 @@ React 团队的方向（从 React 16.8 后）是以函数组件` + Hooks` 为主
 key（稳定且唯一，如数据库 id）避免了错误的节点复用（例如输入框光标跳动、组件内部 state 错位）。不推荐使用索引作为
 key（在列表会发生插入/删除/排序时会破坏复用）。
 代码 demo：
-
+```jsx
+function TodoList({ items }) {
+  return (
+    <ul>
+      {items.map(item => (
+      <li key={item.id}>
+        <input defaultValue={item.text} />
+      </li>
+    ))}
+    </ul>
+  );
+}
+```
 ## ## 8. React 的事件机制和合成事件是如何工作的？
 
 解释：React 使用“合成事件”（`SyntheticEvent`）作为跨浏览器的事件封装层。`React` 在根节点上绑定少量真实 DOM 事件（事件委托），当事件发生时，React
 会构建合成事件对象并按组件树执行回调。合成事件的好处：统一跨浏览器行为、事件池（老版本）以复用对象、以及更简单的生命周期一致性（在某些场景下
 React 能更好地控制事件顺序）。注意：事件处理器中的 `event.persist()` 可阻止事件被复用（旧机制），`React` 现在已改进事件对象生命周期但概念仍然一致。
 代码 demo：
+```jsx
+function MyButton() {
+  function handleClick(e) {
+    console.log('target', e.target);
+    // e is a SyntheticEvent
+  }
+  return <button onClick={handleClick}>Click</button>;
+}
+```
 
 ## ## 9. 受控组件（`controlled`）和非受控组件（`uncontrolled`）有什么区别？
 
@@ -73,26 +202,77 @@ React 能更好地控制事件顺序）。注意：事件处理器中的 `event.
 受控组件：表单元素的值由 `React` `state` 完全控制`（value + onChange）`。好处：单一真相、便于验证、条件禁用、联动等。
 非受控组件：表单元素自己管理内部 state，通过 ref 在需要时读取值（类似传统 DOM 表单）。适用于简单场景或需要与第三方库集成且不想每次输入都触发渲染。
 代码 demo（对比）：
+```jsx
+// 受控
+function Controlled() {
+  const [v, setV] = React.useState('');
+  return <input value={v} onChange={e => setV(e.target.value)} />;
+}
+
+// 非受控
+function Uncontrolled() {
+  const ref = React.useRef();
+  function submit() {
+    alert(ref.current.value);
+  }
+  return <>
+    <input ref={ref} defaultValue="init" />
+    <button onClick={submit}>Submit</button>
+  </>;
+}
+```
 
 ## ## 10. 为什么在 React 中“组合优于继承”？
 
-    解释：组合（`composition`）更灵活、可组合、符合函数式思想；通过把小组件组合起来可以构建复杂功能，而继承往往造成紧耦合、难以复用、难以理解的类层级。React 的 `props / children / render-props / hooks` 都是组合的体现。官方建议使用组合来复用组件逻辑（而不是继承）。
-    代码 demo（组合示例）：
+解释：组合（`composition`）更灵活、可组合、符合函数式思想；通过把小组件组合起来可以构建复杂功能，而继承往往造成紧耦合、难以复用、难以理解的类层级。React 的 `props / children / render-props / hooks` 都是组合的体现。官方建议使用组合来复用组件逻辑（而不是继承）。
+代码 demo（组合示例）：
+```jsx
+function Modal({children}) {
+  return <div className="modal">{children}</div>;
+}
+
+function App() {
+  return (
+    <Modal>
+      <h1>Title</h1>
+      <p>Content</p>
+    </Modal>
+  );
+}
+```
 
 ## ## 11. `React` 的严格模式（`StrictMode`）有什么作用？
 
-    解释：`<StrictMode>` 在开发模式下启用额外检查与警告（并不影响生产构建），如：
-    检查过时的生命周期方法；
-    在开发环境对组件 `mount/unmount` 进行双重调用以暴露副作用中的不纯代码（例如不正确的清理）；
-    启用对某些未来改动的警告（如对 refs 的变化等）。
-    面试要点：说明 `StrictMode` 通过“在开发环境下执行额外运行”帮你发现副作用和不安全的生命周期。
-    代码 demo：
+解释：`<StrictMode>` 在开发模式下启用额外检查与警告（并不影响生产构建），如：
+检查过时的生命周期方法；
+在开发环境对组件 `mount/unmount` 进行双重调用以暴露副作用中的不纯代码（例如不正确的清理）；
+启用对某些未来改动的警告（如对 refs 的变化等）。
+面试要点：说明 `StrictMode` 通过“在开发环境下执行额外运行”帮你发现副作用和不安全的生命周期。
+代码 demo：
+```jsx
+ReactDOM.createRoot(root).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
 
 ## ## 12. `useState` 的更新是异步的吗？
 
-    解释：在 `React` 中调用 `setState`（或 `setX`）不会立即更新当前渲染中的变量——它会安排一次重新渲染，更新会在随后渲染周期反映出来。并且 React 会对同一事件循环中的多个更新进行批处理（React 18+ 的自动批处理扩展了批处理的情形）。因此从调用 setState 到 DOM 更新是异步的（对当前渲染而言）；但如果你在同一个渲染里多次调用 setState，React 可能会合并这些更新（尤其在使用函数式更新时行为确定）。
-    代码 demo（说明）：
-    关于自动批处理（React 18）的工作方式可参考官方发布说明。`react.dev`
+解释：在 `React` 中调用 `setState`（或 `setX`）不会立即更新当前渲染中的变量——它会安排一次重新渲染，更新会在随后渲染周期反映出来。并且 React 会对同一事件循环中的多个更新进行批处理（React 18+ 的自动批处理扩展了批处理的情形）。因此从调用 setState 到 DOM 更新是异步的（对当前渲染而言）；但如果你在同一个渲染里多次调用 setState，React 可能会合并这些更新（尤其在使用函数式更新时行为确定）。
+代码 demo（说明）：
+```jsx
+function Demo() {
+  const [n, setN] = React.useState(0);
+  function onClick() {
+    setN(n + 1);
+    console.log(n); // 仍然是旧值（在当前渲染里）
+    setN(n + 2);
+  }
+  return <button onClick={onClick}>{n}</button>;
+}
+```
+关于自动批处理（React 18）的工作方式可参考官方发布说明。`react.dev`
 
 ## 13. 使用 useState 的函数式更新方式能带来哪些好处？
 
@@ -101,6 +281,17 @@ React 能更好地控制事件顺序）。注意：事件处理器中的 `event.
     在批处理或异步回调中能安全地基于最新值做计算；
     更容易避免依赖数组问题。
     代码 demo：
+```jsx
+function Counter() {
+  const [count, setCount] = React.useState(0);
+  function incTwice() {
+    // 正确：每次都基于最新值
+    setCount(c => c + 1);
+    setCount(c => c + 1);
+  }
+  return <button onClick={incTwice}>{count}</button>;
+}
+```
 
 ## 14. “状态提升”这种模式有哪些优缺点？
 
@@ -108,6 +299,17 @@ React 能更好地控制事件顺序）。注意：事件处理器中的 `event.
     优点：把共享 state 放到最近的共同祖先，能保证单一数据源、易于同步与逻辑集中，便于验证与持久化。
     缺点：会导致“祖先”组件变大`（prop drilling）`，频繁更新可能导致更多子组件重渲染，降低局部封装性。需要配合 `memo`、`context`、或拆分组件来缓解。
     代码 demo（状态提升）：
+```jsx
+function Parent() {
+  const [value, setValue] = React.useState('');
+  return (
+    <>
+      <Input value={value} onChange={v => setValue(v)} />
+      <Preview value={value} />
+    </>
+  );
+}
+```
     缓解方案：用 context、或者把不变部分 memo 化，或使用局部状态与事件回传。
 
 ## 15. useReducer 相比 useState 优势体现在哪？
