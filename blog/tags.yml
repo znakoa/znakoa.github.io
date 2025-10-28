@@ -17,3 +17,28 @@ hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
+
+notes:
+  label: 笔记
+  permalink: /notes
+  description: 学习笔记
+
+RandomNotes:
+  label: 随记
+  description: 记录日常思考和感悟的随笔文章
+
+AI:
+  label: AI
+  description: 关于AI使用的内容
+
+设计:
+  label: 设计
+  description: 设计
+
+更新:
+  label: 更新
+  description: 更新
+
+日志:
+  label: 日志
+  description: 日志

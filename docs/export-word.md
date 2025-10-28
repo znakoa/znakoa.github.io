@@ -39,7 +39,7 @@ yarn add docxtemplater pizzip jszip-utils file-saver
 
 下面是一个基于 Vue 项目中使用的完整方法：
 
-```js
+```js showLineNumbers
 import docxtemplater from 'docxtemplater';
 import PizZip from 'pizzip';
 import JSZipUtils from 'jszip-utils';

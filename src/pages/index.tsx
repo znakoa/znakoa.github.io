@@ -13,41 +13,134 @@ function ModernHero() {
   
   return (
     <section className={clsx('modern-hero', styles.modernHero)}>
+      <div className={styles.heroBackground}>
+        <div className={styles.floatingElements}>
+          <div className={styles.floatingCircle} style={{top: '10%', left: '10%', animationDelay: '0s'}}></div>
+          <div className={styles.floatingCircle} style={{top: '20%', right: '15%', animationDelay: '1s'}}></div>
+          <div className={styles.floatingCircle} style={{bottom: '30%', left: '20%', animationDelay: '2s'}}></div>
+          <div className={styles.floatingCircle} style={{bottom: '10%', right: '10%', animationDelay: '3s'}}></div>
+        </div>
+      </div>
+      
       <div className="container">
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
+            <div className={styles.heroBadge}>
+              <span className={styles.badgeIcon}>✨</span>
+              <span className={styles.badgeText}>现代简约设计</span>
+            </div>
+            
             <h1 className={clsx(styles.heroTitle)}>
-              {siteConfig.title}
+              <span className={styles.titleMain}>{siteConfig.title}</span>
+              <span className={styles.titleSub}>个人知识库</span>
             </h1>
+            
             <p className={clsx(styles.heroSubtitle)}>
               {siteConfig.tagline}
             </p>
+            
             <div className={styles.heroButtons}>
-              <Link to="/docs/gitorder" className="modern-button">
-                开始探索
+              <Link to="/docs/gitorder" className={styles.primaryButton}>
+                <span className={styles.buttonIcon}>🚀</span>
+                <span>开始探索</span>
               </Link>
-              <Link to="/docs/interview-questions/basics-JavaScript" className="modern-button" style={{background: 'transparent', color: 'var(--ifm-color-primary)', borderColor: 'var(--ifm-color-primary)'}}>
-                面试题库
+              <Link to="/docs/interview-questions/basics-JavaScript" className={styles.secondaryButton}>
+                <span className={styles.buttonIcon}>📚</span>
+                <span>面试题库</span>
               </Link>
             </div>
-          </div>
-          <div className={styles.heroVisual}>
-            <div className={clsx('modern-card', styles.codeBlock)}>
-              <div className={styles.codeHeader}>
-                <div className={styles.codeDots}>
-                  <span></span><span></span><span></span>
-                </div>
-                <span className={styles.codeTitle}>knowledge.js</span>
+            
+            <div className={styles.heroStats}>
+              <div className={styles.statItem}>
+                <span className={styles.statNumber}>35+</span>
+                <span className={styles.statLabel}>知识点</span>
               </div>
-              <pre className={styles.codeContent}>
-{`const knowledge = {
-  skills: ['JavaScript', 'Vue', 'React'],
-  experience: 'Frontend Developer',
-  passion: 'Learning & Sharing'
-};
-
-console.log('Welcome to my world!');`}
-              </pre>
+              <div className={styles.statDivider}></div>
+              <div className={styles.statItem}>
+                <span className={styles.statNumber}>50+</span>
+                <span className={styles.statLabel}>实战案例</span>
+              </div>
+              <div className={styles.statDivider}></div>
+              <div className={styles.statItem}>
+                <span className={styles.statNumber}>∞</span>
+                <span className={styles.statLabel}>学习热情</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className={styles.heroVisual}>
+            <div className={styles.visualContainer}>
+              <div className={styles.codeWindow}>
+                <div className={styles.codeHeader}>
+                  <div className={styles.codeDots}>
+                    <span className={styles.dot} style={{background: '#ff5f57'}}></span>
+                    <span className={styles.dot} style={{background: '#ffbd2e'}}></span>
+                    <span className={styles.dot} style={{background: '#28ca42'}}></span>
+                  </div>
+                  <span className={styles.codeTitle}>knowledge.js</span>
+                  <div className={styles.codeActions}>
+                    <span className={styles.actionIcon}>📁</span>
+                    <span className={styles.actionIcon}>⚙️</span>
+                  </div>
+                </div>
+                <div className={styles.codeContent}>
+                  <div className={styles.codeLine}>
+                    <span className={styles.lineNumber}>1</span>
+                    <span className={styles.codeText}>
+                      <span className={styles.keyword}>const</span> knowledge = <span className={styles.bracket}>{'{'}</span>
+                    </span>
+                  </div>
+                  <div className={styles.codeLine}>
+                    <span className={styles.lineNumber}>2</span>
+                    <span className={styles.codeText}>
+                      &nbsp;&nbsp;<span className={styles.property}>skills</span>: <span className={styles.bracket}>[</span><span className={styles.string}>'JavaScript'</span>, <span className={styles.string}>'Vue'</span>, <span className={styles.string}>'React'</span><span className={styles.bracket}>]</span>,
+                    </span>
+                  </div>
+                  <div className={styles.codeLine}>
+                    <span className={styles.lineNumber}>3</span>
+                    <span className={styles.codeText}>
+                      &nbsp;&nbsp;<span className={styles.property}>experience</span>: <span className={styles.string}>'Frontend Developer'</span>,
+                    </span>
+                  </div>
+                  <div className={styles.codeLine}>
+                    <span className={styles.lineNumber}>4</span>
+                    <span className={styles.codeText}>
+                      &nbsp;&nbsp;<span className={styles.property}>passion</span>: <span className={styles.string}>'Learning & Sharing'</span>
+                    </span>
+                  </div>
+                  <div className={styles.codeLine}>
+                    <span className={styles.lineNumber}>5</span>
+                    <span className={styles.codeText}>
+                      <span className={styles.bracket}>{'}'}</span>;
+                    </span>
+                  </div>
+                  <div className={styles.codeLine}>
+                    <span className={styles.lineNumber}>6</span>
+                    <span className={styles.codeText}></span>
+                  </div>
+                  <div className={styles.codeLine}>
+                    <span className={styles.lineNumber}>7</span>
+                    <span className={styles.codeText}>
+                      <span className={styles.function}>console.log</span>(<span className={styles.string}>'Welcome to my world!'</span>);
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={styles.floatingCards}>
+                <div className={styles.floatingCard} style={{animationDelay: '0.5s'}}>
+                  <div className={styles.cardIcon}>💻</div>
+                  <div className={styles.cardText}>前端开发</div>
+                </div>
+                <div className={styles.floatingCard} style={{animationDelay: '1.5s'}}>
+                  <div className={styles.cardIcon}>🎯</div>
+                  <div className={styles.cardText}>技术分享</div>
+                </div>
+                <div className={styles.floatingCard} style={{animationDelay: '2.5s'}}>
+                  <div className={styles.cardIcon}>🚀</div>
+                  <div className={styles.cardText}>持续学习</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -226,6 +319,7 @@ function ModernStats() {
   );
 }
 
+
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   
@@ -233,10 +327,13 @@ export default function Home(): ReactNode {
     <Layout
       title={`${siteConfig.title} - ${siteConfig.tagline}`}
       description="现代简约风格的个人知识库，包含JavaScript面试题、Git实战指南、前端技术文档等丰富内容">
-      <ModernHero />
-      <ModernFeatures />
-      <ModernProjects />
-      <ModernStats />
+        <main className={styles.mianbg}>
+            <ModernHero />
+            <ModernFeatures />
+            <ModernProjects />
+            <ModernStats />
+        </main>
+
     </Layout>
   );
 }

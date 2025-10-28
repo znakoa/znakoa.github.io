@@ -53,19 +53,20 @@ const config: Config = {
                     sidebarPath: './sidebars.ts',
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
-                    editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                    // editUrl:
+                    //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
                 },
                 blog: {
                     showReadingTime: true,
+                    blogSidebarTitle: '日常随记',
                     feedOptions: {
                         type: ['rss', 'atom'],
                         xslt: true,
                     },
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
-                    editUrl:
-                        'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                    // editUrl:
+                    //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
                     // Useful options to enforce blogging best practices
                     onInlineTags: 'warn',
                     onInlineAuthors: 'warn',
@@ -99,7 +100,7 @@ const config: Config = {
                     position: 'left',
                     label: '知识库',
                 },
-                // {to: '/blog', label: 'Blog', position: 'left'},
+                {to: '/blog', label: '日常随记', position: 'right'},
                 {
                     href: 'https://github.com/znakoa',
                     label: 'GitHub',
