@@ -2,108 +2,91 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://your-docusaurus-site.example.com/blog</id>
     <title>苏木 Blog</title>
-    <updated>2021-08-26T00:00:00.000Z</updated>
+    <updated>2025-10-28T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://your-docusaurus-site.example.com/blog"/>
     <subtitle>苏木 Blog</subtitle>
     <icon>https://your-docusaurus-site.example.com/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[Welcome]]></title>
-        <id>https://your-docusaurus-site.example.com/blog/welcome</id>
-        <link href="https://your-docusaurus-site.example.com/blog/welcome"/>
-        <updated>2021-08-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></summary>
-        <content type="html"><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer" class="">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer" class="">blog plugin</a>.</p>
-<p>Here are a few tips you might find useful.</p>
-<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
-<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
-<p>The blog post date can be extracted from filenames, such as:</p>
+        <title type="html"><![CDATA[更新日记]]></title>
+        <id>https://your-docusaurus-site.example.com/blog/update</id>
+        <link href="https://your-docusaurus-site.example.com/blog/update"/>
+        <updated>2025-10-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[✨ 主要更新内容]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorTargetStickyNavbar_OS_M" id="-主要更新内容">✨ 主要更新内容<a href="https://your-docusaurus-site.example.com/blog/update#-%E4%B8%BB%E8%A6%81%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9" class="hash-link" aria-label="✨ 主要更新内容的直接链接" title="✨ 主要更新内容的直接链接" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_OS_M" id="1-整体风格统一">1. 整体风格统一<a href="https://your-docusaurus-site.example.com/blog/update#1-%E6%95%B4%E4%BD%93%E9%A3%8E%E6%A0%BC%E7%BB%9F%E4%B8%80" class="hash-link" aria-label="1. 整体风格统一的直接链接" title="1. 整体风格统一的直接链接" translate="no">​</a></h3>
 <ul>
-<li class=""><code>2019-05-30-welcome.md</code></li>
-<li class=""><code>2019-05-30-welcome/index.md</code></li>
+<li class=""><strong>透明玻璃效果</strong>：所有组件都采用半透明背景 + 模糊效果</li>
+<li class=""><strong>现代色彩系统</strong>：使用清新的绿色系作为主色调</li>
+<li class=""><strong>背景融合</strong>：让背景图片在所有区域都清晰可见</li>
+<li class=""><strong>层次感设计</strong>：通过不同透明度创造丰富的视觉层次</li>
 </ul>
-<p>A blog post folder can be convenient to co-locate blog post images:</p>
-<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://your-docusaurus-site.example.com/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ci_5"></p>
-<p>The blog supports tags as well!</p>
-<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content>
+<h3 class="anchor anchorTargetStickyNavbar_OS_M" id="2-首页英雄区域重设计">2. 首页英雄区域重设计<a href="https://your-docusaurus-site.example.com/blog/update#2-%E9%A6%96%E9%A1%B5%E8%8B%B1%E9%9B%84%E5%8C%BA%E5%9F%9F%E9%87%8D%E8%AE%BE%E8%AE%A1" class="hash-link" aria-label="2. 首页英雄区域重设计的直接链接" title="2. 首页英雄区域重设计的直接链接" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>动态背景元素</strong>：添加浮动圆圈动画效果</li>
+<li class=""><strong>现代化徽章</strong>：顶部"现代简约设计"徽章</li>
+<li class=""><strong>分层标题设计</strong>：主标题 + 副标题的层次结构</li>
+<li class=""><strong>实时统计展示</strong>：35+知识点、50+实战案例等数据</li>
+<li class=""><strong>高级代码窗口</strong>：macOS风格的代码编辑器界面</li>
+<li class=""><strong>浮动技能卡片</strong>：前端开发、技术分享、持续学习</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_OS_M" id="3-组件透明化改造">3. 组件透明化改造<a href="https://your-docusaurus-site.example.com/blog/update#3-%E7%BB%84%E4%BB%B6%E9%80%8F%E6%98%8E%E5%8C%96%E6%94%B9%E9%80%A0" class="hash-link" aria-label="3. 组件透明化改造的直接链接" title="3. 组件透明化改造的直接链接" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>特性展示卡片</strong>：透明玻璃效果，保持可读性</li>
+<li class=""><strong>项目展示卡片</strong>：半透明背景，突出内容</li>
+<li class=""><strong>统计卡片</strong>：统一透明风格，数据清晰展示</li>
+<li class=""><strong>按钮交互</strong>：玻璃拟态效果，增强现代感</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_OS_M" id="4-响应式设计优化">4. 响应式设计优化<a href="https://your-docusaurus-site.example.com/blog/update#4-%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%8C%96" class="hash-link" aria-label="4. 响应式设计优化的直接链接" title="4. 响应式设计优化的直接链接" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>桌面端</strong>：双列布局，完整功能展示</li>
+<li class=""><strong>平板端</strong>：单列布局，保持间距</li>
+<li class=""><strong>移动端</strong>：垂直布局，优化触摸体验</li>
+</ul>]]></content>
         <author>
-            <name>Sébastien Lorber</name>
-            <uri>https://sebastienlorber.com</uri>
+            <name>znakoa</name>
+            <uri>https://github.com/znakoa</uri>
         </author>
-        <author>
-            <name>Yangshun Tay</name>
-            <uri>https://linkedin.com/in/yangshun</uri>
-        </author>
-        <category label="Facebook" term="Facebook"/>
-        <category label="Hello" term="Hello"/>
-        <category label="Docusaurus" term="Docusaurus"/>
+        <category label="设计" term="设计"/>
+        <category label="更新" term="更新"/>
+        <category label="日志" term="日志"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[MDX Blog Post]]></title>
-        <id>https://your-docusaurus-site.example.com/blog/mdx-blog-post</id>
-        <link href="https://your-docusaurus-site.example.com/blog/mdx-blog-post"/>
-        <updated>2021-08-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></summary>
-        <content type="html"><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer" class="">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer" class="">MDX</a>.</p>
-<div class="theme-admonition theme-admonition-tip admonition_qcFn alert alert--success"><div class="admonitionHeading_QbIs"><span class="admonitionIcon_Yvg2"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>提示</div><div class="admonitionContent_njgP"><p>Use the power of React to create interactive blog posts.</p></div></div>
-<!-- -->
-<p>For example, use JSX to create an interactive button:</p>
-<div class="language-js codeBlockContainer_OmDh theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_JSae"><pre tabindex="0" class="prism-code language-js codeBlock_yp_n thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines__fVw"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre></div></div>
-<button>Click me!</button>]]></content>
+        <title type="html"><![CDATA[搭建个人博客]]></title>
+        <id>https://your-docusaurus-site.example.com/blog/blog</id>
+        <link href="https://your-docusaurus-site.example.com/blog/blog"/>
+        <updated>2024-07-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[使用 Docusaurus 搭建个人博客网站]]></summary>
+        <content type="html"><![CDATA[<p>使用 Docusaurus 搭建个人博客网站</p>
+<p><a href="https://docusaurus.io/zh-CN" target="_blank" rel="noopener noreferrer" class="">Docusaurus</a> 是一个静态网站生成器，它允许你使用 <strong>Markdown</strong> 和 <strong>React</strong> 来编写你的文档，然后生成一个网站。</p>
+<p>Docusaurus 支持以下功能：</p>
+<ul>
+<li class="">多语言</li>
+<li class="">丰富的主题</li>
+<li class="">丰富的配置</li>
+<li class="">插件系统</li>
+<li class="">丰富的功能</li>
+</ul>
+<h1>搭建步骤</h1>
+<ol>
+<li class="">
+<p>安装 Docusaurus CLI</p>
+<div class="language-bash codeBlockContainer_OmDh theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_JSae"><pre tabindex="0" class="prism-code language-bash codeBlock_yp_n thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines__fVw"><span class="token-line" style="color:#393A34"><span class="token plain">npx @docusaurus/init@latest init my-website classic</span><br></span></code></pre></div></div>
+<p><strong>my-website</strong> 是你项目名称，可以随便取</p>
+</li>
+<li class="">
+<p>本地预览</p>
+<p>使用 vscode 打开项目</p>
+<div class="language-bash codeBlockContainer_OmDh theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_JSae"><pre tabindex="0" class="prism-code language-bash codeBlock_yp_n thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines__fVw"><span class="token-line" style="color:#393A34"><span class="token plain">cd my-website</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm run start</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p>修改配置</p>
+</li>
+</ol>]]></content>
         <author>
-            <name>Sébastien Lorber</name>
-            <uri>https://sebastienlorber.com</uri>
+            <name>znakoa</name>
+            <uri>https://github.com/znakoa</uri>
         </author>
-        <category label="Docusaurus" term="Docusaurus"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Long Blog Post]]></title>
-        <id>https://your-docusaurus-site.example.com/blog/long-blog-post</id>
-        <link href="https://your-docusaurus-site.example.com/blog/long-blog-post"/>
-        <updated>2019-05-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This is the summary of a very long blog post,]]></summary>
-        <content type="html"><![CDATA[<p>This is the summary of a very long blog post,</p>
-<p>Use a <code>&lt;!--</code> <code>truncate</code> <code>--&gt;</code> comment to limit blog post size in the list view.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content>
-        <author>
-            <name>Yangshun Tay</name>
-            <uri>https://linkedin.com/in/yangshun</uri>
-        </author>
-        <category label="Hello" term="Hello"/>
-        <category label="Docusaurus" term="Docusaurus"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[First Blog Post]]></title>
-        <id>https://your-docusaurus-site.example.com/blog/first-blog-post</id>
-        <link href="https://your-docusaurus-site.example.com/blog/first-blog-post"/>
-        <updated>2019-05-28T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet...]]></summary>
-        <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet...</p>
-<p>...consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content>
-        <author>
-            <name>Sébastien Lorber</name>
-            <uri>https://sebastienlorber.com</uri>
-        </author>
-        <author>
-            <name>Yangshun Tay</name>
-            <uri>https://linkedin.com/in/yangshun</uri>
-        </author>
-        <category label="Hola" term="Hola"/>
-        <category label="Docusaurus" term="Docusaurus"/>
+        <category label="笔记" term="笔记"/>
     </entry>
 </feed>

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkwebsite=globalThis.webpackChunkwebsite||[]).push([[947],{6600:a=>{a.exports=JSON.parse('{"authors":[{"name":"znakoa","title":"\u83dc\u9e1f","url":"https://github.com/znakoa","imageURL":"https://github.com/znakoa.png","key":"znakoa","page":null,"count":2}]}')}}]);
