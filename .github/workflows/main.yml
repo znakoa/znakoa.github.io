@@ -11,7 +11,7 @@ jobs:
     steps:
       # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # 安装 pnpm
       - name: Install pnpm
@@ -19,7 +19,7 @@ jobs:
 
       # 设置 Node.js 和 pnpm 缓存（可选）
       - name: Setup Node.js and pnpm cache
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '20'  # 指定 Node.js 版本
           cache: 'pnpm'        # 启用 pnpm 缓存
@@ -32,8 +32,7 @@ jobs:
 
       # 部署到 GitHub Pages
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.4.0  # 使用最新 v4 版本
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages    # 目标分支
-          folder: build       # 构建输出目录
-          token: ${{ secrets.GITHUB_TOKEN }}  # 明确传递 GITHUB_TOKEN
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
