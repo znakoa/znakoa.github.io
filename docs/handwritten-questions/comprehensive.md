@@ -427,8 +427,8 @@ console.log(arr);
 ```
 
 ## 10 请实现 DOM2JSON 一个函数，可以把一个 DOM 节点输出 JSON 的格式
-```js
-<div>
+
+`<div>
   <span>
     <a></a>
     </span>
@@ -457,8 +457,8 @@ console.log(arr);
         ]
       }
     ]
-  }
-```
+  }`
+
 实现代码如下:
 ```js
 function dom2Json(domtree) {
@@ -694,8 +694,8 @@ const isValid = function (s) {
   return true;
 };
 ```
-## 16 实现一个padStart()或padEnd()的polyfil
-String.prototype.padStart 和 String.prototype.padEnd是ES8中新增的方法，允许将空字符串或其他字符串添加到原始字符串的开头或结尾。我们先看下使用语法：
+## 16 实现一个`padStart()`或`padEnd()`的`polyfil`
+`String.prototype.padStar`t 和 `String.prototype.padEnd`是ES8中新增的方法，允许将空字符串或其他字符串添加到原始字符串的开头或结尾。我们先看下使用语法：
 `String.padStart(targetLength,[padString])`
 用法：
 ```js
@@ -736,7 +736,7 @@ String.prototype.myPadStart = function (targetLen, padString = " ") {
 console.log('xxx'.myPadStart(16))
 console.log('xxx'.padStart(16))
 ```
-还是比较简单的，而padEnd的实现和它一样，只需要把第二层for循环里的${padString[j]}${orignStr}换下位置就可以了。
+还是比较简单的，而padEnd的实现和它一样，只需要把第二层for循环里的`${padString[j]}${orignStr}`换下位置就可以了。
 ## 17 设计一个方法提取对象中所有value大于2的键值对并返回最新的对象
 实现：
 ```js
@@ -814,7 +814,7 @@ window.onload = function () {
 }
 ```
 ## 19 基于Promise.all实现Ajax的串行和并行
-基于Promise.all实现Ajax的串行和并行
+基于`Promise.all`实现Ajax的串行和并行
 串行：请求是异步的，需要等待上一个请求成功，才能执行下一个请求
 并行：同时发送多个请求「HTTP请求可以同时进行，但是JS的操作都是一步步的来的，因为JS是单线程」,等待所有请求都成功，我们再去做什么事情?
 ```js
