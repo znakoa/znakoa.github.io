@@ -428,7 +428,8 @@ console.log(arr);
 
 ## 10 请实现 DOM2JSON 一个函数，可以把一个 DOM 节点输出 JSON 的格式
 
-`<div>
+```html
+<div>
   <span>
     <a></a>
     </span>
@@ -437,9 +438,11 @@ console.log(arr);
     <a></a>
     </span>
     </div>
+```
 
   把上面dom结构转成下面的JSON格式
 
+```json
   {
     tag: 'DIV',
       children: [
@@ -457,7 +460,8 @@ console.log(arr);
         ]
       }
     ]
-  }`
+  }
+```
 
 实现代码如下:
 ```js
