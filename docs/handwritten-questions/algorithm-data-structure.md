@@ -7,11 +7,11 @@ title: "算法数据结构"
 
 链表结构
 
-![链表结构](/img/849d5550c7f9720d.png)
+![链表结构](./img/849d5550c7f9720d.png)
 
 看图理解next层级
 
-![链表结构](/img/c634936bf1ffee06.png)
+![链表结构](./img/c634936bf1ffee06.png)
 
 ```js
 // 链表 从头尾删除、增加 性能比较好
@@ -315,9 +315,9 @@ class BST {
   }
 }
 ```
-![链表结构](/img/fc61065b2fb36d9c.png)
+![链表结构](./img/fc61065b2fb36d9c.png)
 
-![链表结构](/img/d28e693ef5b13fdf.png)
+![链表结构](./img/d28e693ef5b13fdf.png)
 
 
 ```js
