@@ -10,6 +10,7 @@
   position: relative;
   background: linear-gradient(135deg, #a8e6cf 0%, #88d8c0 50%, #b8e6b8 100%);
   overflow: hidden;
+  padding: 2rem 0;
 }
 
 .heroBackground {
@@ -54,10 +55,15 @@
   min-height: 80vh;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .heroText {
   animation: fadeIn 0.8s ease-out;
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .heroBadge {
@@ -115,6 +121,8 @@
   font-family: var(--modern-font-primary);
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .heroButtons {
@@ -217,7 +225,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 350px;
+  width: 100%;
+  overflow: visible;
 }
 
 .visualContainer {
@@ -227,22 +236,48 @@
   margin: 0 auto;
 }
 
+.codeWindowWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  overflow: visible;
+}
+
 .codeWindow {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(20px);
   overflow: hidden;
-  animation: scaleIn 0.6s ease-out;
+  animation: codeWindowFadeIn 0.8s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.codeWindow:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 24px 72px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
 
 .codeHeader {
   display: flex;
   align-items: center;
   padding: 1rem 1.5rem;
-  background: rgba(248, 250, 252, 0.9);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.3);
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.95) 100%);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.4);
+  backdrop-filter: blur(10px);
 }
 
 .codeDots {
@@ -277,15 +312,18 @@
 
 .codeContent {
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   font-family: var(--modern-font-mono);
   font-size: 0.875rem;
-  line-height: 1.6;
+  line-height: 1.8;
+  min-height: 280px;
 }
 
 .codeLine {
   display: flex;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: codeLineFadeIn 0.5s ease-out forwards;
 }
 
 .lineNumber {
@@ -701,6 +739,99 @@
   }
 }
 
+@keyframes codeWindowFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes codeLineFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 悬浮技术栈气泡 */
+.techBubble {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+  backdrop-filter: blur(15px);
+  animation: techBubbleFloat 3s ease-in-out infinite;
+  animation-delay: var(--delay);
+  z-index: 1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 80px;
+  pointer-events: auto;
+}
+
+.techBubble:hover {
+  transform: translateY(-8px) scale(1.1);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.18),
+    0 0 0 2px rgba(255, 255, 255, 0.5) inset;
+  z-index: 3;
+}
+
+.techBubbleIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.techBubble:hover .techBubbleIcon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.techBubbleName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #1e293b;
+  font-family: var(--modern-font-primary);
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+@keyframes techBubbleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
 /* 特性展示区域 */
 .featuresSection {
   padding: 6rem 0;
@@ -1007,12 +1138,24 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* 响应式设计 */
+/* 响应式设计 - 平板和中等屏幕 */
 @media screen and (max-width: 996px) {
+  .modernHero {
+    padding: 1.5rem 0;
+    min-height: auto;
+  }
+
+  .modernHero .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .heroContent {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
     text-align: center;
+    min-height: auto;
+    padding: 1rem 0;
   }
   
   .titleMain {
@@ -1022,13 +1165,21 @@
   .titleSub {
     font-size: 1.2rem;
   }
+
+  .heroSubtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
   
   .heroButtons {
     justify-content: center;
+    margin-bottom: 2rem;
   }
   
   .heroStats {
     justify-content: center;
+    gap: 1.5rem;
   }
   
   .sectionTitle {
@@ -1064,106 +1215,152 @@
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 
-  .techSphere {
-    width: 300px;
-    height: 300px;
+  .heroVisual {
+    min-height: auto;
+    padding: 1rem 0;
   }
 
-  .sphereCenter {
-    width: 100px;
-    height: 100px;
+  .visualContainer {
+    max-width: 100%;
+    padding: 0 1rem;
   }
 
-  .centerIcon {
-    font-size: 2rem;
+  .codeWindowWrapper {
+    padding: 2rem 0;
   }
 
-  .centerText {
-    font-size: 0.65rem;
+  .techBubble {
+    min-width: 70px;
+    padding: 0.625rem;
   }
 
-  .techCard {
-    width: 70px;
-    height: 70px;
-    margin-left: -35px;
-    margin-top: -35px;
+  .techBubble[style*="left: '-10%'"],
+  .techBubble[style*="left: '-8%'"],
+  .techBubble[style*="left: '-6%'"],
+  .techBubble[style*="left: '-5%'"] {
+    left: -2% !important;
   }
 
-  .techShowcase {
-    padding: 1.5rem 1.25rem;
+  .techBubble[style*="right: '-12%'"],
+  .techBubble[style*="right: '-8%'"],
+  .techBubble[style*="right: '-7%'"],
+  .techBubble[style*="right: '-5%'"] {
+    right: -2% !important;
   }
 
-  .techHeader {
-    margin-bottom: 1.25rem;
+  .techBubbleIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
   }
 
-  .techHeaderIcon {
-    font-size: 1.75rem;
-  }
-
-  .techHeaderTitle {
-    font-size: 1.35rem;
-  }
-
-  .techHeaderSubtitle {
-    font-size: 0.8rem;
-  }
-
-  .techGrid {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1rem;
-  }
-
-  .techItem {
-    padding: 0.875rem 0.5rem;
-  }
-
-  .techItemIcon {
-    width: 44px;
-    height: 44px;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .techItemName {
+  .techBubbleName {
     font-size: 0.7rem;
+  }
+
+  .codeWindow {
+    border-radius: 12px;
+  }
+
+  .codeHeader {
+    padding: 0.875rem 1.25rem;
+  }
+
+  .codeContent {
+    padding: 1.25rem;
+    font-size: 0.8rem;
+    min-height: 240px;
+  }
+
+  .codeLine {
+    margin-bottom: 0.4rem;
   }
 }
 
+/* 响应式设计 - 移动端 */
 @media screen and (max-width: 768px) {
   .modernHero {
-    min-height: 80vh;
+    min-height: auto;
+    padding: 1rem 0;
+  }
+
+  .modernHero .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .heroContent {
+    gap: 2rem;
+    padding: 0.5rem 0;
   }
   
   .titleMain {
     font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    padding: 0;
   }
   
   .titleSub {
     font-size: 1rem;
+    padding: 0;
+  }
+
+  .heroSubtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    padding: 0;
+    line-height: 1.5;
   }
   
   .heroButtons {
     flex-direction: column;
     align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    padding: 0;
   }
   
   .primaryButton,
   .secondaryButton {
-    width: 200px;
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
   }
   
   .heroStats {
-    flex-direction: column;
-    gap: 1rem;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .statItem {
+    flex: 1;
+    min-width: 80px;
   }
   
   .statDivider {
     display: none;
   }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .statLabel {
+    font-size: 0.75rem;
+  }
   
   .sectionTitle {
     font-size: 1.8rem;
+    padding: 0 1rem;
   }
   
   .featureIcon {
@@ -1173,57 +1370,253 @@
   .featureTitle {
     font-size: 1.25rem;
   }
-  
-  .statNumber {
-    font-size: 2.5rem;
-  }
 
   .heroVisual {
-    min-height: 300px;
+    min-height: auto;
+    padding: 0.5rem 0;
   }
 
-  .techShowcase {
-    padding: 1.25rem 1rem;
-    border-radius: 16px;
+  .visualContainer {
+    padding: 0 0.75rem;
   }
 
-  .techHeader {
-    margin-bottom: 1rem;
+  .codeWindowWrapper {
+    padding: 1.5rem 0;
   }
 
-  .techHeaderIcon {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
+  .techBubble {
+    min-width: 60px;
+    padding: 0.5rem;
+    border-radius: 12px;
   }
 
-  .techHeaderTitle {
+  .techBubble[style*="left: '-10%'"],
+  .techBubble[style*="left: '-8%'"],
+  .techBubble[style*="left: '-6%'"],
+  .techBubble[style*="left: '-5%'"] {
+    left: -1% !important;
+  }
+
+  .techBubble[style*="right: '-12%'"],
+  .techBubble[style*="right: '-8%'"],
+  .techBubble[style*="right: '-7%'"],
+  .techBubble[style*="right: '-5%'"] {
+    right: -1% !important;
+  }
+
+  .techBubbleIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+    border-radius: 10px;
+  }
+
+  .techBubbleName {
+    font-size: 0.65rem;
+  }
+
+  .codeWindow {
+    border-radius: 12px;
+  }
+
+  .codeHeader {
+    padding: 0.75rem 1rem;
+  }
+
+  .codeDots {
+    gap: 0.4rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .codeTitle {
+    font-size: 0.8rem;
+  }
+
+  .codeContent {
+    padding: 1rem;
+    font-size: 0.75rem;
+    min-height: 200px;
+    line-height: 1.6;
+  }
+
+  .codeLine {
+    margin-bottom: 0.35rem;
+  }
+
+  .lineNumber {
+    font-size: 0.7rem;
+    margin-right: 0.75rem;
+    min-width: 18px;
+  }
+}
+
+/* 响应式设计 - 超小屏幕 */
+@media screen and (max-width: 480px) {
+  .modernHero {
+    padding: 0.75rem 0;
+  }
+
+  .modernHero .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .heroContent {
+    gap: 1.5rem;
+    padding: 0.25rem 0;
+  }
+  
+  .titleMain {
+    font-size: 1.75rem;
+    padding: 0;
+  }
+  
+  .titleSub {
+    font-size: 0.9rem;
+    padding: 0;
+  }
+
+  .heroSubtitle {
+    font-size: 0.875rem;
+    padding: 0;
+    margin-bottom: 1.25rem;
+  }
+  
+  .heroButtons {
+    padding: 0;
+    gap: 0.625rem;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    max-width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .heroStats {
+    padding: 0;
+    gap: 0.5rem;
+  }
+
+  .statItem {
+    min-width: 70px;
+  }
+
+  .statNumber {
     font-size: 1.25rem;
   }
 
-  .techHeaderSubtitle {
+  .statLabel {
+    font-size: 0.7rem;
+  }
+
+  .heroVisual {
+    padding: 0.25rem 0;
+  }
+
+  .visualContainer {
+    padding: 0 0.5rem;
+  }
+
+  .codeWindowWrapper {
+    padding: 1rem 0;
+  }
+
+  .techBubble {
+    min-width: 50px;
+    padding: 0.4rem;
+    border-radius: 10px;
+  }
+
+  /* 移动端调整气泡位置，避免溢出 */
+  .techBubble[style*="left: '-10%'"],
+  .techBubble[style*="left: '-8%'"],
+  .techBubble[style*="left: '-6%'"],
+  .techBubble[style*="left: '-5%'"] {
+    left: 0% !important;
+  }
+
+  .techBubble[style*="right: '-12%'"],
+  .techBubble[style*="right: '-8%'"],
+  .techBubble[style*="right: '-7%'"],
+  .techBubble[style*="right: '-5%'"] {
+    right: 0% !important;
+  }
+
+  /* 隐藏部分气泡以节省空间 */
+  .techBubble:nth-child(3),
+  .techBubble:nth-child(7) {
+    display: none;
+  }
+
+  .techBubbleIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+    border-radius: 8px;
+  }
+
+  .techBubbleName {
+    font-size: 0.6rem;
+  }
+
+  .codeWindow {
+    border-radius: 10px;
+  }
+
+  .codeHeader {
+    padding: 0.625rem 0.875rem;
+  }
+
+  .codeDots {
+    gap: 0.35rem;
+    margin-right: 0.75rem;
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .codeTitle {
     font-size: 0.75rem;
   }
 
-  .techGrid {
-    grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
-    gap: 0.75rem;
+  .codeActions {
+    gap: 0.4rem;
   }
 
-  .techItem {
-    padding: 0.75rem 0.5rem;
-    border-radius: 10px;
+  .actionIcon {
+    font-size: 0.75rem;
   }
 
-  .techItemIcon {
+  .codeContent {
+    padding: 0.875rem;
+    font-size: 0.7rem;
+    min-height: 180px;
+    line-height: 1.5;
+  }
+
+  .codeLine {
+    margin-bottom: 0.3rem;
+  }
+
+  .lineNumber {
+    font-size: 0.65rem;
+    margin-right: 0.625rem;
+    min-width: 16px;
+  }
+
+  .floatingCircle {
     width: 40px;
     height: 40px;
-    font-size: 1rem;
-    border-radius: 10px;
-    margin-bottom: 0.5rem;
-  }
-
-  .techItemName {
-    font-size: 0.65rem;
   }
 }
 

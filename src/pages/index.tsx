@@ -71,141 +71,93 @@ function ModernHero() {
           
           <div className={styles.heroVisual}>
             <div className={styles.visualContainer}>
-              <div className={styles.techShowcase}>
-                <div className={styles.techShowcaseBg}></div>
-                <div className={styles.techShowcasePattern}></div>
-                
-                <div className={styles.techHeader}>
-                  <div className={styles.techHeaderBadge}>
-                    <div className={styles.techHeaderIcon}>🚀</div>
-                    <div className={styles.techHeaderGlow}></div>
-                  </div>
-                  <h3 className={styles.techHeaderTitle}>
-                    <span className={styles.titleText}>技术栈</span>
-                    <span className={styles.titleUnderline}></span>
-                  </h3>
-                  <p className={styles.techHeaderSubtitle}>我的开发工具与技能</p>
-                </div>
-                
-                <div className={styles.techGrid}>
-                  <div className={styles.techItem} style={{'--delay': '0.1s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #f7df1e 0%, #f0db4f 100%)'}}>
-                      <span>JS</span>
-                      <div className={styles.iconShine}></div>
+              <div className={styles.codeWindowWrapper}>
+                <div className={styles.codeWindow}>
+                  <div className={styles.codeHeader}>
+                    <div className={styles.codeDots}>
+                      <div className={styles.dot} style={{background: '#ff5f56'}}></div>
+                      <div className={styles.dot} style={{background: '#ffbd2e'}}></div>
+                      <div className={styles.dot} style={{background: '#27c93f'}}></div>
                     </div>
-                    <div className={styles.techItemName}>JavaScript</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '0.2s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #3178c6 0%, #235a97 100%)'}}>
-                      <span>TS</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeTitle}>knowledge.js</div>
+                    <div className={styles.codeActions}>
+                      <span className={styles.actionIcon}>📁</span>
+                      <span className={styles.actionIcon}>⚙️</span>
                     </div>
-                    <div className={styles.techItemName}>TypeScript</div>
-                    <div className={styles.techItemBorder}></div>
                   </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '0.3s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #4fc08d 0%, #42b883 100%)'}}>
-                      <span>Vue</span>
-                      <div className={styles.iconShine}></div>
+                  <div className={styles.codeContent}>
+                    <div className={styles.codeLine} style={{animationDelay: '0.1s'}}>
+                      <span className={styles.lineNumber}>1</span>
+                      <span className={styles.codeText}>
+                        <span className={styles.keyword}>const</span> <span className={styles.property}>knowledge</span> = <span className={styles.bracket}>{'{'}</span>
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>Vue.js</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '0.4s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #61dafb 0%, #00d8ff 100%)'}}>
-                      <span>⚛️</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '0.2s'}}>
+                      <span className={styles.lineNumber}>2</span>
+                      <span className={styles.codeText}>
+                        &nbsp;&nbsp;<span className={styles.property}>name</span>: <span className={styles.string}>'个人知识库'</span>,
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>React</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '0.5s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #339933 0%, #026e00 100%)'}}>
-                      <span>Node</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '0.3s'}}>
+                      <span className={styles.lineNumber}>3</span>
+                      <span className={styles.codeText}>
+                        &nbsp;&nbsp;<span className={styles.property}>topics</span>: <span className={styles.bracket}>[</span>
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>Node.js</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '0.6s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #f05032 0%, #ee5131 100%)'}}>
-                      <span>Git</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '0.4s'}}>
+                      <span className={styles.lineNumber}>4</span>
+                      <span className={styles.codeText}>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.string}>'JavaScript'</span>,
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>Git</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '0.7s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #646cff 0%, #535bf2 100%)'}}>
-                      <span>⚡</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '0.5s'}}>
+                      <span className={styles.lineNumber}>5</span>
+                      <span className={styles.codeText}>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.string}>'Git'</span>,
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>Vite</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '0.8s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #1572b6 0%, #33a9dc 100%)'}}>
-                      <span>CSS</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '0.6s'}}>
+                      <span className={styles.lineNumber}>6</span>
+                      <span className={styles.codeText}>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.string}>'前端开发'</span>
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>CSS3</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '0.9s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #e34f26 0%, #f06529 100%)'}}>
-                      <span>HTML</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '0.7s'}}>
+                      <span className={styles.lineNumber}>7</span>
+                      <span className={styles.codeText}>
+                        &nbsp;&nbsp;<span className={styles.bracket}>]</span>,
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>HTML5</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '1.0s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #f0db4f 0%, #323330 100%)'}}>
-                      <span>ES6</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '0.8s'}}>
+                      <span className={styles.lineNumber}>8</span>
+                      <span className={styles.codeText}>
+                        &nbsp;&nbsp;<span className={styles.property}>learning</span>: <span className={styles.function}>()</span> => <span className={styles.bracket}>{'{'}</span>
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>ES6+</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '1.1s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)'}}>
-                      <span>TW</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '0.9s'}}>
+                      <span className={styles.lineNumber}>9</span>
+                      <span className={styles.codeText}>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span className={styles.keyword}>return</span> <span className={styles.string}>'持续学习中...'</span>;
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>Tailwind</div>
-                    <div className={styles.techItemBorder}></div>
-                  </div>
-                  
-                  <div className={styles.techItem} style={{'--delay': '1.2s'} as React.CSSProperties}>
-                    <div className={styles.techItemGlow}></div>
-                    <div className={styles.techItemIcon} style={{background: 'linear-gradient(135deg, #8dd6f9 0%, #1c78c0 100%)'}}>
-                      <span>WP</span>
-                      <div className={styles.iconShine}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '1.0s'}}>
+                      <span className={styles.lineNumber}>10</span>
+                      <span className={styles.codeText}>
+                        &nbsp;&nbsp;<span className={styles.bracket}>{'}'}</span>
+                      </span>
                     </div>
-                    <div className={styles.techItemName}>Webpack</div>
-                    <div className={styles.techItemBorder}></div>
+                    <div className={styles.codeLine} style={{animationDelay: '1.1s'}}>
+                      <span className={styles.lineNumber}>11</span>
+                      <span className={styles.codeText}>
+                        <span className={styles.bracket}>{'}'}</span>;
+                      </span>
+                    </div>
+                    <div className={styles.codeLine} style={{animationDelay: '1.2s'}}>
+                      <span className={styles.lineNumber}>12</span>
+                      <span className={styles.codeText}>
+                        <span className={styles.comment}>// 探索更多精彩内容 →</span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
