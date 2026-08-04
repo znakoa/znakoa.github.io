@@ -131,7 +131,7 @@ function ModernHero() {
                     <div className={styles.codeLine} style={{animationDelay: '0.8s'}}>
                       <span className={styles.lineNumber}>8</span>
                       <span className={styles.codeText}>
-                        &nbsp;&nbsp;<span className={styles.property}>learning</span>: <span className={styles.function}>()</span> => <span className={styles.bracket}>{'{'}</span>
+                        &nbsp;&nbsp;<span className={styles.property}>learning</span>: <span className={styles.function}>()</span> =&gt; <span className={styles.bracket}>{'{'}</span>
                       </span>
                     </div>
                     <div className={styles.codeLine} style={{animationDelay: '0.9s'}}>

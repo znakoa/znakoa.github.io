@@ -7,7 +7,7 @@ tags: [notes]
 
 使用 Docusaurus 搭建个人博客网站
 
-<!--truncate-->
+{/* truncate */}
 
 # Docusaurus 介绍
 

@@ -24,7 +24,7 @@ npm install docxtemplater pizzip jszip-utils file-saver
 yarn add docxtemplater pizzip jszip-utils file-saver
 ```
 
-:::note 版本信息
+:::note[版本信息]
 
 * `pizzip`：^3.2.0
 * `jszip-utils`：^0.1.0
