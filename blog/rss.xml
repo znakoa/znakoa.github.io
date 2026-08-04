@@ -9,18 +9,20 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
         <item>
-            <title><![CDATA[日常随记：博客仓库同步到本地]]></title>
+            <title><![CDATA[日常随记：博客同步与 Docusaurus 升级]]></title>
             <link>https://your-docusaurus-site.example.com/blog/daily-2026-08-04</link>
             <guid>https://your-docusaurus-site.example.com/blog/daily-2026-08-04</guid>
             <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
-            <description><![CDATA[今天把博客仓库同步到了本地，方便后续继续维护知识库和日常随记。]]></description>
-            <content:encoded><![CDATA[<p>今天把博客仓库同步到了本地，方便后续继续维护知识库和日常随记。</p>
+            <description><![CDATA[今天把博客仓库同步到了本地，并把 Docusaurus 升级到了最新稳定版，方便后续继续维护知识库和日常随记。]]></description>
+            <content:encoded><![CDATA[<p>今天把博客仓库同步到了本地，并把 Docusaurus 升级到了最新稳定版，方便后续继续维护知识库和日常随记。</p>
 <!-- -->
 <h2 class="anchor anchorTargetStickyNavbar_gGf8" id="今天做的事">今天做的事<a href="https://your-docusaurus-site.example.com/blog/daily-2026-08-04#%E4%BB%8A%E5%A4%A9%E5%81%9A%E7%9A%84%E4%BA%8B" class="hash-link" aria-label="今天做的事的直接链接" title="今天做的事的直接链接" translate="no">​</a></h2>
 <ul>
 <li class="">将 <a href="https://github.com/znakoa/znakoa.github.io" target="_blank" rel="noopener noreferrer" class="">znakoa/znakoa.github.io</a> 克隆到了本地 <code>E:\private\znakoa.github.io</code></li>
-<li class="">同步了最新的 <code>main</code> 分支代码，当前提交为 <code>b613f46</code></li>
-<li class="">查看了 <code>blog</code> 和 <code>docs</code> 的现有结构，准备继续补充和整理内容</li>
+<li class="">将 Docusaurus 从 <code>3.9.2</code> 升级到 <code>3.10.2</code>，启用 Docusaurus Faster 新特性</li>
+<li class="">新增 <code>@docusaurus/faster</code> 依赖，并将本地搜索插件升级到 <code>0.55.3</code></li>
+<li class="">适配新版严格 MDX 语法，保证博客和文档内容兼容</li>
+<li class="">使用 Node 22 和 pnpm 9 完成依赖安装，<code>tsc</code> 与生产构建均通过</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_gGf8" id="下一步">下一步<a href="https://your-docusaurus-site.example.com/blog/daily-2026-08-04#%E4%B8%8B%E4%B8%80%E6%AD%A5" class="hash-link" aria-label="下一步的直接链接" title="下一步的直接链接" translate="no">​</a></h2>
 <p>继续更新知识库内容，并保持日常随记的持续更新。</p>]]></content:encoded>
