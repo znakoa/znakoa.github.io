@@ -11,17 +11,17 @@ jobs:
     steps:
       # 拉取代码
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # 安装 pnpm
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: npm install -g pnpm@9
 
       # 设置 Node.js 和 pnpm 缓存（可选）
       - name: Setup Node.js and pnpm cache
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'  # 指定 Node.js 版本
+          node-version: '22'  # 指定 Node.js 版本
           cache: 'pnpm'        # 启用 pnpm 缓存
 
       # 安装依赖并构建
