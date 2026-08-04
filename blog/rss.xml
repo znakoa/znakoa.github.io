@@ -4,10 +4,28 @@
         <title>苏木 Blog</title>
         <link>https://your-docusaurus-site.example.com/blog</link>
         <description>苏木 Blog</description>
-        <lastBuildDate>Tue, 28 Oct 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 04 Aug 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
+        <item>
+            <title><![CDATA[日常随记：博客仓库同步到本地]]></title>
+            <link>https://your-docusaurus-site.example.com/blog/daily-2026-08-04</link>
+            <guid>https://your-docusaurus-site.example.com/blog/daily-2026-08-04</guid>
+            <pubDate>Tue, 04 Aug 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[今天把博客仓库同步到了本地，方便后续继续维护知识库和日常随记。]]></description>
+            <content:encoded><![CDATA[<p>今天把博客仓库同步到了本地，方便后续继续维护知识库和日常随记。</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vl44" id="今天做的事">今天做的事<a href="https://your-docusaurus-site.example.com/blog/daily-2026-08-04#%E4%BB%8A%E5%A4%A9%E5%81%9A%E7%9A%84%E4%BA%8B" class="hash-link" aria-label="今天做的事的直接链接" title="今天做的事的直接链接" translate="no">​</a></h2>
+<ul>
+<li class="">将 <a href="https://github.com/znakoa/znakoa.github.io" target="_blank" rel="noopener noreferrer" class="">znakoa/znakoa.github.io</a> 克隆到了本地 <code>E:\private\znakoa.github.io</code></li>
+<li class="">同步了最新的 <code>main</code> 分支代码，当前提交为 <code>b613f46</code></li>
+<li class="">查看了 <code>blog</code> 和 <code>docs</code> 的现有结构，准备继续补充和整理内容</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vl44" id="下一步">下一步<a href="https://your-docusaurus-site.example.com/blog/daily-2026-08-04#%E4%B8%8B%E4%B8%80%E6%AD%A5" class="hash-link" aria-label="下一步的直接链接" title="下一步的直接链接" translate="no">​</a></h2>
+<p>继续更新知识库内容，并保持日常随记的持续更新。</p>]]></content:encoded>
+            <category>随记</category>
+            <category>日志</category>
+        </item>
         <item>
             <title><![CDATA[更新日记]]></title>
             <link>https://your-docusaurus-site.example.com/blog/update</link>
@@ -15,15 +33,15 @@
             <pubDate>Tue, 28 Oct 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[网站全面现代化改造 - 透明玻璃风格设计]]></description>
             <content:encoded><![CDATA[<p>网站全面现代化改造 - 透明玻璃风格设计</p>
-<h2 class="anchor anchorTargetStickyNavbar_OS_M" id="-主要更新内容">✨ 主要更新内容<a href="https://your-docusaurus-site.example.com/blog/update#-%E4%B8%BB%E8%A6%81%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9" class="hash-link" aria-label="✨ 主要更新内容的直接链接" title="✨ 主要更新内容的直接链接" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_OS_M" id="1-整体风格统一">1. 整体风格统一<a href="https://your-docusaurus-site.example.com/blog/update#1-%E6%95%B4%E4%BD%93%E9%A3%8E%E6%A0%BC%E7%BB%9F%E4%B8%80" class="hash-link" aria-label="1. 整体风格统一的直接链接" title="1. 整体风格统一的直接链接" translate="no">​</a></h3>
+<h2 class="anchor anchorTargetStickyNavbar_Vl44" id="-主要更新内容">✨ 主要更新内容<a href="https://your-docusaurus-site.example.com/blog/update#-%E4%B8%BB%E8%A6%81%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9" class="hash-link" aria-label="✨ 主要更新内容的直接链接" title="✨ 主要更新内容的直接链接" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vl44" id="1-整体风格统一">1. 整体风格统一<a href="https://your-docusaurus-site.example.com/blog/update#1-%E6%95%B4%E4%BD%93%E9%A3%8E%E6%A0%BC%E7%BB%9F%E4%B8%80" class="hash-link" aria-label="1. 整体风格统一的直接链接" title="1. 整体风格统一的直接链接" translate="no">​</a></h3>
 <ul>
 <li class=""><strong>透明玻璃效果</strong>：所有组件都采用半透明背景 + 模糊效果</li>
 <li class=""><strong>现代色彩系统</strong>：使用清新的绿色系作为主色调</li>
 <li class=""><strong>背景融合</strong>：让背景图片在所有区域都清晰可见</li>
 <li class=""><strong>层次感设计</strong>：通过不同透明度创造丰富的视觉层次</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_OS_M" id="2-首页英雄区域重设计">2. 首页英雄区域重设计<a href="https://your-docusaurus-site.example.com/blog/update#2-%E9%A6%96%E9%A1%B5%E8%8B%B1%E9%9B%84%E5%8C%BA%E5%9F%9F%E9%87%8D%E8%AE%BE%E8%AE%A1" class="hash-link" aria-label="2. 首页英雄区域重设计的直接链接" title="2. 首页英雄区域重设计的直接链接" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vl44" id="2-首页英雄区域重设计">2. 首页英雄区域重设计<a href="https://your-docusaurus-site.example.com/blog/update#2-%E9%A6%96%E9%A1%B5%E8%8B%B1%E9%9B%84%E5%8C%BA%E5%9F%9F%E9%87%8D%E8%AE%BE%E8%AE%A1" class="hash-link" aria-label="2. 首页英雄区域重设计的直接链接" title="2. 首页英雄区域重设计的直接链接" translate="no">​</a></h3>
 <ul>
 <li class=""><strong>动态背景元素</strong>：添加浮动圆圈动画效果</li>
 <li class=""><strong>现代化徽章</strong>：顶部"现代简约设计"徽章</li>
@@ -32,14 +50,14 @@
 <li class=""><strong>高级代码窗口</strong>：macOS风格的代码编辑器界面</li>
 <li class=""><strong>浮动技能卡片</strong>：前端开发、技术分享、持续学习</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_OS_M" id="3-组件透明化改造">3. 组件透明化改造<a href="https://your-docusaurus-site.example.com/blog/update#3-%E7%BB%84%E4%BB%B6%E9%80%8F%E6%98%8E%E5%8C%96%E6%94%B9%E9%80%A0" class="hash-link" aria-label="3. 组件透明化改造的直接链接" title="3. 组件透明化改造的直接链接" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vl44" id="3-组件透明化改造">3. 组件透明化改造<a href="https://your-docusaurus-site.example.com/blog/update#3-%E7%BB%84%E4%BB%B6%E9%80%8F%E6%98%8E%E5%8C%96%E6%94%B9%E9%80%A0" class="hash-link" aria-label="3. 组件透明化改造的直接链接" title="3. 组件透明化改造的直接链接" translate="no">​</a></h3>
 <ul>
 <li class=""><strong>特性展示卡片</strong>：透明玻璃效果，保持可读性</li>
 <li class=""><strong>项目展示卡片</strong>：半透明背景，突出内容</li>
 <li class=""><strong>统计卡片</strong>：统一透明风格，数据清晰展示</li>
 <li class=""><strong>按钮交互</strong>：玻璃拟态效果，增强现代感</li>
 </ul>
-<h3 class="anchor anchorTargetStickyNavbar_OS_M" id="4-响应式设计优化">4. 响应式设计优化<a href="https://your-docusaurus-site.example.com/blog/update#4-%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%8C%96" class="hash-link" aria-label="4. 响应式设计优化的直接链接" title="4. 响应式设计优化的直接链接" translate="no">​</a></h3>
+<h3 class="anchor anchorTargetStickyNavbar_Vl44" id="4-响应式设计优化">4. 响应式设计优化<a href="https://your-docusaurus-site.example.com/blog/update#4-%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1%E4%BC%98%E5%8C%96" class="hash-link" aria-label="4. 响应式设计优化的直接链接" title="4. 响应式设计优化的直接链接" translate="no">​</a></h3>
 <ul>
 <li class=""><strong>桌面端</strong>：双列布局，完整功能展示</li>
 <li class=""><strong>平板端</strong>：单列布局，保持间距</li>
