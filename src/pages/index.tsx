@@ -13,7 +13,7 @@ function ModernHero() {
   const {siteConfig} = useDocusaurusContext();
   
   return (
-    <section className={clsx('modern-hero', styles.modernHero)}>
+    <section className={styles.modernHero}>
       <div className={styles.heroBackground}>
         <div className={styles.floatingElements}>
           <div className={styles.floatingCircle} style={{top: '10%', left: '10%', animationDelay: '0s'}}></div>
@@ -26,6 +26,10 @@ function ModernHero() {
       <div className="container">
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
+            <div className={styles.heroKicker}>
+              <span className={styles.kickerDot}></span>
+              field catalog // 知识档案
+            </div>
             {/* <div className={styles.heroBadge}>
               <span className={styles.badgeIcon}>✨</span>
               <span className={styles.badgeText}>现代简约设计</span>
@@ -195,15 +199,16 @@ function ModernFeatures() {
   return (
     <section className={styles.featuresSection}>
       <div className="container">
+        <p className={styles.sectionIndex}>CARD.01 / docs</p>
         <h2 className={clsx(styles.sectionTitle)}>
-          探索我的世界
+          知识档案
         </h2>
         <div className={styles.featuresGrid}>
           {features.map((feature, index) => (
             <Link 
               key={index} 
               to={feature.link} 
-              className={clsx('modern-card', styles.featureCard)}
+              className={styles.featureCard}
               style={{animationDelay: `${index * 0.1}s`}}
             >
               <div className={styles.featureIcon}>{feature.icon}</div>
@@ -253,8 +258,9 @@ function ModernProjects() {
   return (
     <section className={styles.projectsSection}>
       <div className="container">
+        <p className={styles.sectionIndex}>CARD.02 / projects</p>
         <h2 className={clsx(styles.sectionTitle)}>
-          我的项目
+          项目卡片
         </h2>
         <div className={styles.projectsGrid}>
           {featuredProjects.map((project, index) => (
@@ -263,7 +269,7 @@ function ModernProjects() {
               href={project.link} 
               target="_blank" 
               rel="noopener noreferrer"
-              className={clsx('modern-card', styles.projectCard)}
+              className={styles.projectCard}
               style={{animationDelay: `${index * 0.1}s`}}
             >
               <div className={styles.projectHeader}>
@@ -300,7 +306,7 @@ function ModernProjects() {
         <div className={styles.projectsFooter}>
           <a 
             href="/" 
-            className={clsx('modern-button', styles.viewAllButton)}
+            className={styles.viewAllButton}
           >
             <span className={styles.buttonText}>查看更多项目</span>
             <span className={styles.buttonIcon}>→</span>
@@ -322,9 +328,10 @@ function ModernStats() {
   return (
     <section className={styles.statsSection}>
       <div className="container">
+        <p className={styles.sectionIndex}>CARD.03 / stats</p>
         <div className={styles.statsGrid}>
           {stats.map((stat, index) => (
-            <div key={index} className={clsx('modern-card', styles.statCard)}>
+            <div key={index} className={styles.statCard}>
               <div className={styles.statNumber}>
                 {stat.number}
               </div>
@@ -382,20 +389,10 @@ function ScrollToTop() {
       <div className={styles.scrollToTopGlow}></div>
       <div className={styles.scrollToTopRing}></div>
       <div className={styles.scrollToTopContent}>
-        <div className={styles.rocketContainer}>
-          <svg className={styles.scrollToTopIcon} width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-          </svg>
-          <div className={styles.rocketFlame}>
-            <div className={styles.flame1}></div>
-            <div className={styles.flame2}></div>
-            <div className={styles.flame3}></div>
-          </div>
-        </div>
-        <div className={styles.scrollToTopRipple}></div>
+        <svg className={styles.scrollToTopIcon} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 19V5"/>
+          <path d="m5 12 7-7 7 7"/>
+        </svg>
       </div>
     </button>
   );
@@ -408,8 +405,8 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={`${siteConfig.title} - ${siteConfig.tagline}`}
-      description="现代简约风格的个人知识库，包含JavaScript面试题、Git实战指南、前端技术文档等丰富内容">
-        <main className={styles.mianbg}>
+      description="彩签档案风格的个人知识库，包含JavaScript面试题、Git实战指南、前端技术文档等丰富内容">
+        <main className={styles.pageShell}>
             <ModernHero />
             <ModernFeatures />
             <ModernProjects />

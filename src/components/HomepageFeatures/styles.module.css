@@ -1,17 +1,18 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 4rem 0;
   width: 100%;
-  background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--catalog-line);
+  background: var(--catalog-paper);
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  width: 180px;
+  height: 180px;
   margin-bottom: 2rem;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 6px rgba(16, 26, 36, 0.08));
+  transition: transform 0.2s ease;
 }
 
 .featureSvg:hover {
@@ -19,55 +20,37 @@
 }
 
 .featureTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--modern-text-primary);
-  font-family: var(--modern-font-primary);
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--catalog-ink);
 }
 
 .featureDescription {
-  color: var(--modern-text-secondary);
-  line-height: 1.6;
-  font-family: var(--modern-font-primary);
   font-size: 1rem;
+  line-height: 1.7;
+  color: var(--catalog-ink-soft);
 }
 
-/* 响应式设计 */
-@media screen and (max-width: 996px) {
+@media (max-width: 996px) {
   .features {
     padding: 3rem 0;
   }
-  
+
   .featureSvg {
-    height: 150px;
     width: 150px;
-  }
-  
-  .featureTitle {
-    font-size: 1.25rem;
-  }
-  
-  .featureDescription {
-    font-size: 0.9rem;
+    height: 150px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .features {
     padding: 2rem 0;
   }
-  
+
   .featureSvg {
-    height: 120px;
     width: 120px;
-  }
-  
-  .featureTitle {
-    font-size: 1.125rem;
-  }
-  
-  .featureDescription {
-    font-size: 0.875rem;
+    height: 120px;
   }
 }
