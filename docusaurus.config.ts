@@ -118,6 +118,7 @@ const config: Config = {
                     position: 'left',
                 },
                 {to: '/blog', label: '日常随记', position: 'right', className: 'github-icon',},
+                {to: '/about', label: '关于作者', position: 'right', className: 'github-icon'},
 
                 {
                     href: 'https://github.com/znakoa',
@@ -153,6 +154,10 @@ const config: Config = {
                         {
                             label: 'GitHub',
                             href: 'https://github.com/znakoa',
+                        },
+                        {
+                            label: '关于作者',
+                            to: '/about',
                         },
                     ],
                 },

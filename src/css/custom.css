@@ -98,9 +98,17 @@ h5 {
   box-shadow: inset 0 -4px 0 var(--catalog-blue);
 }
 
+.navbar__item {
+  display: inline-flex;
+  align-items: center;
+}
+
 .navbar__link {
+  display: inline-flex;
+  align-items: center;
   color: var(--catalog-ink-soft);
   font-weight: 600;
+  line-height: 1;
 }
 
 .navbar__link:hover {
@@ -109,7 +117,6 @@ h5 {
 
 .navbar__link--active {
   color: var(--catalog-blue);
-  box-shadow: inset 0 -4px 0 var(--catalog-tangerine);
 }
 
 .navbar__brand {
@@ -308,6 +315,8 @@ h5 {
 /* Utility */
 .github-icon {
   height: 32px;
+  display: inline-flex;
+  align-items: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
