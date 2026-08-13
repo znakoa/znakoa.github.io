@@ -2,11 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://your-docusaurus-site.example.com/blog</id>
     <title>苏木 Blog</title>
-    <updated>2026-08-04T00:00:00.000Z</updated>
+    <updated>2026-08-13T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://your-docusaurus-site.example.com/blog"/>
     <subtitle>苏木 Blog</subtitle>
     <icon>https://your-docusaurus-site.example.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[更新随记：彩签档案主题上线]]></title>
+        <id>https://your-docusaurus-site.example.com/blog/theme-redesign-2026-08-13</id>
+        <link href="https://your-docusaurus-site.example.com/blog/theme-redesign-2026-08-13"/>
+        <updated>2026-08-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[今天把博客整体视觉重构为“彩签档案 / Field Catalog”风格，亮色、高饱和、有节奏。]]></summary>
+        <content type="html"><![CDATA[<p>今天把博客整体视觉重构为“彩签档案 / Field Catalog”风格，亮色、高饱和、有节奏。</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_gGf8" id="本次更新内容">本次更新内容<a href="https://your-docusaurus-site.example.com/blog/theme-redesign-2026-08-13#%E6%9C%AC%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9" class="hash-link" aria-label="本次更新内容的直接链接" title="本次更新内容的直接链接" translate="no">​</a></h2>
+<ul>
+<li class="">整体切换为多色分区：蓝色知识档案、橙色项目卡片、黄绿色数据标签</li>
+<li class="">首页使用硬边卡片、彩色标签和轻微旋转，形成更鲜明的编辑感</li>
+<li class="">导航、侧边栏、文档、博客卡片和页脚全部统一到新主题</li>
+<li class="">关闭暗色模式，站点保持亮色呈现</li>
+<li class=""><code>tsc</code> 与 <code>pnpm run build</code> 均通过验证</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_gGf8" id="下一步">下一步<a href="https://your-docusaurus-site.example.com/blog/theme-redesign-2026-08-13#%E4%B8%8B%E4%B8%80%E6%AD%A5" class="hash-link" aria-label="下一步的直接链接" title="下一步的直接链接" translate="no">​</a></h2>
+<p>继续打磨细节，并保持知识库和日常随记更新。</p>]]></content>
+        <author>
+            <name>znakoa</name>
+            <uri>https://github.com/znakoa</uri>
+        </author>
+        <category label="更新" term="更新"/>
+        <category label="日志" term="日志"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[日常随记：博客同步与 Docusaurus 升级]]></title>
         <id>https://your-docusaurus-site.example.com/blog/daily-2026-08-04</id>
