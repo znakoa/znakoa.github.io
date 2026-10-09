@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+sidebar_class_name: shelf-algo
 title: "算法数据结构"
 ---
 

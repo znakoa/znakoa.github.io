@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+sidebar_class_name: shelf-eng
 title: "工程化基础相关"
 ---
 
@@ -244,9 +245,11 @@ terserOptions: { compress: { drop_console: true } }
 - package-lock.json（npm）锁定依赖树、保证安装一致性。pnpm-lock.yaml / yarn.lock 同理。
 - 不应手动编辑，CI/CD 中应提交锁文件；在库项目中可有不同策略（应用必须提交，库可视发布策略）。
 示例检查命令
+```bash
 # 查看被锁定版本
 npm ci        # 保证使用 lockfile 安装，适合 CI
 npm audit     # 安全审计
+```
 面试话术：“锁文件保证环境可复现，CI 用 npm ci 强制严格安装。”
 
 ## 10 serverless

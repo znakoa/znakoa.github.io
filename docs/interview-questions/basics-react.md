@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+sidebar_class_name: shelf-react
 title: "react相关"
 ---
 
@@ -180,7 +181,7 @@ function TodoList({ items }) {
   );
 }
 ```
-## ## 8. React 的事件机制和合成事件是如何工作的？
+## 8. React 的事件机制和合成事件是如何工作的？
 
 解释：React 使用“合成事件”（`SyntheticEvent`）作为跨浏览器的事件封装层。`React` 在根节点上绑定少量真实 DOM 事件（事件委托），当事件发生时，React
 会构建合成事件对象并按组件树执行回调。合成事件的好处：统一跨浏览器行为、事件池（老版本）以复用对象、以及更简单的生命周期一致性（在某些场景下
@@ -196,7 +197,7 @@ function MyButton() {
 }
 ```
 
-## ## 9. 受控组件（`controlled`）和非受控组件（`uncontrolled`）有什么区别？
+## 9. 受控组件（`controlled`）和非受控组件（`uncontrolled`）有什么区别？
 
 解释：
 受控组件：表单元素的值由 `React` `state` 完全控制`（value + onChange）`。好处：单一真相、便于验证、条件禁用、联动等。
@@ -222,7 +223,7 @@ function Uncontrolled() {
 }
 ```
 
-## ## 10. 为什么在 React 中“组合优于继承”？
+## 10. 为什么在 React 中“组合优于继承”？
 
 解释：组合（`composition`）更灵活、可组合、符合函数式思想；通过把小组件组合起来可以构建复杂功能，而继承往往造成紧耦合、难以复用、难以理解的类层级。React 的 `props / children / render-props / hooks` 都是组合的体现。官方建议使用组合来复用组件逻辑（而不是继承）。
 代码 demo（组合示例）：
@@ -241,7 +242,7 @@ function App() {
 }
 ```
 
-## ## 11. `React` 的严格模式（`StrictMode`）有什么作用？
+## 11. `React` 的严格模式（`StrictMode`）有什么作用？
 
 解释：`<StrictMode>` 在开发模式下启用额外检查与警告（并不影响生产构建），如：
 检查过时的生命周期方法；
@@ -257,7 +258,7 @@ ReactDOM.createRoot(root).render(
 );
 ```
 
-## ## 12. `useState` 的更新是异步的吗？
+## 12. `useState` 的更新是异步的吗？
 
 解释：在 `React` 中调用 `setState`（或 `setX`）不会立即更新当前渲染中的变量——它会安排一次重新渲染，更新会在随后渲染周期反映出来。并且 React 会对同一事件循环中的多个更新进行批处理（React 18+ 的自动批处理扩展了批处理的情形）。因此从调用 setState 到 DOM 更新是异步的（对当前渲染而言）；但如果你在同一个渲染里多次调用 setState，React 可能会合并这些更新（尤其在使用函数式更新时行为确定）。
 代码 demo（说明）：

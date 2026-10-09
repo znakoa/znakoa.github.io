@@ -1,5 +1,6 @@
 ---
 sidebar_position: 5
+sidebar_class_name: shelf-eng
 title: "如何命名更规范class"
 ---
 

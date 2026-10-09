@@ -1,5 +1,6 @@
 ---
-sidebar_position: 5
+sidebar_position: 7
+sidebar_class_name: shelf-note
 title: "相关资料"
 ---
 

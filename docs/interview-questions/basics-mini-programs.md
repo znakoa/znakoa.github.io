@@ -1,5 +1,6 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
+sidebar_class_name: shelf-mini
 title: "小程序基础相关"
 ---
 

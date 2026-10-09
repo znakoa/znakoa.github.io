@@ -1,6 +1,7 @@
 {
   "label": "手写题",
   "position": 2,
+  "className": "shelf-algo",
   "link": {
     "type": "generated-index",
     "description": "场景题，算法"

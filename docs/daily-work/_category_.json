@@ -1,6 +1,7 @@
 {
   "label": "工作日常记录",
   "position": 4,
+  "className": "shelf-mini",
   "link": {
     "type": "generated-index"
   }

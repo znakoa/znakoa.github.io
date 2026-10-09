@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+sidebar_class_name: shelf-mini
 title: "uniapp 安卓语音播报"
 ---
 

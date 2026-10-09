@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+sidebar_class_name: shelf-vue
 title: "vue相关"
 ---
 
@@ -633,7 +634,7 @@ Proxy 性能更优，允许更简洁的实现，且代码更平台友好（更�
       // watchEffect
       watchEffect(()=> { console.log(state.count) })
 ```
-32. 如何理解 `reactive`、`ref`、`toRef `和 `toRefs`？
+## 32. 如何理解 `reactive`、`ref`、`toRef `和 `toRefs`？
 要点：
 `ref(value)`：创建一个响应式的引用对象，包含 .value。用于基本类型或需要单独引用的值。
 `reactive(obj)`：将对象变为响应式代理（Proxy），直接使用对象属性，不需要 .value。
