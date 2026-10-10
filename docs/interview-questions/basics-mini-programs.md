@@ -16,18 +16,19 @@ title: "小程序基础相关"
    简短图示（文字）
    用户操作 → 微信容器 → 视图层渲染 + 逻辑层 JS 处理 → 通过异步消息桥修改视图（setData）或调用原生 API（支付、定位等）
   <details>
-  <summary>代码演示（最小运行示例）：</summary>
- 项目结构：
+<summary>代码演示（最小运行示例）</summary>
 
-  ```
- /minapp-demo
-  /pages/index/index.wxml
-  /pages/index/index.js
-  /app.json
-  /app.js
-  /app.wxss
-  
-  ```
+项目结构：
+
+```text
+/minapp-demo
+/pages/index/index.wxml
+/pages/index/index.js
+/app.json
+/app.js
+/app.wxss
+```
+
 `app.json`
 
 ```json
@@ -38,6 +39,7 @@ title: "小程序基础相关"
   }
 }
 ```
+
 `app.js`
 
 ```javascript
@@ -48,6 +50,7 @@ App({
   }
 });
 ```
+
 `pages/index/index.wxml`
 
 ```wxml
@@ -55,8 +58,8 @@ App({
   <text>{{msg}}</text>
   <button bindtap="onTap">点击改变数据</button>
 </view>
-
 ```
+
 `pages/index/index.js`
 
 ```javascript
@@ -68,6 +71,7 @@ Page({
   }
 });
 ```
+
 `app.wxss`
 
 ```wxss
