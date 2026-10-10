@@ -1,0 +1,315 @@
+<!doctype html><html lang=zh-CN dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-handbooks/browser-core" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.2"><title data-rh=true>浏览器核心原理与高频面试深度知识手册 | 苏木</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:image content=https://blog.nakoa.cc/img/docusaurus-social-card.jpg /><meta data-rh=true name=twitter:image content=https://blog.nakoa.cc/img/docusaurus-social-card.jpg /><meta data-rh=true property=og:url content=https://blog.nakoa.cc/docs/handbooks/browser-core /><meta data-rh=true property=og:locale content=zh_CN /><meta data-rh=true name=docusaurus_locale content=zh-CN /><meta data-rh=true name=docsearch:language content=zh-CN /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="浏览器核心原理与高频面试深度知识手册 | 苏木"/><meta data-rh=true name=description content="一、 浏览器客户端存储方案与安全性"/><meta data-rh=true property=og:description content="一、 浏览器客户端存储方案与安全性"/><link data-rh=true rel=icon href=/img/favicon.ico /><link data-rh=true rel=canonical href=https://blog.nakoa.cc/docs/handbooks/browser-core /><link data-rh=true rel=alternate href=https://blog.nakoa.cc/docs/handbooks/browser-core hreflang=zh-CN /><link data-rh=true rel=alternate href=https://blog.nakoa.cc/docs/handbooks/browser-core hreflang=x-default /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.nakoa.cc/docs/category/专题手册","name":"专题手册","position":1},{"@type":"ListItem","item":"https://blog.nakoa.cc/docs/handbooks/browser-core","name":"浏览器核心原理与高频面试深度知识手册","position":2}]}</script><link rel=alternate type=application/rss+xml href=/blog/rss.xml title="苏木 RSS Feed"><link rel=alternate type=application/atom+xml href=/blog/atom.xml title="苏木 Atom Feed"><link rel=stylesheet href=/assets/css/styles.6f36f507.css /><script src=/assets/js/runtime~main.56542eb4.js defer></script><script src=/assets/js/main.c6673c6a.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-cad")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><div role=region aria-label=跳到主要内容><a class=skipToContent_xadr href=#__docusaurus_skipToContent_fallback>跳到主要内容</a></div><nav aria-label=主导航 class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label=切换导航栏 aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/><b class="navbar__title text--truncate">苏木</b></a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/docs/gitorder>知识库</a><div class=navbarSearchContainer_sWSW><div class="navbar__search searchBarContainer_Kf5D" dir=ltr><svg aria-hidden=true class=searchIcon_xD7Z focusable=false viewBox="0 0 16 16"><path fill=currentColor d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"/></svg><input placeholder=搜索 aria-label=Search class="navbar__search-input searchInput_fMQq" value="" /><div class="loadingRing_cTsS searchBarLoadingRing_fPL7"><div></div><div></div><div></div><div></div></div></div></div></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link" href=/blog>日常随记</a><a class="navbar__item navbar__link" href=/about>关于作者</a><a href=https://github.com/znakoa target=_blank rel="noopener noreferrer" class="navbar__item navbar__link github-icon" aria-label=GitHub><svg t=1761705188126 class=icon viewBox="0 0 1024 1024" version=1.1 xmlns=http://www.w3.org/2000/svg p-id=5445 width=22 height=22><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9 23.5 23.2 38.1 55.4 38.1 91v112.5c0.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z" fill=currentColor p-id=5446 /></svg></a><div class="toggle_KjIq colorModeToggle_VV0_"><button class="clean-btn toggleButton_MEjQ toggleButtonDisabled_DaL6" type=button disabled title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_HOFM lightToggleIcon_jF0m"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_HOFM darkToggleIcon_zT_R"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_HOFM systemToggleIcon_D4Zp"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_2SuR"><div class=docsWrapper_U2JC><button aria-label=回到顶部 class="clean-btn theme-back-to-top-button backToTopButton_FrzO" type=button></button><div class=docRoot_Eiac><aside class="theme-doc-sidebar-container docSidebarContainer_igFi"><div class=sidebarViewport_ZbVA><div class=sidebar_uTvn><nav aria-label=文档侧边栏 class="menu thin-scrollbar menu_VEjO"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item shelf-eng"><a class=menu__link href=/docs/gitorder><span class=linkLabel_Blah>git常见实战命令</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item shelf-eng"><a class=menu__link href=/docs/export-word><span class=linkLabel_Blah>前端导出 Word 文件</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed shelf-algo"><div class=menu__list-item-collapsible><a class="categoryLink_N3aA menu__link menu__link--sublist" href=/docs/category/手写题><span class=categoryLinkLabel_FoEf>手写题</span></a><button aria-label="展开侧边栏分类 '手写题'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed shelf-js"><div class=menu__list-item-collapsible><a class="categoryLink_N3aA menu__link menu__link--sublist" href=/docs/category/面试题><span class=categoryLinkLabel_FoEf>面试题</span></a><button aria-label="展开侧边栏分类 '面试题'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item shelf-note"><div class=menu__list-item-collapsible><a class="categoryLink_N3aA menu__link menu__link--sublist menu__link--active" href=/docs/category/专题手册><span class=categoryLinkLabel_FoEf>专题手册</span></a><button aria-label="折叠侧边栏分类 '专题手册'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item shelf-note"><a class=menu__link tabindex=0 href=/docs/handbooks/interview-guide><span class=linkLabel_Blah>前端面试全流程指南与高频核心考点</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item shelf-js"><a class=menu__link tabindex=0 href=/docs/handbooks/javascript-core><span class=linkLabel_Blah>JavaScript 核心知识与高频面试深度解析</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item shelf-react"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/docs/handbooks/browser-core><span class=linkLabel_Blah>浏览器核心原理与高频面试深度知识手册</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item shelf-node"><a class=menu__link tabindex=0 href=/docs/handbooks/http-network><span class=linkLabel_Blah>HTTP 协议与网络传输深度知识手册</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item shelf-algo"><a class=menu__link tabindex=0 href=/docs/handbooks/design-patterns><span class=linkLabel_Blah>前端常用设计模式详解与实战指南</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item shelf-eng"><a class=menu__link tabindex=0 href=/docs/handbooks/sdk-webpack><span class=linkLabel_Blah>SDK 开发与 Webpack 5 工程化配置完整指南</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item shelf-eng"><a class=menu__link tabindex=0 href=/docs/handbooks/ai-engineering><span class=linkLabel_Blah>AI 赋能前端工程化实践：核心架构与落地指南</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item shelf-eng"><a class=menu__link tabindex=0 href=/docs/handbooks/chunked-upload><span class=linkLabel_Blah>大文件切片上传系统：核心技术与高频面试难点解析</span></a></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed shelf-mini"><div class=menu__list-item-collapsible><a class="categoryLink_N3aA menu__link menu__link--sublist" href=/docs/category/工作日常记录><span class=categoryLinkLabel_FoEf>工作日常记录</span></a><button aria-label="展开侧边栏分类 '工作日常记录'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item shelf-eng"><a class=menu__link href=/docs/class-name><span class=linkLabel_Blah>如何命名更规范class</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item shelf-note"><a class=menu__link href=/docs/material><span class=linkLabel_Blah>相关资料</span></a></ul></nav></div></div></aside><main class=docMainContainer_atyM><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_b5mC"><div class=docItemContainer_aRs1><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_zLnU" aria-label=页面路径><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label=主页面 class=breadcrumbs__link href=/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_air3><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/docs/category/专题手册><span>专题手册</span></a><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>浏览器核心原理与高频面试深度知识手册</span></ul></nav><div class="tocCollapsible_wkEL theme-doc-toc-mobile tocMobile_pZAM"><button type=button class="clean-btn tocCollapsibleButton_K72t">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>浏览器核心原理与高频面试深度知识手册</h1></header><h3 class="anchor anchorTargetStickyNavbar_gGf8" id=一-浏览器客户端存储方案与安全性>一、 浏览器客户端存储方案与安全性<a href=#一-浏览器客户端存储方案与安全性 class=hash-link aria-label="一、 浏览器客户端存储方案与安全性的直接链接" title="一、 浏览器客户端存储方案与安全性的直接链接" translate=no>​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=1-四大存储方式对比分析>1. 四大存储方式对比分析<a href=#1-四大存储方式对比分析 class=hash-link aria-label="1. 四大存储方式对比分析的直接链接" title="1. 四大存储方式对比分析的直接链接" translate=no>​</a></h4>
+<table><thead><tr><th><strong>特性维度</strong><th><strong>Cookie</strong><th><strong>localStorage</strong><th><strong>sessionStorage</strong><th><strong>IndexedDB</strong><tbody><tr><td><strong>数据生命周期</strong><td>由服务器生成或前端指定，可设置过期时间（默认会话期）<td>永久有效，除非手动清除或调用 API 清空<td>仅在当前标签页会话期间有效，关闭 Tab 即清理<td>永久有效，除非手动清除<tr><td><strong>数据容量上限</strong><td>约 4KB<td>约 5MB<td>约 5MB<td>无限（受用户系统磁盘空间限制）<tr><td><strong>网络请求携带</strong><td>每次发送 HTTP 请求时均会自动携带在 Request Header 中<td>完全不参与网络传输<td>完全不参与网络传输<td>完全不参与网络传输<tr><td><strong>数据类型与读写</strong><td>纯文本键值对，同步读写<td>纯文本字符串，同步阻塞读写<td>纯文本字符串，同步阻塞读写<td>支持事务与二进制数据存储，异步非阻塞读写</table>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=2-cookie-安全防护属性>2. Cookie 安全防护属性<a href=#2-cookie-安全防护属性 class=hash-link aria-label="2. Cookie 安全防护属性的直接链接" title="2. Cookie 安全防护属性的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong><code>value</code> 加密</strong>：用于保存用户凭证（登录态）时必须经过服务端加密，严禁明文暴露用户 ID 或敏感数据。</li>
+<li class=""><strong><code>HttpOnly</code></strong>：禁止客户端 JavaScript 脚本读取或篡改 Cookie（如执行 <code>document.cookie</code> 获取不到），防范 XSS 攻击窃取登录凭证。</li>
+<li class=""><strong><code>Secure</code></strong>：强制规定浏览器仅在 HTTPS 加密传输通道中携带该 Cookie，防止明文抓包截获。</li>
+<li class=""><strong><code>SameSite</code></strong>：限制第三方跨站请求携带 Cookie，降低 CSRF（跨站请求伪造）攻击风险：<!-- -->
+<ul>
+<li class=""><code>Strict</code>：严禁第三方网站发起的跨站请求携带 Cookie。</li>
+<li class=""><code>Lax</code>：默认规则，允许在导航到目标网址的 GET 请求中携带（如从外站点击链接跳转）。</li>
+<li class=""><code>None</code>：必须与 <code>Secure</code> 配合使用，允许在跨站请求中发送。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=3-service-worker-离线缓存机制>3. Service Worker 离线缓存机制<a href=#3-service-worker-离线缓存机制 class=hash-link aria-label="3. Service Worker 离线缓存机制的直接链接" title="3. Service Worker 离线缓存机制的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>核心定义</strong>：运行在浏览器渲染引擎背后的独立 Worker 线程，不阻塞主线程 DOM 操作。因具备全局网络请求拦截权限，必须依托 <strong>HTTPS 协议</strong> 保障安全性。</li>
+<li class=""><strong>落地三部曲</strong>：<!-- -->
+<ol>
+<li class=""><strong>注册 (Register)</strong>：调用 <code>navigator.serviceWorker.register()</code> 注册脚本。</li>
+<li class=""><strong>安装与预缓存 (Install)</strong>：监听 <code>install</code> 事件，利用 <code>caches.open(CACHE_NAME)</code> 预先写入离线资源。</li>
+<li class=""><strong>请求拦截与分发 (Fetch)</strong>：监听 <code>fetch</code> 事件拦截网络请求，优先通过 <code>caches.match(event.request)</code> 查询本地命中；若命中则直读缓存，未命中则降级走真实网络请求并回写。</li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_gGf8" id=二-浏览器全链路缓存机制性能优化核心>二、 浏览器全链路缓存机制（性能优化核心）<a href=#二-浏览器全链路缓存机制性能优化核心 class=hash-link aria-label="二、 浏览器全链路缓存机制（性能优化核心）的直接链接" title="二、 浏览器全链路缓存机制（性能优化核心）的直接链接" translate=no>​</a></h3>
+<p>请求过程通常包含“发起网络请求”、“后端处理”和“浏览器响应”。合理配置缓存可以在第一和第三步最大化减少传输损耗与白屏耗时。</p>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=1-缓存层级优先级>1. 缓存层级优先级<a href=#1-缓存层级优先级 class=hash-link aria-label="1. 缓存层级优先级的直接链接" title="1. 缓存层级优先级的直接链接" translate=no>​</a></h4>
+<p>当发起一个网络请求时，浏览器按照以下优先级依次检索缓存，全部未命中才会向服务端发起实际网络请求：</p>
+<ol>
+<li class=""><strong>Service Worker</strong>：开发者自主控制缓存列表、匹配逻辑与更新策略，具备完全掌控权。</li>
+<li class=""><strong>Memory Cache（内存缓存）</strong>：<!-- -->
+<ul>
+<li class="">读写速度最快，但生命周期极短，随当前 Tab 页面进程销毁而彻底释放。</li>
+<li class="">操作系统按需管理内存分配，小体积文件（如 CSS/JS 片段、内存 base64 图）优先进内存，当前系统内存使用率高或体积较大时优先进磁盘。</li>
+</ul>
+</li>
+<li class=""><strong>Disk Cache（硬盘缓存）</strong>：<!-- -->
+<ul>
+<li class="">容量大、覆盖面最广，根据 HTTP 响应头规则持久化存储在磁盘中，重启浏览器后依然有效。</li>
+</ul>
+</li>
+<li class=""><strong>Push Cache（推送缓存）</strong>：<!-- -->
+<ul>
+<li class="">HTTP/2 特性，仅在当前会话（Session）连接期间存在，连接断开即释放，同一个 HTTP/2 连接上的多页面可共享该缓存，但单条缓存只能被使用一次。</li>
+</ul>
+</li>
+<li class=""><strong>真实网络请求</strong>。</li>
+</ol>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=2-强缓存策略>2. 强缓存策略<a href=#2-强缓存策略 class=hash-link aria-label="2. 强缓存策略的直接链接" title="2. 强缓存策略的直接链接" translate=no>​</a></h4>
+<p>强缓存命中时，浏览器不发送任何网络请求到服务端，直接从本地返回数据，HTTP 状态码为 <code>200 (from disk cache / from memory cache)</code>。</p>
+<ul>
+<li class=""><strong><code>Expires</code> (HTTP/1.0)</strong>：<!-- -->
+<ul>
+<li class="">返回绝对时间戳（如 <code>Expires: Wed, 22 Oct 2028 08:41:00 GMT</code>）。</li>
+<li class=""><em>缺陷</em>：强依赖客户端与服务端的时钟同步，客户端手动篡改本地系统时间会导致缓存失效或永久不更新。</li>
+</ul>
+</li>
+<li class=""><strong><code>Cache-Control</code> (HTTP/1.1，优先级高于 Expires)</strong>：<!-- -->
+<ul>
+<li class="">基于相对时间段控制，支持多种指令组合：<!-- -->
+<ul>
+<li class=""><code>max-age=31536000</code>：资源在客户端可被缓存的时间长度（秒）。</li>
+<li class=""><code>no-cache</code>：跳过强缓存，<strong>强制向服务端发起协商缓存校验</strong>。</li>
+<li class=""><code>no-store</code>：<strong>完全禁止任何缓存</strong>（既不走强缓存，也不走协商缓存，每次完整下载）。</li>
+<li class=""><code>public</code>：客户端和任何中间代理服务器（如 CDN）均可缓存该资源。</li>
+<li class=""><code>private</code>：仅允许最终用户的客户端浏览器缓存，中间代理服务器禁止缓存。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=3-协商缓存策略>3. 协商缓存策略<a href=#3-协商缓存策略 class=hash-link aria-label="3. 协商缓存策略的直接链接" title="3. 协商缓存策略的直接链接" translate=no>​</a></h4>
+<p>当强缓存失效（已过期或配置为 <code>no-cache</code>）时，浏览器向服务端发送校验请求。如果服务端确认资源未修改，则返回 <strong><code>304 Not Modified</code></strong> 且不返回响应体（Body），通知浏览器继续使用本地旧缓存。</p>
+<ul>
+<li class=""><strong><code>Last-Modified</code> 与 <code>If-Modified-Since</code></strong>：<!-- -->
+<ul>
+<li class="">服务端响应头返回 <code>Last-Modified</code>（文件最后修改绝对时间）。</li>
+<li class="">客户端下次请求通过 <code>If-Modified-Since</code> 带上该时间。</li>
+<li class=""><em>缺陷</em>：时间精度为秒级，一秒内的多次快速修改无法被感知；本地文件若被编辑器打开保存但内容未变，会修改修改时间导致缓存穿透。</li>
+</ul>
+</li>
+<li class=""><strong><code>ETag</code> 与 <code>If-None-Match</code> (HTTP/1.1，优先级高于 Last-Modified)</strong>：<!-- -->
+<ul>
+<li class="">服务端根据文件内容摘要/指纹生成唯一的 <code>ETag</code> 字符串。</li>
+<li class="">客户端下次请求在 <code>If-None-Match</code> 头中携带此指纹对比。精准反映文件改动，彻底解决秒级与无意义保存问题。</li>
+</ul>
+</li>
+<li class=""><strong>未设置任何缓存头时的浏览器处理</strong>：<!-- -->
+<ul>
+<li class="">触发<strong>启发式算法 (Heuristic Cache)</strong>：通常计算 <code>(Date - Last-Modified) * 10%</code> 作为默认缓存有效时长。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=4-生产环境最佳实践>4. 生产环境最佳实践<a href=#4-生产环境最佳实践 class=hash-link aria-label="4. 生产环境最佳实践的直接链接" title="4. 生产环境最佳实践的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>频繁变动的业务接口与 HTML</strong>：设置 <code>Cache-Control: no-cache</code>，每次强行协商，配合 <code>ETag</code> 验证，既保证实时性又最大程度压缩传输体积。</li>
+<li class=""><strong>静态资源（JS/CSS/图片）</strong>：结合打包工具（Webpack/Vite）生成文件名哈希（如 <code>app.8f9b2c.js</code>），设置长期强缓存 <code>Cache-Control: max-age=31536000</code>。只有 HTML 中引用的哈希变动时才拉取新文件。</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_gGf8" id=三-从输入-url-到网页渲染全流程>三、 从输入 URL 到网页渲染全流程<a href=#三-从输入-url-到网页渲染全流程 class=hash-link aria-label="三、 从输入 URL 到网页渲染全流程的直接链接" title="三、 从输入 URL 到网页渲染全流程的直接链接" translate=no>​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=1-网络请求阶段>1. 网络请求阶段<a href=#1-网络请求阶段 class=hash-link aria-label="1. 网络请求阶段的直接链接" title="1. 网络请求阶段的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>DNS 域名解析</strong>：依次检索浏览器缓存 -> 操作系统缓存 -> Hosts 文件 -> 本地 Local DNS（递归查询） -> 根/顶级/权威 DNS 服务器（迭代查询），获取对应 IP 地址。</li>
+<li class=""><strong>建立 TCP 连接</strong>：客户端与服务端经历三次握手（HTTPS 协议需额外完成 TLS 握手与证书验证协商对称密钥）。</li>
+<li class=""><strong>发送 HTTP 请求与响应</strong>：浏览器生成请求报文，服务端返回 HTML 源码流。</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=2-解析构建阶段字符串转化为结构化数据>2. 解析构建阶段（字符串转化为结构化数据）<a href=#2-解析构建阶段字符串转化为结构化数据 class=hash-link aria-label="2. 解析构建阶段（字符串转化为结构化数据）的直接链接" title="2. 解析构建阶段（字符串转化为结构化数据）的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>DOM 树构建</strong>：浏览器词法分析、语法分析将 HTML 标签转化为 DOM 节点树。</li>
+<li class=""><strong>CSSOM 树构建</strong>：解析样式表规则生成样式树（Style Tree）。</li>
+<li class=""><strong>合成渲染树 (Render Tree)</strong>：DOM 树与 CSSOM 树结合，过滤掉不可见节点（如 <code>&lt;head></code>、<code>display: none</code> 元素），生成用于展示的 Render Tree。</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=3-布局与绘制阶段>3. 布局与绘制阶段<a href=#3-布局与绘制阶段 class=hash-link aria-label="3. 布局与绘制阶段的直接链接" title="3. 布局与绘制阶段的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>回流/重排 (Reflow / Layout)</strong>：根据渲染树计算每个节点在屏幕上的几何坐标、尺寸大小与包含块边界。</li>
+<li class=""><strong>重绘 (Repaint)</strong>：遍历渲染树，调用底层绘图指令将计算好的外观样式（颜色、背景、边框、阴影）绘制在各个图层上。</li>
+<li class=""><strong>合成显示 (Composite)</strong>：各个独立的绘制图层提交至 GPU 进行合成，最终呈现在用户屏幕视窗上。</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=4-核心追问重绘-repaint-与-重排-reflow-的区别与优化>4. 核心追问：重绘 (Repaint) 与 重排 (Reflow) 的区别与优化<a href=#4-核心追问重绘-repaint-与-重排-reflow-的区别与优化 class=hash-link aria-label="4. 核心追问：重绘 (Repaint) 与 重排 (Reflow) 的区别与优化的直接链接" title="4. 核心追问：重绘 (Repaint) 与 重排 (Reflow) 的区别与优化的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>核心区别</strong>：<!-- -->
+<ul>
+<li class=""><strong>重排</strong>：修改了影响几何布局的属性（如宽高、位置、隐藏显示、字体大小、DOM 增删），引发几何重新计算。<strong>重排必定引发重绘</strong>，开销大。</li>
+<li class=""><strong>重绘</strong>：仅修改不改变几何布局的外观属性（如 <code>color</code>、<code>background-color</code>），不影响相邻元素位置。<strong>重绘不一定会触发重排</strong>，开销较小。</li>
+</ul>
+</li>
+<li class=""><strong>规避频繁重排的优化方案</strong>：<!-- -->
+<ul>
+<li class=""><strong>布局隔离</strong>：合理应用 BFC（块级格式化上下文）特性，隔离内部排版，避免影响外部其他元素。</li>
+<li class=""><strong>高频事件优化</strong>：针对 <code>resize</code>、<code>scroll</code> 等事件使用<strong>节流 (Throttle)</strong> 与 <strong>防抖 (Debounce)</strong>。</li>
+<li class=""><strong>批量 DOM 变更</strong>：使用 <code>document.createDocumentFragment</code> 临时挂载节点，组装完成后一次性插入 DOM；读写 DOM 属性集中处理，避免频繁交错触发强制同步布局。</li>
+<li class=""><strong>脱离文档流</strong>：对复杂变动的节点通过 <code>display: none</code> 或绝对定位脱离文档流，操作完毕后再恢复。</li>
+<li class=""><strong>动画与硬件加速</strong>：复杂动画推荐使用 <code>requestAnimationFrame</code>；利用 CSS3 属性（<code>transform</code>、<code>opacity</code>、<code>filter</code>）开启 GPU 硬件加速，独立生成 Compositor Layer 复合层，绕过主线程重排与重绘。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=5-资源解析阻塞规则与脚本优化>5. 资源解析阻塞规则与脚本优化<a href=#5-资源解析阻塞规则与脚本优化 class=hash-link aria-label="5. 资源解析阻塞规则与脚本优化的直接链接" title="5. 资源解析阻塞规则与脚本优化的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>样式放在头部</strong>：CSS 放在 <code>&lt;head></code> 内同步解析，避免样式加载过慢导致的闪屏（FOUC）。</li>
+<li class=""><strong>JS 执行与 DOM 渲染互斥</strong>：JavaScript 执行引擎与 GUI 渲染引擎共享同一浏览器主线程。当解析 HTML 遇到标准 <code>&lt;script></code> 标签时，必须暂停 HTML 解析，等待 JS 下载并执行完毕后再恢复解析。</li>
+<li class=""><strong><code>defer</code> 与 <code>async</code> 的区别</strong>：<!-- -->
+<ul>
+<li class=""><code>&lt;script></code>：暂停 HTML 解析 -> 串行网络下载 JS -> 立即执行 JS -> 恢复 HTML 解析。</li>
+<li class=""><code>&lt;script defer></code>：HTML 解析不中断 -> <strong>并行异步下载 JS</strong> -> 等待 <strong>HTML 完全解析完毕后按标签顺序依次执行</strong>（支持依赖顺序）。</li>
+<li class=""><code>&lt;script async></code>：HTML 解析不中断 -> <strong>并行异步下载 JS</strong> -> <strong>一旦下载完毕立即暂停 HTML 渲染执行脚本</strong> -> 恢复 HTML 解析（执行顺序完全依赖网络加载先后，属于乱序执行，不适合有依赖关系的脚本）。</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_gGf8" id=四-常见-web-前端安全攻击与防御>四、 常见 Web 前端安全攻击与防御<a href=#四-常见-web-前端安全攻击与防御 class=hash-link aria-label="四、 常见 Web 前端安全攻击与防御的直接链接" title="四、 常见 Web 前端安全攻击与防御的直接链接" translate=no>​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=1-xss跨站脚本攻击cross-site-scripting>1. XSS（跨站脚本攻击，Cross-Site Scripting）<a href=#1-xss跨站脚本攻击cross-site-scripting class=hash-link aria-label="1. XSS（跨站脚本攻击，Cross-Site Scripting）的直接链接" title="1. XSS（跨站脚本攻击，Cross-Site Scripting）的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>攻击手段</strong>：黑客将恶意 JS 代码注入到网页中，当正常用户访问时，浏览器自动执行恶意脚本（如获取 <code>document.cookie</code> 并回传给黑客服务器）。</li>
+<li class=""><strong>核心防御</strong>：<!-- -->
+<ul>
+<li class="">对所有用户输入/输出中的敏感字符进行 HTML 转义（将 <code>&lt;</code> 转换为 <code>&lt;</code>，<code>></code> 转换为 <code>></code>）。</li>
+<li class="">关键鉴权凭证 Cookie 设置 <code>HttpOnly</code>，从源头切断 JS 访问链路。</li>
+<li class="">配置合理的 CSP（内容安全策略，Content Security Policy）。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=2-csrf跨站请求伪造cross-site-request-forgery>2. CSRF（跨站请求伪造，Cross-Site Request Forgery）<a href=#2-csrf跨站请求伪造cross-site-request-forgery class=hash-link aria-label="2. CSRF（跨站请求伪造，Cross-Site Request Forgery）的直接链接" title="2. CSRF（跨站请求伪造，Cross-Site Request Forgery）的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>攻击手段</strong>：用户在 A 网站处于登录状态并存有 Cookie。用户被诱导访问黑客建立的恶意网站 B，B 网站内部自动向 A 网站的受保护接口发送业务请求。浏览器会默认附带 A 网站的 Cookie，使 A 网站误认为是用户的主动合法行为。</li>
+<li class=""><strong>核心防御</strong>：<!-- -->
+<ul>
+<li class="">将关键认证 Cookie 设置 <code>SameSite=Lax</code> 或 <code>SameSite=Strict</code>，限制跨域请求携带。</li>
+<li class="">接口引入随机校验字段：<strong>Anti-CSRF Token</strong>（黑客仅能借用 Cookie 发送请求，无法读取页面上下文中的自定义 Token）。</li>
+<li class="">校验 HTTP 头部中的 <code>Referer</code> 与 <code>Origin</code> 字段，拦截非信任来源域名。</li>
+<li class="">核心交易操作强制引入双重验证（如短信验证码、图形验证码）。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=3-点击劫持-clickjacking>3. 点击劫持 (Clickjacking)<a href=#3-点击劫持-clickjacking class=hash-link aria-label="3. 点击劫持 (Clickjacking)的直接链接" title="3. 点击劫持 (Clickjacking)的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>攻击手段</strong>：攻击者在诱导页面中嵌入一个透明的 <code>iframe</code>（覆盖在其精心设计的伪装按钮之上），诱骗受害者点击透明层下的核心功能。</li>
+<li class=""><strong>核心防御</strong>：<!-- -->
+<ul>
+<li class="">服务端响应头增加 <code>X-Frame-Options: SAMEORIGIN</code>（仅允许同源嵌入）或 <code>DENY</code>（全面禁止任何页面以 <code>iframe</code> 嵌入）。</li>
+<li class="">前端利用 Frame Busting 脚本判断：<code>if (top.location !== self.location) top.location.href = self.location.href;</code>。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=4-ddos-与-sql-注入>4. DDOS 与 SQL 注入<a href=#4-ddos-与-sql-注入 class=hash-link aria-label="4. DDOS 与 SQL 注入的直接链接" title="4. DDOS 与 SQL 注入的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>DDOS（分布式拒绝服务）</strong>：<!-- -->
+<ul>
+<li class="">攻击者调用大规模肉鸡集群向目标服务器发起高频流量拥塞，导致正常业务瘫痪。纯软件层防御成本极高，需接入硬件抗 D 与高防 WAF 清洗流量。</li>
+</ul>
+</li>
+<li class=""><strong>SQL 注入</strong>：<!-- -->
+<ul>
+<li class="">攻击者在表单或 URL 参数中植入恶意 SQL 语法，后端拼接执行导致数据库被破坏或泄露。防御策略为后端全面禁止裸拼接 SQL，强制采用预编译参数化查询（Prepared Statements）并对特殊字符统一过滤。</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_gGf8" id=五-跨域解决方案实战全解>五、 跨域解决方案实战全解<a href=#五-跨域解决方案实战全解 class=hash-link aria-label="五、 跨域解决方案实战全解的直接链接" title="五、 跨域解决方案实战全解的直接链接" translate=no>​</a></h3>
+<p>由于浏览器<strong>同源策略 (Same-Origin Policy)</strong> 限制（协议、域名、端口三者任意一个不同即为跨域），AJAX/Fetch 网络请求会被浏览器拦截阻断。</p>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=1-cors跨域资源共享业界标准首选>1. CORS（跨域资源共享，业界标准首选）<a href=#1-cors跨域资源共享业界标准首选 class=hash-link aria-label="1. CORS（跨域资源共享，业界标准首选）的直接链接" title="1. CORS（跨域资源共享，业界标准首选）的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>核心机制</strong>：由服务端在响应头中附加一组特定的 <code>Access-Control-*</code> 头信息，授权浏览器放行跨域响应。</li>
+<li class=""><strong>简单请求 vs 需预检请求</strong>：<!-- -->
+<ul>
+<li class=""><strong>简单请求</strong>：满足请求方法为 <code>GET</code> / <code>HEAD</code> / <code>POST</code>，且 Header 仅限于 <code>Accept</code>、<code>Accept-Language</code>、<code>Content-Language</code>，<code>Content-Type</code> 仅限于 <code>text/plain</code>、<code>multipart/form-data</code>、<code>application/x-www-form-urlencoded</code>。浏览器直接发送正式请求。</li>
+<li class=""><strong>需预检请求 (Preflighted)</strong>：包含自定义头部、使用 <code>PUT</code>/<code>DELETE</code> 方法或 <code>Content-Type: application/json</code> 时，浏览器会先发送一次 <strong><code>OPTIONS</code> 预检请求</strong>。</li>
+</ul>
+</li>
+<li class=""><strong>核心响应头配置</strong>：<!-- -->
+<ul>
+<li class=""><code>Access-Control-Allow-Origin: [https://client.domain.com](https://client.domain.com)</code>（生产环境严禁在有凭据时配置为 <code>*</code>）。</li>
+<li class=""><code>Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS</code>。</li>
+<li class=""><code>Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With</code>。</li>
+<li class=""><code>Access-Control-Allow-Credentials: true</code>（允许跨域携带 Cookie 认证凭证，此时前端需开启 <code>xhr.withCredentials = true</code>）。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=2-jsonp-方案>2. JSONP 方案<a href=#2-jsonp-方案 class=hash-link aria-label="2. JSONP 方案的直接链接" title="2. JSONP 方案的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>原理</strong>：利用 <code>&lt;script></code> 标签不受同源策略限制的特性，向服务端请求动态生成的 JS 脚本文件，服务端将数据作为参数包裹在前端指定的回调函数名中返回（形如 <code>callbackName({ ...data })</code>）。</li>
+<li class=""><strong>优缺点</strong>：兼容老旧浏览器，但<strong>严格受限于只支持 GET 请求</strong>，且存在潜在的 XSS 安全风险。</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=3-nginx-反向代理>3. Nginx 反向代理<a href=#3-nginx-反向代理 class=hash-link aria-label="3. Nginx 反向代理的直接链接" title="3. Nginx 反向代理的直接链接" translate=no>​</a></h4>
+<ul>
+<li class="">
+<p><strong>原理</strong>：同源策略仅在浏览器端存在，服务器之间不存在跨域限制。前端请求发送给 Nginx 代理服务器（同源），由 Nginx 在服务器端转发给真实的跨域后端接口。</p>
+</li>
+<li class="">
+<p><strong>配置示例</strong>：</p>
+<p>Nginx</p>
+<div class="language-text codeBlockContainer_paKl theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_Q5A5><pre tabindex=0 class="prism-code language-text codeBlock_pNfp thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_K02g><div class=token-line style=color:#393A34><span class="token plain">server {</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">    listen 80;</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">    server_name client.domain.com;</span><br/></div><div class=token-line style=color:#393A34><span class="token plain" style=display:inline-block></span><br/></div><div class=token-line style=color:#393A34><span class="token plain">    location /api/ {</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">        proxy_pass http://api.service.internal:8080/;</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">        proxy_set_header Host $host;</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">        proxy_set_header X-Real-IP $remote_addr;</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">    }</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">}</span><br/></div></code></pre></div></div>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=4-本地构建代理webpack--vite-proxy>4. 本地构建代理（Webpack / Vite Proxy）<a href=#4-本地构建代理webpack--vite-proxy class=hash-link aria-label="4. 本地构建代理（Webpack / Vite Proxy）的直接链接" title="4. 本地构建代理（Webpack / Vite Proxy）的直接链接" translate=no>​</a></h4>
+<p>通过前端脚手架在开发环境开启一个本地 Node.js 中间服务器代理转发请求，仅在本地本地调试起效，生产环境仍需配合 Nginx 或后端 CORS 方案。</p>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=5-websocket-双向通信>5. WebSocket 双向通信<a href=#5-websocket-双向通信 class=hash-link aria-label="5. WebSocket 双向通信的直接链接" title="5. WebSocket 双向通信的直接链接" translate=no>​</a></h4>
+<p>WebSocket 握手升级基于 HTTP，随后脱离 HTTP 协议栈运行，协议标准天然不遵循浏览器的同源策略限制，支持全双工通信。</p>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=6-跨域在监控与图像中的特殊应用>6. 跨域在监控与图像中的特殊应用<a href=#6-跨域在监控与图像中的特殊应用 class=hash-link aria-label="6. 跨域在监控与图像中的特殊应用的直接链接" title="6. 跨域在监控与图像中的特殊应用的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>前端异常监控 <code>Script Error</code></strong>：跨域加载的第三方 CDN 脚本在抛出异常时，浏览器出于隐私保护会屏蔽详细堆栈信息，仅上报 <code>Script Error</code>。<!-- -->
+<ul>
+<li class=""><em>解决方式</em>：在 <code>&lt;script src="..." crossorigin="anonymous"></code> 增加属性，且服务端响应头附带 <code>Access-Control-Allow-Origin: *</code>。</li>
+</ul>
+</li>
+<li class=""><strong>Canvas 图片跨域污染</strong>：跨域图片绘制到 Canvas 后调用 <code>toDataURL()</code> 或 <code>getImageData()</code> 会抛出安全错误。<!-- -->
+<ul>
+<li class=""><em>解决方式</em>：在图片实例上设置 <code>img.crossOrigin = "Anonymous"</code>，且 CDN 响应头支持 CORS。</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_gGf8" id=六-现代浏览器机制与高级渲染特性>六、 现代浏览器机制与高级渲染特性<a href=#六-现代浏览器机制与高级渲染特性 class=hash-link aria-label="六、 现代浏览器机制与高级渲染特性的直接链接" title="六、 现代浏览器机制与高级渲染特性的直接链接" translate=no>​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=1-移动端-h5-300ms-点击延迟>1. 移动端 H5 300ms 点击延迟<a href=#1-移动端-h5-300ms-点击延迟 class=hash-link aria-label="1. 移动端 H5 300ms 点击延迟的直接链接" title="1. 移动端 H5 300ms 点击延迟的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong>成因</strong>：移动端早期浏览器为了识别用户是在单击还是在进行“双击缩放页面”，会在监听到 <code>touchend</code> 后强制等待 300ms 观察是否有第二次点击。</li>
+<li class=""><strong>解决方案</strong>：<!-- -->
+<ul>
+<li class="">在 <code>&lt;head></code> 中规范化声明 Viewport：<code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"></code>。现代主流浏览器检测到视口宽度声明后会自动停用 300ms 延迟。</li>
+<li class="">早期兼容方案使用 <code>fastclick.js</code>，通过拦截底层 <code>touchend</code> 事件并使用自定义事件模拟触发原生 <code>click</code>，同时阻止 300ms 后的默认点击。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=2-多标签页tab跨页面通讯>2. 多标签页（Tab）跨页面通讯<a href=#2-多标签页tab跨页面通讯 class=hash-link aria-label="2. 多标签页（Tab）跨页面通讯的直接链接" title="2. 多标签页（Tab）跨页面通讯的直接链接" translate=no>​</a></h4>
+<ul>
+<li class="">
+<p><strong><code>localStorage</code> 方案（推荐，同域）</strong>：A 页面更新 <code>localStorage.setItem('key', val)</code>，同域下的 B 页面通过监听事件感知：</p>
+<p>JavaScript</p>
+<div class="language-text codeBlockContainer_paKl theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_Q5A5><pre tabindex=0 class="prism-code language-text codeBlock_pNfp thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_K02g><div class=token-line style=color:#393A34><span class="token plain">window.addEventListener('storage', (event) => {</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">  console.log(`变更的键: ${event.key}, 新值: ${event.newValue}`);</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">});</span><br/></div></code></pre></div></div>
+</li>
+<li class="">
+<p><strong><code>SharedWorker</code> 方案</strong>：创建多标签页共享的后台独立 Worker 进程，通过端口连接（<code>port.postMessage</code>）分发消息。</p>
+</li>
+<li class="">
+<p><strong><code>postMessage</code> 方案</strong>：适用于具有直接引用关系的页面通信（如 <code>window.open</code> 返回的子窗口或内嵌的 <code>iframe</code>），接收方通过校验 <code>event.origin</code> 确保安全性。</p>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=3-requestanimationframe-vs-requestidlecallback>3. <code>requestAnimationFrame</code> vs <code>requestIdleCallback</code><a href=#3-requestanimationframe-vs-requestidlecallback class=hash-link aria-label=3-requestanimationframe-vs-requestidlecallback的直接链接 title=3-requestanimationframe-vs-requestidlecallback的直接链接 translate=no>​</a></h4>
+<ul>
+<li class=""><strong><code>requestAnimationFrame</code> (rAF)</strong>：<!-- -->
+<ul>
+<li class=""><strong>高优先级</strong>：每次屏幕刷新渲染前触发（通常为 60Hz 屏幕下的 16.6ms 周期），用于高频动画与平滑的界面重绘，避免掉帧。</li>
+</ul>
+</li>
+<li class=""><strong><code>requestIdleCallback</code> (rIC)</strong>：<!-- -->
+<ul>
+<li class=""><strong>低优先级</strong>：在浏览器每一帧完成输入响应、JS 执行、DOM 布局重绘后的<strong>空闲时间段</strong>内触发执行。</li>
+<li class=""><strong>经典应用（React Fiber）</strong>：React Fiber 架构利用类似思想实现调度，将大型组件树切片为链表，利用浏览器空闲周期分片执行可中断的渲染工作，保障交互流畅。</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_gGf8" id=4-资源预加载优化对比>4. 资源预加载优化对比<a href=#4-资源预加载优化对比 class=hash-link aria-label="4. 资源预加载优化对比的直接链接" title="4. 资源预加载优化对比的直接链接" translate=no>​</a></h4>
+<ul>
+<li class=""><strong><code>preload</code></strong>：<code>&lt;link rel="preload" href="xxx" as="script"></code>
+<ul>
+<li class="">针对<strong>当前页面必须的高优先级核心资源</strong>，强制浏览器立即提前下载，不受解析位置限制。</li>
+</ul>
+</li>
+<li class=""><strong><code>prefetch</code></strong>：<code>&lt;link rel="prefetch" href="xxx"></code>
+<ul>
+<li class="">针对<strong>未来可能访问的页面资源</strong>，浏览器利用网络和 CPU 空闲时段在后台低优先级静默下载，存储在 Disk Cache 中。</li>
+</ul>
+</li>
+<li class=""><strong><code>dns-prefetch</code></strong>：<code>&lt;link rel="dns-prefetch" href="//api.example.com"></code>
+<ul>
+<li class="">仅针对跨域第三方域名提前执行 DNS 预解析，消除后续网络请求的 DNS 查询时延。</li>
+</ul>
+</li>
+<li class=""><strong><code>preconnect</code></strong>：<code>&lt;link rel="preconnect" href="//api.example.com"></code>
+<ul>
+<li class="">比 <code>dns-prefetch</code> 更进一步，提前完成 DNS 解析、TCP 三次握手和 TLS 安全协商，建立就绪连接。</li>
+</ul>
+</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label=文件选项卡><a class="pagination-nav__link pagination-nav__link--prev" href=/docs/handbooks/javascript-core><div class=pagination-nav__sublabel>上一页</div><div class=pagination-nav__label>JavaScript 核心知识与高频面试深度解析</div></a><a class="pagination-nav__link pagination-nav__link--next" href=/docs/handbooks/http-network><div class=pagination-nav__sublabel>下一页</div><div class=pagination-nav__label>HTTP 协议与网络传输深度知识手册</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_PSZi thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#一-浏览器客户端存储方案与安全性 class="table-of-contents__link toc-highlight">一、 浏览器客户端存储方案与安全性</a><li><a href=#二-浏览器全链路缓存机制性能优化核心 class="table-of-contents__link toc-highlight">二、 浏览器全链路缓存机制（性能优化核心）</a><li><a href=#三-从输入-url-到网页渲染全流程 class="table-of-contents__link toc-highlight">三、 从输入 URL 到网页渲染全流程</a><li><a href=#四-常见-web-前端安全攻击与防御 class="table-of-contents__link toc-highlight">四、 常见 Web 前端安全攻击与防御</a><li><a href=#五-跨域解决方案实战全解 class="table-of-contents__link toc-highlight">五、 跨域解决方案实战全解</a><li><a href=#六-现代浏览器机制与高级渲染特性 class="table-of-contents__link toc-highlight">六、 现代浏览器机制与高级渲染特性</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>知识库</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/docs/gitorder>Git实战指南</a><li class=footer__item><a class=footer__link-item href=/docs/interview-questions/basics-JavaScript>JavaScript面试题</a><li class=footer__item><a class=footer__link-item href=/docs/export-word>前端技术</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>更多</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://github.com/znakoa target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_HLLt><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a class=footer__link-item href=/about>关于作者</a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2026 苏木 - 知识笔记. Built with Docusaurus.</div></div></div></footer></div></body>
