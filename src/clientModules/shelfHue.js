@@ -25,6 +25,14 @@ const SHELF = [
   [/\/docs\/export-word/,   '#4a5a6a', '#93a7bb'],
   [/\/docs\/class-name/,    '#4a5a6a', '#93a7bb'],
   [/\/docs\/material/,      '#5d7285', '#93a9bc'], // 相关资料
+  [/handbooks\/interview-guide/, '#5d7285', '#93a9bc'], // 面试全流程（综合）
+  [/handbooks\/javascript-core/, '#3b5ba5', '#8fa8e0'], // JS 核心
+  [/handbooks\/browser-core/,    '#6b5493', '#b49cd6'], // 浏览器
+  [/handbooks\/http-network/,    '#6e7b3e', '#a9c177'], // HTTP 与网络
+  [/handbooks\/design-patterns/, '#8e3b4a', '#d48695'], // 设计模式
+  [/handbooks\/sdk-webpack/,     '#4a5a6a', '#93a7bb'], // SDK 与 Webpack
+  [/handbooks\/ai-engineering/,  '#4a5a6a', '#93a7bb'], // AI 工程化
+  [/handbooks\/chunked-upload/,  '#4a5a6a', '#93a7bb'], // 大文件上传
   [/^\/blog/,               '#5d7285', '#93a9bc'], // 日常随记
 ];
 

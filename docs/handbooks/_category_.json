@@ -1,0 +1,9 @@
+{
+  "label": "专题手册",
+  "position": 3,
+  "className": "shelf-note",
+  "link": {
+    "type": "generated-index",
+    "description": "HTTP 与网络、浏览器、工程化、设计模式等深度专题手册"
+  }
+}
