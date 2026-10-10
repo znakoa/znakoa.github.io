@@ -226,10 +226,10 @@ export default function Home(): ReactNode {
         <header className={styles.hero}>
           <div className="container">
             <p className={styles.eyebrow}>field catalog · 索书号</p>
-            <h1 className={styles.heroTitle}>按主题归档的知识笔记</h1>
+            <h1 className={styles.heroTitle}>前端知识笔记，按主题分色归档</h1>
             <p className={styles.heroLede}>
-              前端面试题库、手写题与工程实践。每个主题有固定色位，
-              侧栏、正文与代码都沿用同一个颜色，方便在文档之间定位。
+              面试题库、手写题与工程实践。每种颜色对应一个主题，
+              贯穿侧栏、正文与代码，一眼定位当前章节。
             </p>
             <div className={styles.heroActions}>
               <Link to="/docs/interview-questions/basics-JavaScript" className={styles.btn}>

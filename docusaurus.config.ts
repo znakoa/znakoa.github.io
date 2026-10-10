@@ -12,6 +12,7 @@ const config: Config = {
     // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
     future: {
         v4: true, // Improve compatibility with the upcoming Docusaurus v4
+        faster: true, // 启用 SWC 加速构建（对应 @docusaurus/faster）
     },
 
     // 站点真实地址（GitHub Pages 自定义域名，与 static/CNAME 一致）
