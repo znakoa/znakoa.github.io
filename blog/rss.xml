@@ -4,10 +4,44 @@
         <title>苏木 Blog</title>
         <link>https://blog.nakoa.cc/blog</link>
         <description>苏木 Blog</description>
-        <lastBuildDate>Thu, 13 Aug 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 14 Oct 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh-CN</language>
+        <item>
+            <title><![CDATA[更新随记：知识库整理与个人档案页更新]]></title>
+            <link>https://blog.nakoa.cc/blog/site-maintenance-2026-10-14</link>
+            <guid>https://blog.nakoa.cc/blog/site-maintenance-2026-10-14</guid>
+            <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[这次集中整理了知识库的内容入口、视觉细节与个人档案页，也修复了一个只会在 Linux CI 中暴露的路由问题。]]></description>
+            <content:encoded><![CDATA[<p>这次集中整理了知识库的内容入口、视觉细节与个人档案页，也修复了一个只会在 Linux CI 中暴露的路由问题。</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_gGf8" id="知识库与导航">知识库与导航<a href="https://blog.nakoa.cc/blog/site-maintenance-2026-10-14#%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%AF%BC%E8%88%AA" class="hash-link" aria-label="知识库与导航的直接链接" title="知识库与导航的直接链接" translate="no">​</a></h2>
+<ul>
+<li class="">首页补齐了 8 篇专题小册入口，面试、工程化、网络、浏览器和 AI 工程实践可以从目录直接进入。</li>
+<li class="">工具与规范类文档收纳到 <code>reference</code> 目录，同时保留原有访问路径，已有链接不会失效。</li>
+<li class="">导航栏重新启用站点 Logo，作为统一的品牌字标。</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_gGf8" id="主题与资源">主题与资源<a href="https://blog.nakoa.cc/blog/site-maintenance-2026-10-14#%E4%B8%BB%E9%A2%98%E4%B8%8E%E8%B5%84%E6%BA%90" class="hash-link" aria-label="主题与资源的直接链接" title="主题与资源的直接链接" translate="no">​</a></h2>
+<ul>
+<li class="">路由色位模块迁移到 TypeScript，并改为复用 CSS 色位变量；直接打开子页面时主题色更稳定。</li>
+<li class="">代码高亮行背景会跟随当前章节色位变化。</li>
+<li class="">手写题图片改为语义化命名的 WebP 文件，社交分享图也替换为站点专属版本。</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_gGf8" id="关于作者">关于作者<a href="https://blog.nakoa.cc/blog/site-maintenance-2026-10-14#%E5%85%B3%E4%BA%8E%E4%BD%9C%E8%80%85" class="hash-link" aria-label="关于作者的直接链接" title="关于作者的直接链接" translate="no">​</a></h2>
+<ul>
+<li class="">About 页面改为工程档案布局，补充技术能力、工作经历、项目经历与教育经历。</li>
+<li class="">页面只保留公开的职业信息，不展示电话和邮箱等个人联系方式。</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_gGf8" id="构建修复">构建修复<a href="https://blog.nakoa.cc/blog/site-maintenance-2026-10-14#%E6%9E%84%E5%BB%BA%E4%BF%AE%E5%A4%8D" class="hash-link" aria-label="构建修复的直接链接" title="构建修复的直接链接" translate="no">​</a></h2>
+<ul>
+<li class="">统一 JavaScript 面试文档的文件名与链接为全小写。</li>
+<li class="">这次修复了 Windows 本地大小写不敏感、Linux CI 大小写敏感导致的断链构建失败。</li>
+<li class=""><code>tsc</code> 与 Docusaurus 生产构建均已验证通过。</li>
+</ul>]]></content:encoded>
+            <category>更新</category>
+            <category>日志</category>
+        </item>
         <item>
             <title><![CDATA[更新随记：彩签档案主题上线]]></title>
             <link>https://blog.nakoa.cc/blog/theme-redesign-2026-08-13</link>
