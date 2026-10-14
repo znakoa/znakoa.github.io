@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 sidebar_class_name: shelf-note
+slug: /material
 title: "相关资料"
 ---
 

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 sidebar_class_name: shelf-eng
+slug: /export-word
 ---
 
 # 前端导出 Word 文件

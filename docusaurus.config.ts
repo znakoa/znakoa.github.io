@@ -21,13 +21,14 @@ const config: Config = {
 
     // GitHub pages deployment config.
     organizationName: 'znakoa', // Usually your GitHub org/user name.
-    projectName: 'Website', // Usually your repo name.
+    projectName: 'znakoa.github.io', // Usually your repo name.
+    trailingSlash: false,
 
     onBrokenLinks: 'throw',
 
     // 按路由写入「索书号色位」--sc-shelf-l / --sc-shelf-d
     clientModules: [
-        require.resolve('./src/clientModules/shelfHue.js'),
+        require.resolve('./src/clientModules/shelfHue.ts'),
     ],
 
     themes:[
@@ -37,6 +38,10 @@ const config: Config = {
             ({
                 hashed: true,
                 language: ["en", "zh"],
+                indexDocs: true,
+                indexBlog: true,
+                indexPages: false,
+                explicitSearchResultPath: true,
                 searchBarShortcutKeymap: "ctrl+shift+f", // Use Ctrl+Shift+F
                 highlightSearchTermsOnTargetPage: true,
             }),
@@ -49,15 +54,6 @@ const config: Config = {
     i18n: {
         defaultLocale: 'zh-CN',
         locales: ['zh-CN'],
-        localeConfigs: {
-            'zh-CN': {
-                label: '简体中文',
-                direction: 'ltr',
-                htmlLang: 'zh-CN',
-                calendar: 'gregory',
-                path: 'zh',
-            },
-        }
     },
 
     presets: [
@@ -89,7 +85,7 @@ const config: Config = {
     ],
 
     themeConfig: {
-        image: 'img/docusaurus-social-card.jpg',
+        image: 'img/sumu-social-card.jpg',
 
         // 亮暗双模：默认跟随系统，导航栏保留手动开关
         colorMode: {
@@ -139,7 +135,7 @@ const config: Config = {
                         },
                         {
                             label: 'JavaScript面试题',
-                            to: '/docs/interview-questions/basics-JavaScript',
+                            to: '/docs/interview-questions/basics-javascript',
                         },
                         {
                             label: '前端技术',

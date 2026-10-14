@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 sidebar_class_name: shelf-eng
+slug: /gitorder
 ---
 
 # git常见实战命令

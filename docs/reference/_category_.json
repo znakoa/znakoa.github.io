@@ -1,0 +1,9 @@
+{
+  "label": "工具与规范",
+  "position": 4,
+  "className": "shelf-eng",
+  "link": {
+    "type": "generated-index",
+    "description": "开发工具、工程实践与编码规范。"
+  }
+}

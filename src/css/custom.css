@@ -7,7 +7,7 @@
  *   分配一个低饱和色位（shelf hue），这一个色位贯穿侧栏标记、面包屑「索书号」、
  *   标题栏、代码左轨、表头、折叠答案抽屉、页内索引与分页高亮。
  *
- * 色位由 src/theme/Root.tsx 按路由写入 --sc-shelf-l / --sc-shelf-d；
+ * 色位由 src/clientModules/shelfHue.ts 按路由写入 --sc-shelf-l / --sc-shelf-d；
  * 侧栏项与分类由 front-matter 的 sidebar_class_name（.shelf-xx）静态着色，
  * 因此无 JS 时主题依然成立，JS 只增强正文区的色位。
  *
@@ -41,7 +41,7 @@
   --sc-danger: #b3261e;
   --sc-ok: #2f7f76;
 
-  /* --- 主题色位：默认值（Root.tsx 会按路由覆盖 -l / -d） --- */
+  /* --- 主题色位：默认值（shelfHue.ts 会按路由覆盖 -l / -d） --- */
   --sc-shelf: var(--sc-shelf-l, #3b5ba5);
 
   /* --- 色位表（供 sidebar_class_name 使用） --- */
@@ -114,7 +114,7 @@
   --ifm-blockquote-color: var(--sc-ink-2);
   --ifm-blockquote-border-color: var(--sc-rule-strong);
   --ifm-hr-border-color: var(--sc-rule);
-  --docusaurus-highlighted-code-line-bg: rgba(59, 91, 165, 0.1);
+  --docusaurus-highlighted-code-line-bg: color-mix(in srgb, var(--sc-shelf) 11%, transparent);
 
   --ifm-navbar-background-color: var(--sc-surface);
   --ifm-navbar-shadow: none;
@@ -165,7 +165,7 @@
   --sc-shelf: var(--sc-shelf-d, #8fa8e0);
 
   --ifm-hover-overlay: rgba(230, 232, 234, 0.06);
-  --docusaurus-highlighted-code-line-bg: rgba(143, 168, 224, 0.14);
+  --docusaurus-highlighted-code-line-bg: color-mix(in srgb, var(--sc-shelf) 16%, transparent);
   --ifm-global-shadow-lw: 0 1px 2px rgba(0, 0, 0, 0.4);
   --ifm-global-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
   --ifm-global-shadow-tl: 0 14px 40px rgba(0, 0, 0, 0.55);
@@ -720,7 +720,6 @@ button[class*="copyButton"]:hover {
   margin-bottom: 1.3rem;
 }
 
-.theme-admonition .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module,
 .theme-admonition [class*="admonitionHeading"] {
   color: var(--sc-shelf);
   font-family: var(--ifm-font-family-monospace);

@@ -24,7 +24,7 @@ type Shelf = {
   code: string;
   name: string;
   to: string;
-  /** [亮色, 暗色] 色位，与 src/clientModules/shelfHue.js 保持一致 */
+  /** [亮色, 暗色] 色位，与 src/clientModules/shelfHue.ts 保持一致 */
   hue: [string, string];
   desc: string;
   items: string[];
@@ -34,7 +34,7 @@ const INTERVIEW: Shelf[] = [
   {
     code: 'JS · 01',
     name: 'JavaScript 基础',
-    to: '/docs/interview-questions/basics-JavaScript',
+    to: '/docs/interview-questions/basics-javascript',
     hue: ['#3b5ba5', '#8fa8e0'],
     desc: '35 道基础与手写题，从类型陷阱到原型链。',
     items: ['var / let / const 的区别', '深拷贝与循环引用', '手写一个简化版 Promise', '事件循环与微任务'],
@@ -97,6 +97,73 @@ const HANDWRITTEN: Shelf[] = [
     hue: ['#8e3b4a', '#d48695'],
     desc: '从零手写链表、队列与二叉树，带图解。',
     items: ['实现一个链表结构', '实现一个队列', '递归反转链表', '二叉树搜索'],
+  },
+];
+
+const HANDBOOKS: Shelf[] = [
+  {
+    code: 'HB · 01',
+    name: '前端面试全流程指南',
+    to: '/docs/handbooks/interview-guide',
+    hue: ['#5d7285', '#93a9bc'],
+    desc: '简历准备、技术面策略与复盘体系。',
+    items: [],
+  },
+  {
+    code: 'HB · 02',
+    name: 'JavaScript 核心进阶',
+    to: '/docs/handbooks/javascript-core',
+    hue: ['#3b5ba5', '#8fa8e0'],
+    desc: '执行上下文、闭包内存模型与异步底层机制。',
+    items: [],
+  },
+  {
+    code: 'HB · 03',
+    name: '浏览器内核与渲染原理',
+    to: '/docs/handbooks/browser-core',
+    hue: ['#6b5493', '#b49cd6'],
+    desc: '进程架构、渲染流水线、合成层与重排重绘。',
+    items: [],
+  },
+  {
+    code: 'HB · 04',
+    name: 'HTTP 与计算机网络',
+    to: '/docs/handbooks/http-network',
+    hue: ['#6e7b3e', '#a9c177'],
+    desc: 'HTTP/1.1 至 HTTP/3 演进、HTTPS 握手与缓存策略。',
+    items: [],
+  },
+  {
+    code: 'HB · 05',
+    name: '前端设计模式实战',
+    to: '/docs/handbooks/design-patterns',
+    hue: ['#8e3b4a', '#d48695'],
+    desc: '发布订阅、策略、代理与装饰器模式在前端的落地。',
+    items: [],
+  },
+  {
+    code: 'HB · 06',
+    name: 'SDK 开发与 Webpack 体系',
+    to: '/docs/handbooks/sdk-webpack',
+    hue: ['#4a5a6a', '#93a7bb'],
+    desc: '插件架构设计、Loader/Plugin 原理与构建优化。',
+    items: [],
+  },
+  {
+    code: 'HB · 07',
+    name: 'AI 工程化实践',
+    to: '/docs/handbooks/ai-engineering',
+    hue: ['#4a5a6a', '#93a7bb'],
+    desc: '大模型应用接入、流式交互与前端 AI 提效工作流。',
+    items: [],
+  },
+  {
+    code: 'HB · 08',
+    name: '大文件分片上传方案',
+    to: '/docs/handbooks/chunked-upload',
+    hue: ['#4a5a6a', '#93a7bb'],
+    desc: 'Web Worker 增量哈希计算、断点续传与秒传实现。',
+    items: [],
   },
 ];
 
@@ -232,7 +299,7 @@ export default function Home(): ReactNode {
               贯穿侧栏、正文与代码，一眼定位当前章节。
             </p>
             <div className={styles.heroActions}>
-              <Link to="/docs/interview-questions/basics-JavaScript" className={styles.btn}>
+              <Link to="/docs/interview-questions/basics-javascript" className={styles.btn}>
                 从 JavaScript 开始
               </Link>
               <Link to="/docs/handwritten-questions/comprehensive" className={styles.btnGhost}>
@@ -253,6 +320,20 @@ export default function Home(): ReactNode {
             </div>
             <div className={styles.matrix}>
               {INTERVIEW.map((shelf) => (
+                <ShelfCard key={shelf.code} shelf={shelf} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.sectionAlt}>
+          <div className="container">
+            <div className={styles.sectionHead}>
+              <h2 className={styles.sectionTitle}>专项小册</h2>
+              <span className={styles.sectionNote}>8 个深度专题</span>
+            </div>
+            <div className={styles.matrix}>
+              {HANDBOOKS.map((shelf) => (
                 <ShelfCard key={shelf.code} shelf={shelf} />
               ))}
             </div>

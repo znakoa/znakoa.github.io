@@ -8,11 +8,11 @@ title: "算法数据结构"
 
 链表结构
 
-![链表结构](./img/849d5550c7f9720d.png)
+![链表节点结构](./img/linked-list-structure.webp)
 
 看图理解next层级
 
-![链表结构](./img/c634936bf1ffee06.png)
+![链表运行结果](./img/linked-list-output.webp)
 
 ```js
 // 链表 从头尾删除、增加 性能比较好
@@ -316,9 +316,9 @@ class BST {
   }
 }
 ```
-![链表结构](./img/fc61065b2fb36d9c.png)
+![二叉搜索树结构](./img/binary-search-tree-diagram.webp)
 
-![链表结构](./img/d28e693ef5b13fdf.png)
+![二叉搜索树运行结果](./img/binary-search-tree-output.webp)
 
 
 ```js
