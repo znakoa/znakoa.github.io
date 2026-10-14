@@ -3,12 +3,17 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import styles from './about.module.css';
 
-const basicInfo = [
+type BasicInfo = {
+  label: string;
+  value: string;
+  href?: string;
+};
+
+const basicInfo: BasicInfo[] = [
   {label: '姓名', value: '苏木'},
   {label: '职业', value: '前端开发工程师'},
   {label: '所在地', value: '中国 · 杭州'},
-  {label: '邮箱', value: 'hello@example.com'},
-  {label: 'GitHub', value: 'github.com/znakoa'},
+  {label: 'GitHub', value: 'github.com/znakoa', href: 'https://github.com/znakoa'},
   {label: '技术方向', value: 'Web 前端 / 数据可视化'},
 ];
 
@@ -49,7 +54,7 @@ export default function About(): ReactNode {
   return (
     <Layout
       title="关于作者"
-      description="作者基本信息与个人介绍，当前内容为模拟数据。">
+      description="苏木的个人技术知识库，整理前端开发、工程化与数据可视化实践。">
       <main className={styles.page}>
         <section className={styles.hero}>
           <div className="container">
@@ -61,17 +66,23 @@ export default function About(): ReactNode {
                 <p className={styles.bio}>
                   喜欢把复杂的技术问题拆成清晰的知识卡片，长期沉淀前端、工程化和数据可视化相关内容。
                 </p>
-                <span className={styles.dataStatus}>模拟数据</span>
               </div>
 
               <aside className={styles.infoCard}>
-                <div className={styles.infoTab}></div>
                 <h2 className={styles.infoTitle}>基本信息</h2>
                 <dl className={styles.infoList}>
                   {basicInfo.map((item) => (
                     <div key={item.label} className={styles.infoItem}>
                       <dt>{item.label}</dt>
-                      <dd>{item.value}</dd>
+                      <dd>
+                        {item.href ? (
+                          <a href={item.href} target="_blank" rel="noopener noreferrer">
+                            {item.value}
+                          </a>
+                        ) : (
+                          item.value
+                        )}
+                      </dd>
                     </div>
                   ))}
                 </dl>
@@ -130,9 +141,6 @@ export default function About(): ReactNode {
             <div className={styles.contactLinks}>
               <a className={styles.contactLink} href="https://github.com/znakoa" target="_blank" rel="noopener noreferrer">
                 GitHub
-              </a>
-              <a className={styles.contactLink} href="mailto:hello@example.com">
-                邮箱
               </a>
               <Link className={styles.contactLink} to="/">
                 返回首页
