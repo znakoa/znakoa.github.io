@@ -95,10 +95,10 @@ const config: Config = {
         },
 
         navbar: {
-            // 原 static/img/logo.svg 是薄荷绿徽标，与中性 + 色位的主题冲突，
-            // 因此品牌改为文字字形（色位方块由 CSS 的 .navbar__title::before 绘制）。
-            // 想换回图形徽标：恢复 logo 字段即可。
-            title: '苏木',
+            logo: {
+                alt: '苏木',
+                src: 'img/logo.svg',
+            },
             hideOnScroll: false,
             items: [
                 {
