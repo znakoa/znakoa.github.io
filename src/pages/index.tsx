@@ -1,394 +1,117 @@
-import type {ReactNode, CSSProperties} from 'react';
-import {useState, useEffect} from 'react';
-import clsx from 'clsx';
+import type {ReactNode} from 'react';
+import {useEffect, useState} from 'react';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {usePluginData} from '@docusaurus/useGlobalData';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
-
 import styles from './index.module.css';
 
-/**
- * 首页 = 目录矩阵
- * ------------------------------------------------------------------
- * 这里不是宣传页，而是这份笔记库的目录。每个主题一张卡片：
- *   索书号（主题缩写 + 侧栏位次）· 主题名 · 一句话说明 · 代表性题目
- * 颜色 = 索书号色位，与侧栏、正文书脊、代码左轨完全一致，
- * 于是「在哪一章」这件事在首页就已经被颜色交代清楚了。
- *
- * 刻意没有放统计数字卡片和假代码窗口：数字会过期，
- * 而代表性题目本身就是最好的内容说明。
- */
+type Post = {title: string; description: string; date: string; to: string};
 
-type Shelf = {
-  /** 索书号：缩写 + 侧栏位次（位次取自 front-matter 的 sidebar_position） */
-  code: string;
-  name: string;
-  to: string;
-  /** [亮色, 暗色] 色位，与 src/clientModules/shelfHue.ts 保持一致 */
-  hue: [string, string];
-  desc: string;
-  items: string[];
-};
-
-const INTERVIEW: Shelf[] = [
-  {
-    code: 'JS · 01',
-    name: 'JavaScript 基础',
-    to: '/docs/interview-questions/basics-javascript',
-    hue: ['#3b5ba5', '#8fa8e0'],
-    desc: '35 道基础与手写题，从类型陷阱到原型链。',
-    items: ['var / let / const 的区别', '深拷贝与循环引用', '手写一个简化版 Promise', '事件循环与微任务'],
-  },
-  {
-    code: 'VUE · 02',
-    name: 'Vue',
-    to: '/docs/interview-questions/basics-vue',
-    hue: ['#2f7f76', '#79c3b7'],
-    desc: '上下两篇：从 slot 到响应式原理与 Pinia。',
-    items: ['v-show 与 v-if 的区别', 'Vue 3 为什么用 Proxy', 'Pinia 与 Vuex 的不同', 'nextTick 的作用'],
-  },
-  {
-    code: 'REACT · 03',
-    name: 'React',
-    to: '/docs/interview-questions/basics-react',
-    hue: ['#6b5493', '#b49cd6'],
-    desc: '状态模型、协调算法与 Hooks 的性能问题。',
-    items: ['如何理解 UI = f(state)', 'Fiber 架构解决什么', '受控与非受控组件', 'useContext 的性能优化'],
-  },
-  {
-    code: 'ENG · 04',
-    name: '工程化',
-    to: '/docs/interview-questions/basics-engineering',
-    hue: ['#4a5a6a', '#93a7bb'],
-    desc: '30 题，含 20 道 Webpack 与构建体系专题。',
-    items: ['三个组件请求同一个 API', 'cjs / esm / umd 的区别', 'pnpm 有什么优势', 'Webpack 热更新原理'],
-  },
-  {
-    code: 'NODE · 05',
-    name: 'Node.js',
-    to: '/docs/interview-questions/basics-node',
-    hue: ['#6e7b3e', '#a9c177'],
-    desc: 'fs、Buffer、Stream 与事件循环机制。',
-    items: ['事件循环流程', 'EventEmitter 如何实现', 'Stream 的四种类型', 'JWT 鉴权机制'],
-  },
-  {
-    code: 'MINI · 06',
-    name: '微信小程序',
-    to: '/docs/interview-questions/basics-mini-programs',
-    hue: ['#a6603a', '#db9569'],
-    desc: '运行原理、支付与登录链路、性能优化。',
-    items: ['小程序的实现原理', '支付流程与签名', '登录流程与 code2session', 'setData 性能优化'],
-  },
-];
-
-const HANDWRITTEN: Shelf[] = [
-  {
-    code: 'COMP · 01',
-    name: '综合题',
-    to: '/docs/handwritten-questions/comprehensive',
-    hue: ['#8e3b4a', '#d48695'],
-    desc: '20 道场景实现题，每题都带可运行代码。',
-    items: ['实现 sleep 函数', '异步并发数限制', 'Promise 调度器', '版本号排序', '有效括号'],
-  },
-  {
-    code: 'ALGO · 02',
-    name: '算法数据结构',
-    to: '/docs/handwritten-questions/algorithm-data-structure',
-    hue: ['#8e3b4a', '#d48695'],
-    desc: '从零手写链表、队列与二叉树，带图解。',
-    items: ['实现一个链表结构', '实现一个队列', '递归反转链表', '二叉树搜索'],
-  },
-];
-
-const HANDBOOKS: Shelf[] = [
-  {
-    code: 'HB · 01',
-    name: '前端面试全流程指南',
-    to: '/docs/handbooks/interview-guide',
-    hue: ['#5d7285', '#93a9bc'],
-    desc: '简历准备、技术面策略与复盘体系。',
-    items: [],
-  },
-  {
-    code: 'HB · 02',
-    name: 'JavaScript 核心进阶',
-    to: '/docs/handbooks/javascript-core',
-    hue: ['#3b5ba5', '#8fa8e0'],
-    desc: '执行上下文、闭包内存模型与异步底层机制。',
-    items: [],
-  },
-  {
-    code: 'HB · 03',
-    name: '浏览器内核与渲染原理',
-    to: '/docs/handbooks/browser-core',
-    hue: ['#6b5493', '#b49cd6'],
-    desc: '进程架构、渲染流水线、合成层与重排重绘。',
-    items: [],
-  },
-  {
-    code: 'HB · 04',
-    name: 'HTTP 与计算机网络',
-    to: '/docs/handbooks/http-network',
-    hue: ['#6e7b3e', '#a9c177'],
-    desc: 'HTTP/1.1 至 HTTP/3 演进、HTTPS 握手与缓存策略。',
-    items: [],
-  },
-  {
-    code: 'HB · 05',
-    name: '前端设计模式实战',
-    to: '/docs/handbooks/design-patterns',
-    hue: ['#8e3b4a', '#d48695'],
-    desc: '发布订阅、策略、代理与装饰器模式在前端的落地。',
-    items: [],
-  },
-  {
-    code: 'HB · 06',
-    name: 'SDK 开发与 Webpack 体系',
-    to: '/docs/handbooks/sdk-webpack',
-    hue: ['#4a5a6a', '#93a7bb'],
-    desc: '插件架构设计、Loader/Plugin 原理与构建优化。',
-    items: [],
-  },
-  {
-    code: 'HB · 07',
-    name: 'AI 工程化实践',
-    to: '/docs/handbooks/ai-engineering',
-    hue: ['#4a5a6a', '#93a7bb'],
-    desc: '大模型应用接入、流式交互与前端 AI 提效工作流。',
-    items: [],
-  },
-  {
-    code: 'HB · 08',
-    name: '大文件分片上传方案',
-    to: '/docs/handbooks/chunked-upload',
-    hue: ['#4a5a6a', '#93a7bb'],
-    desc: 'Web Worker 增量哈希计算、断点续传与秒传实现。',
-    items: [],
-  },
-];
-
-const REFERENCE: Shelf[] = [
-  {
-    code: 'GIT · 01',
-    name: 'git 常见实战命令',
-    to: '/docs/gitorder',
-    hue: ['#4a5a6a', '#93a7bb'],
-    desc: '分支、暂存、回退与 tag 的速查表。',
-    items: [],
-  },
-  {
-    code: 'WORD · 02',
-    name: '前端导出 Word 文件',
-    to: '/docs/export-word',
-    hue: ['#4a5a6a', '#93a7bb'],
-    desc: 'docxtemplater + pizzip 的完整实现。',
-    items: [],
-  },
-  {
-    code: 'CSS · 05',
-    name: '如何命名更规范 class',
-    to: '/docs/class-name',
-    hue: ['#4a5a6a', '#93a7bb'],
-    desc: '命名关键词表与 BEM 实践。',
-    items: [],
-  },
-  {
-    code: 'MINI · 01',
-    name: 'uniapp 安卓语音播报',
-    to: '/docs/daily-work/uniapp',
-    hue: ['#a6603a', '#db9569'],
-    desc: '调用系统 TTS 引擎的完整封装类。',
-    items: [],
-  },
-  {
-    code: 'REF · 07',
-    name: '开发相关资料',
-    to: '/docs/material',
-    hue: ['#5d7285', '#93a9bc'],
-    desc: 'CSS / HTML / Vue / React 编码规范。',
-    items: [],
-  },
-];
-
-const NOTES = [
-  {title: '更新随记：彩签档案主题上线', date: '2026-08-13', to: '/blog/theme-redesign-2026-08-13'},
-  {title: '日常随记：博客同步与 Docusaurus 升级', date: '2026-08-04', to: '/blog/daily-2026-08-04'},
-  {title: '更新日记', date: '2025-10-28', to: '/blog/update'},
-  {title: '搭建个人博客', date: '2024-07-18', to: '/blog/blog'},
-];
-
-/** 把色位写进卡片，再由 CSS 映射到 --sc-shelf（暗色模式取另一支） */
-function hueStyle(shelf: Shelf): CSSProperties {
-  return {'--card-l': shelf.hue[0], '--card-d': shelf.hue[1]} as CSSProperties;
-}
-
-function ShelfCard({shelf}: {shelf: Shelf}) {
+function Arrow({diagonal = false}: {diagonal?: boolean}) {
   return (
-    <Link to={shelf.to} className={styles.card} style={hueStyle(shelf)}>
-      <div className={styles.cardTop}>
-        <span className={styles.code}>{shelf.code}</span>
-        <h3 className={styles.cardName}>{shelf.name}</h3>
-      </div>
-      <p className={styles.cardDesc}>{shelf.desc}</p>
-      {shelf.items.length > 0 && (
-        <ul className={styles.cardList}>
-          {shelf.items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      )}
-      <span className={styles.cardFoot}>查看全部 →</span>
-    </Link>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {diagonal ? <path d="M5 19 19 5M5 5h14v14" /> : <path d="M4 12h16m-6-6 6 6-6 6" />}
+    </svg>
   );
 }
 
-function ReferenceItem({shelf}: {shelf: Shelf}) {
-  return (
-    <Link to={shelf.to} className={styles.refItem} style={hueStyle(shelf)}>
-      <span className={styles.refCode}>{shelf.code}</span>
-      <span className={styles.refBody}>
-        <span className={styles.refName}>{shelf.name}</span>
-        <span className={styles.refDesc}>{shelf.desc}</span>
-      </span>
-      <span className={styles.refArrow}>→</span>
-    </Link>
-  );
+function PostDate({date}: {date: string}) {
+  return <time dateTime={date}>{date.replaceAll('-', '.')}</time>;
 }
 
 function ScrollToTop() {
   const [visible, setVisible] = useState(false);
-
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400);
+    const onScroll = () => setVisible(window.scrollY > 640);
     window.addEventListener('scroll', onScroll, {passive: true});
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
   return (
-    <button
-      type="button"
-      className={clsx(styles.scrollTop, visible && styles.scrollTopVisible)}
-      onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-      aria-label="回到顶部"
-      title="回到顶部"
-    >
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 19V5" />
-        <path d="m5 12 7-7 7 7" />
-      </svg>
+    <button type="button" className={styles.scrollTop} hidden={!visible}
+      onClick={() => window.scrollTo({top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})}
+      aria-label="回到顶部" title="回到顶部">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 20V4m-7 7 7-7 7 7" /></svg>
     </button>
   );
 }
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
-
+  const {posts} = usePluginData('personal-blog-home') as {posts: Post[]};
+  const featured = posts.find((post) => post.to.endsWith('/blog/blog')) ?? posts[0];
+  const recent = posts.filter((post) => post.to !== featured?.to).slice(0, 4);
+  const searchUrl = useBaseUrl('/search');
   return (
-    <Layout
-      title={`${siteConfig.title} - ${siteConfig.tagline}`}
-      description="按主题归档的前端知识笔记：JavaScript、Vue、React、Node.js、微信小程序与工程化面试题，以及手写题与工程实践。"
-    >
+    <Layout title="苏木的个人博客" description="你好，我是苏木，一名前端开发者。在这里写代码，也记日常，记录开发中的发现、项目里的思考和博客的点滴更新。">
       <main className={styles.page}>
-        <header className={styles.hero}>
-          <div className="container">
-            <p className={styles.eyebrow}>field catalog · 索书号</p>
-            <h1 className={styles.heroTitle}>前端知识笔记，按主题分色归档</h1>
-            <p className={styles.heroLede}>
-              面试题库、手写题与工程实践。每种颜色对应一个主题，
-              贯穿侧栏、正文与代码，一眼定位当前章节。
-            </p>
-            <div className={styles.heroActions}>
-              <Link to="/docs/interview-questions/basics-javascript" className={styles.btn}>
-                从 JavaScript 开始
-              </Link>
-              <Link to="/docs/handwritten-questions/comprehensive" className={styles.btnGhost}>
-                手写题
-              </Link>
-              <span className={styles.heroHint}>
-                全文搜索 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd>
-              </span>
+        <div className={styles.container}>
+          <section className={styles.intro} aria-labelledby="home-title">
+            <div className={styles.introBody}>
+              <h1 id="home-title">写代码，<br />也记日常<span className={styles.fullStop}>。</span></h1>
+              <p className={styles.greeting}>你好，我是<Link to="/about">苏木</Link>，一名前端开发者。</p>
+              <p className={styles.introText}>这里记录开发中的发现、项目里的思考，<br className={styles.desktopBreak} />也留下一些关于这个博客的点滴更新。</p>
+              <div className={styles.introLinks}>
+                <a href="#writing" className={styles.primaryLink}>读读最近的文章 <Arrow /></a>
+                <Link to="/about" className={styles.textLink}>更多关于我 <Arrow diagonal /></Link>
+              </div>
             </div>
+            {featured && (
+              <article className={styles.featured} aria-labelledby="featured-title">
+                <Link to={featured.to} className={styles.featuredTitleLink}><h2 id="featured-title">{featured.title}</h2></Link>
+                <p className={styles.featuredDescription}>{featured.description}</p>
+                <div className={styles.featuredMeta}><span>从这篇开始</span><PostDate date={featured.date} /></div>
+                <Link to={featured.to} className={styles.featuredLink}>阅读这篇文章 <Arrow /></Link>
+                <span className={styles.featuredMark} aria-hidden="true">文</span>
+              </article>
+            )}
+          </section>
+          <div className={styles.readingLayout}>
+            <section className={styles.writing} id="writing" aria-labelledby="writing-title">
+              <div className={styles.sectionHead}><h2 id="writing-title">最近写下</h2><Link to="/blog" className={styles.textLink}>所有文章 <Arrow /></Link></div>
+              <p className={styles.sectionIntro}>一些近况，一些折腾，也有一些慢慢积累的想法。</p>
+              {recent.length > 0 ? (
+                <div className={styles.postList}>
+                  {recent.map((post) => (
+                    <article className={styles.post} key={post.to}>
+                      <div className={styles.postMeta}><PostDate date={post.date} /><span>随记</span></div>
+                      <h3><Link to={post.to}>{post.title}</Link></h3>
+                      <p>{post.description}</p>
+                      <Link to={post.to} className={styles.postRead} aria-label={`继续阅读：${post.title}`}>继续阅读 <Arrow /></Link>
+                    </article>
+                  ))}
+                </div>
+              ) : <p className={styles.empty}>新的文字还在酝酿，可以先读读上面的文章。</p>}
+              <Link to="/blog/archive" className={styles.archiveLink}>沿着时间，翻翻过去的文章 <Arrow /></Link>
+            </section>
+            <aside className={styles.sidebar} aria-label="关于博客与其他入口">
+              <section className={styles.about} aria-labelledby="about-title">
+                <h2 id="about-title">关于这里</h2>
+                <p>一个前端开发者的个人角落。写下解决过的问题，也记录把想法一点点做出来的过程。</p>
+                <p>希望这些文字，对偶然路过的你也有一点帮助。</p>
+                <Link to="/about" className={styles.textLink}>认识一下 <Arrow diagonal /></Link>
+              </section>
+              <section className={styles.notes} aria-labelledby="notes-title">
+                <h2 id="notes-title">偶尔，也记技术</h2>
+                <p>工作里用到的，趁还记得，整理下来。</p>
+                <ul>
+                  <li><Link to="/docs/handbooks/javascript-core">JavaScript 核心进阶 <Arrow /></Link></li>
+                  <li><Link to="/docs/handbooks/chunked-upload">大文件分片上传方案 <Arrow /></Link></li>
+                  <li><Link to="/docs/gitorder">Git 常见实战命令 <Arrow /></Link></li>
+                </ul>
+                <Link to="/docs" className={styles.textLink}>其他技术笔记 <Arrow /></Link>
+              </section>
+              <form className={styles.search} action={searchUrl} method="get" role="search" aria-label="站内文章搜索">
+                <label htmlFor="home-search">找一篇文章</label>
+                <div className={styles.searchField}><input id="home-search" name="q" type="search" placeholder="输入关键词…" required maxLength={100} />
+                  <button type="submit" aria-label="搜索文章"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 4.5 4.5" /></svg></button>
+                </div>
+              </form>
+              <a href="https://github.com/znakoa" target="_blank" rel="noopener noreferrer" className={styles.githubLink}>也可以在 GitHub 找到我 <Arrow diagonal /></a>
+            </aside>
           </div>
-        </header>
-
-        <section className={styles.section}>
-          <div className="container">
-            <div className={styles.sectionHead}>
-              <h2 className={styles.sectionTitle}>面试题</h2>
-              <span className={styles.sectionNote}>6 个主题</span>
-            </div>
-            <div className={styles.matrix}>
-              {INTERVIEW.map((shelf) => (
-                <ShelfCard key={shelf.code} shelf={shelf} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.sectionAlt}>
-          <div className="container">
-            <div className={styles.sectionHead}>
-              <h2 className={styles.sectionTitle}>专项小册</h2>
-              <span className={styles.sectionNote}>8 个深度专题</span>
-            </div>
-            <div className={styles.matrix}>
-              {HANDBOOKS.map((shelf) => (
-                <ShelfCard key={shelf.code} shelf={shelf} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.sectionAlt}>
-          <div className="container">
-            <div className={styles.sectionHead}>
-              <h2 className={styles.sectionTitle}>手写题</h2>
-              <span className={styles.sectionNote}>白板实现，附可运行代码</span>
-            </div>
-            <div className={styles.matrixTwo}>
-              {HANDWRITTEN.map((shelf) => (
-                <ShelfCard key={shelf.code} shelf={shelf} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.section}>
-          <div className="container">
-            <div className={styles.sectionHead}>
-              <h2 className={styles.sectionTitle}>工具与规范</h2>
-              <span className={styles.sectionNote}>查得到就用得上</span>
-            </div>
-            <div className={styles.refList}>
-              {REFERENCE.map((shelf) => (
-                <ReferenceItem key={shelf.code} shelf={shelf} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className={styles.sectionAlt}>
-          <div className="container">
-            <div className={styles.sectionHead}>
-              <h2 className={styles.sectionTitle}>日常随记</h2>
-              <Link to="/blog" className={styles.sectionLink}>
-                全部随记 →
-              </Link>
-            </div>
-            <ul className={styles.notes}>
-              {NOTES.map((note) => (
-                <li key={note.to}>
-                  <Link to={note.to} className={styles.noteItem}>
-                    <span className={styles.noteDate}>{note.date}</span>
-                    <span className={styles.noteTitle}>{note.title}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
+          <div className={styles.signoff}><p>谢谢你读到这里。</p><span>下次见，苏木</span></div>
+        </div>
         <ScrollToTop />
       </main>
     </Layout>
